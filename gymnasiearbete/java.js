@@ -71,4 +71,3 @@ function toggleMenu(button) {
     }
 }
 
-alert('Anthony');
