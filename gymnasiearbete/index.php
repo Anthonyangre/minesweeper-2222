@@ -50,7 +50,7 @@ require_once 'dbhs.php';
     
    
 
-    <<div class="wrapper"> 
+    <div class="wrapper"> 
     <div class="info_text"> 
         <h2 id="regler">Regler </h2> 
         <p>Regler Mål MS Röj går ut på att så fort som möjligt hitta alla 40 minor på spelplanen, markera dom med en flagga, och öppna alla rutor som inte innehåller en mina. Varje ruta på spelplanen kan antingen vara en mina, en siffra eller tom.
