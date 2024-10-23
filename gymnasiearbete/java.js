@@ -70,3 +70,5 @@ function toggleMenu(button) {
       }, 500); // Samma tid som transition-duration för att matcha animationen
     }
 }
+
+alert('Anthony');
