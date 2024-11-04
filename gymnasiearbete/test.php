@@ -5,6 +5,6 @@
     <title>Document</title>
 </head>
 <body>
-    YES no
+    YES bing bong
 </body>
 </html>
