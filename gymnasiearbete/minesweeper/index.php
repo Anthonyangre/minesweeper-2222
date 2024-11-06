@@ -82,8 +82,7 @@ if (isset($_GET['reset'])) {
 
 <!-- Länkar för inloggning och registrering -->
 <div class="header-links">
- 
-    <a href="../login.php">Login</a>  <a href="../signup.php">Signup</a>  <div class="konto">Konto</div>
+  <div class="konto">Konto</div>
 
    
     </div>
@@ -96,6 +95,7 @@ if (isset($_GET['reset'])) {
     <button id="reset-button">Reset</button>
     
     <script src="script.js"></script>
+    <script src="../java.js"></script>
     <script>
         const grid = <?= json_encode($_SESSION['grid']) ?>;
         const revealed = <?= json_encode($_SESSION['revealed']) ?>;
