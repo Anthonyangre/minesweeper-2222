@@ -46,7 +46,7 @@ require_once 'dbhs.php';
     </header>
     <div id="wrapper">
     
-<form action="index.php" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <h1>Skapa ett konto</h1>
   <fieldset>
   <div class=" inlogg_border">
@@ -73,7 +73,7 @@ require_once 'dbhs.php';
        
   </fieldset>
 
-    <input type="submit" name="register" value="Register" class="button1">
+    <input type="submit" name="register" value="register" class="button1">
     </form>
     <?php
     //kontrollerar om det finns felmeddelanden

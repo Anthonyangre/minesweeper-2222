@@ -30,7 +30,7 @@ if (isset($_POST["register"])) {
     $stmt->execute();
     $stmt->close();
     $_SESSION['userid'] = $user['id'];
-    header('Location: test.php');
+    header('Location: ./minesweeper/index.php');
     }
 }
 if (isset($_POST['submit'])) {
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
         if (password_verify($password, $user['password'])) {
             echo "Password is correct.<br>";
             $_SESSION['userid'] = $user['id'];
-            header('Location: test.php');
+            header('Location: ./minesweeper/index.php');
             exit;
         } else {
             

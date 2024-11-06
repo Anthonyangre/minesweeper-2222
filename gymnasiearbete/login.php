@@ -47,7 +47,7 @@ require_once 'dbhs.php';
         
     </header>
     
-<form action="index.php" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <h1>    Ange inloggnings uppgifter</h1>
   <fieldset>
          <div class=" inlogg_border">
@@ -62,7 +62,7 @@ require_once 'dbhs.php';
             </li>
             </div>
             <div class="box">
-            <input type="submit" name="submit" value="Log In And Play " class="button">
+            <input type="submit" name="submit" value="submit" class="button">
             </div>
             <a href="signup.php">Inget konto? Signup.</a>
   </fieldset>

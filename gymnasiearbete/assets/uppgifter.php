@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "forum", "forum", "forum");
+$conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
 // Start the session if not already started
 if (session_status() === PHP_SESSION_NONE) {
@@ -11,7 +11,7 @@ if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
 
     // Query to fetch user data
-    $stmt = $conn->prepare("SELECT username, name, email FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT username, name, email FROM users WHERE id = ?");
     $stmt->bind_param("s", $userid);
     $stmt->execute();
     $result = $stmt->get_result();
