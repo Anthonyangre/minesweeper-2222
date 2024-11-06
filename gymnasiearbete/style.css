@@ -396,13 +396,13 @@ textarea {
 }
 
 .konto{
-  background-color: chocolate;
+  background-color: rgb(90, 255, 247);
   width: 80px;
   border-radius: 20px;
-  box-shadow: 5px 5px 5px red;
+  box-shadow: 5px 5px 5px rgb(13, 0, 255);
   border-radius: 10px;
   border-style:inset;
   border-color: #ffffff;
-  padding-left: 20px;
+  padding: px;
   align-items: center;
 }
