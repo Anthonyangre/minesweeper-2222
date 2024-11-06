@@ -82,7 +82,18 @@ if (isset($_GET['reset'])) {
 
 <!-- Länkar för inloggning och registrering -->
 <div class="header-links">
-    <a href="../profil.php"> <div class="konto">Konto</div></a> 
+<div class="konto-menu" onclick="toggleMenu(this)">
+            <div class="konto">Konto</div>
+            <!-- Rubrik som glider in från vänster när knappen klickas -->
+            <div class="menu-title">Navigation</div>
+
+            <!-- Dropdown-menyn som visas vid klick -->
+            <div class="dropdown-menu">
+            <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
+               
+
+            </div>
+        </div>
 
    
     </div>
