@@ -1,5 +1,5 @@
 <a?php
-// Inkluderar databasanslutningen för inloggning
+
 require_once 'dbhs.php';
 ?> 
 <!DOCTYPE html>
