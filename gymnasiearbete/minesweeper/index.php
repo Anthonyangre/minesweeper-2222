@@ -86,7 +86,7 @@ if (isset($_GET['reset'])) {
 
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="konto-menu">
-            <a href= "leaderboard.php"class="konto-item">Leaderboard </a>
+            <a href= "../profil.php"class="konto-item">Leaderboard </a>
                
 
             </div>
