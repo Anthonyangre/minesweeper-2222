@@ -1,5 +1,5 @@
 <?php 
-require_once 'assets/userdbhs.php';
+require_once 'dbhs.php';
 require_once 'assets/uppgifter.php';
 
 ?>

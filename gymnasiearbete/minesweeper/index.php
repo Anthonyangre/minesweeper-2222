@@ -82,8 +82,7 @@ if (isset($_GET['reset'])) {
 
 <!-- Länkar för inloggning och registrering -->
 <div class="header-links">
- 
-    <a href="../login.php">Login</a>  <a href="../signup.php">Signup</a>  <div class="konto">Konto</div>
+    <a href="../profil.php"> <div class="konto">Konto</div></a> 
 
    
     </div>
