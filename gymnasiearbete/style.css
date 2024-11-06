@@ -406,33 +406,39 @@ textarea {
   padding: px;
   align-items: center;
 }
+.konto-title, .konto-menu {
+  display: none; /* Ensure they are hidden initially */
+  opacity: 0;
+  transform: scale(0);
+}
+
 /* Rubriken som glider in från vänster */
 .konto-title {
   background-color: bisque;
   padding: 15px;
   display: none; /* Initially hidden */
-  right: 60px; /* Justera avståndet till hamburgarmenyn */
+  position: absolute;
+  right: 60px; /* Adjust distance from the hamburger menu */
   top: 0;
-  transform: translateX(-100%) scaleX(1); /* Initialt utanför skärmen, normal bredd */
-  transform-origin: left; /* Animera från vänster */
-  transition: transform 0.5s ease; /* Animera både translation och scale */
+  transform: translateX(-100%) scaleX(0); /* Start outside the screen, zero width */
+  transform-origin: left;
+  transition: transform 0.5s ease;
 }
 
-/* Dropdown-menyn */
+/* Dropdown menu */
 .konto-menu {
   display: none; /* Initially hidden */
-  position: absolute; /* Håll den absolut så den kan positioneras i förhållande till parent */
-  left: 55px; /* Justera så den ligger direkt under rubriken */
-  top: 45px; /* Flytta ner till 60px för att matcha rubrikens höjd */
+  position: absolute;
+  left: 55px; /* Adjust to be directly under the title */
+  top: 45px;
   padding: 5px;
   width: 100px;
-  transform: scale(0); /* Starta med en mindre skala */
-  opacity: 0; /* Starta med osynlig dropdown */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Justera transitionens tid för mer responsivitet */
+  transform: scale(0); /* Start scaled down */
+  opacity: 0; /* Start invisible */
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-
-/* Varje menyitem */
+/* Each menu item */
 .konto-item {
   opacity: 0;
   transform: scale(0);
@@ -440,16 +446,16 @@ textarea {
   padding: 10px;
   background-color: #ddd;
   margin: 5px 0;
-  transition: transform 0.3s, opacity 0.3s; /* Transition för animation */
+  transition: transform 0.3s, opacity 0.3s;
   text-align: center;
-  display: block; /* Säkerställer att alla objekt får sin egen rad */
-  text-decoration: none; /* Ta bort understrykning på länkar */
+  display: block;
+  text-decoration: none;
 }
 
 /* Hover effect for dropdown items */
 .konto-item:hover {
-  background-color: #d0b2b2; /* Change background color on hover */
-  transform: scale(1.05); /* Slightly scale up on hover */
+  background-color: #d0b2b2;
+  transform: scale(1.05);
 }
 
 table {
