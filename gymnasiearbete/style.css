@@ -406,7 +406,51 @@ textarea {
   padding: px;
   align-items: center;
 }
+/* Rubriken som glider in från vänster */
+.konto-title {
+  background-color: bisque;
+  padding: 15px;
+  display: none; /* Initially hidden */
+  right: 60px; /* Justera avståndet till hamburgarmenyn */
+  top: 0;
+  transform: translateX(-100%) scaleX(1); /* Initialt utanför skärmen, normal bredd */
+  transform-origin: left; /* Animera från vänster */
+  transition: transform 0.5s ease; /* Animera både translation och scale */
+}
 
+/* Dropdown-menyn */
+.konto-menu {
+  display: none; /* Initially hidden */
+  position: absolute; /* Håll den absolut så den kan positioneras i förhållande till parent */
+  left: 55px; /* Justera så den ligger direkt under rubriken */
+  top: 45px; /* Flytta ner till 60px för att matcha rubrikens höjd */
+  padding: 5px;
+  width: 100px;
+  transform: scale(0); /* Starta med en mindre skala */
+  opacity: 0; /* Starta med osynlig dropdown */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Justera transitionens tid för mer responsivitet */
+}
+
+
+/* Varje menyitem */
+.konto-item {
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: top center;
+  padding: 10px;
+  background-color: #ddd;
+  margin: 5px 0;
+  transition: transform 0.3s, opacity 0.3s; /* Transition för animation */
+  text-align: center;
+  display: block; /* Säkerställer att alla objekt får sin egen rad */
+  text-decoration: none; /* Ta bort understrykning på länkar */
+}
+
+/* Hover effect for dropdown items */
+.konto-item:hover {
+  background-color: #d0b2b2; /* Change background color on hover */
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
 
 table {
 	width: 500px;

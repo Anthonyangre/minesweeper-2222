@@ -79,24 +79,20 @@ if (isset($_GET['reset'])) {
         </div>
 
         <h3 class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
-
-<!-- Länkar för inloggning och registrering -->
-<div class="header-links">
-<div class="konto-menu" onclick="toggleMenu(this)">
+        <div class="konto-menu" onclick="togglekonto(this)">
             <div class="konto">Konto</div>
             <!-- Rubrik som glider in från vänster när knappen klickas -->
-            <div class="menu-title">Navigation</div>
+            <div class="konto-title">Navigation</div>
 
             <!-- Dropdown-menyn som visas vid klick -->
-            <div class="dropdown-menu">
-            <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
+            <div class="konto-menu">
+            <a href= "leaderboard.php"class="konto-item">Leaderboard </a>
                
 
             </div>
         </div>
 
-   
-    </div>
+
 
         
     </header>
