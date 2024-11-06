@@ -72,7 +72,7 @@ if (isset($_GET['reset'])) {
             <div class="dropdown-menu">
             <a href="#regler" class="dropdown-item">Regler</a>
             <a href="#info" class="dropdown-item">Info</a>
-            <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
+            <a href= "../leaderboard.php"class="dropdown-item">Leaderboard </a>
                
 
             </div>

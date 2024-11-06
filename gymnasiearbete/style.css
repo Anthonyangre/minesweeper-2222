@@ -406,3 +406,39 @@ textarea {
   padding: px;
   align-items: center;
 }
+
+
+table {
+	width: 500px;
+    border: 1px solid black;
+    border-collapse: collapse;
+	 margin-top: 20px;
+    margin: auto;
+   
+
+}
+
+/* Ställer in kolumn- och cellformat:*/
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+/* Justerar varje rad i tabellen: */
+tr {
+    border: 1px solid black;
+	 vertical-align: top;
+    align-items: center;
+
+}
+
+/* Ger udda rader (nth-child(odd)) en mörkgrå bakgrundsfärg */
+#dbres tr:nth-child(odd) {
+	background-color: darkgrey;
+}
+
+/* Sätter bakgrundsfärg på den första raden i tabellen till mörkgrå */
+#dbres tr:first-child {
+	background-color: darkgray;
+}
+
