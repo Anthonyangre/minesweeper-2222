@@ -91,7 +91,6 @@ if (isset($_GET['reset'])) {
         
     </header>
 
-    <div id="head2"> Headerbild</div> 
     <div id="status">Game in progress...</div>
     <div id="game-board"></div>
     <button id="reset-button">Reset</button>
