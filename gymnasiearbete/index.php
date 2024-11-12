@@ -37,8 +37,13 @@ require_once 'dbhs.php';
 
 <!-- Länkar för inloggning och registrering -->
 <div class="header-links">
- 
-    <a href="login.php">Login</a>  <a href="signup.php">Signup</a>  <div class="konto">Konto</div>
+ <?php 
+ if ($_SESSION['logged_in'] = true) {
+    echo '<a href="login.php">Login</a><a href="signup.php">Signup</a> ';
+ } else {
+     echo '<div class="konto">Konto</div>';
+ }
+ ?>
 
    
     </div>

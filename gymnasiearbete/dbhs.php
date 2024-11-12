@@ -28,7 +28,7 @@ if (isset($_POST["register"])) {
     $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
     $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
     $stmt->execute();
-    $stmt->close();z
+    $stmt->close();
     $_SESSION['userid'] = $user['id'];
     header('Location: ./minesweeper/index.php');
     }
@@ -54,8 +54,9 @@ if (isset($_POST['submit'])) {
             echo "Password is correct.<br>";
             $_SESSION['userid'] = $user['id'];
             header('Location: ./minesweeper/index.php');
-            exit;
+            
             $_SESSION['logged_in'] = true;
+            exit;
         } else {
             
             $errors[] = 'Kontrollera lösenord och användarnamn';
