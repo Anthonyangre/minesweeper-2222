@@ -70,3 +70,68 @@ function toggleMenu(button) {
       }, 500); // Samma tid som transition-duration för att matcha animationen
     }
 }
+function togglekonto(button) {
+  // Access the sibling container
+  const menuContainer = button.nextElementSibling;
+  console.log("menuContainer:", menuContainer); // Log to check
+
+  if (!menuContainer) {
+    console.error("Menu container not found.");
+    return;
+  }
+
+  const menuTitle = menuContainer.querySelector('.konto-title');
+  const dropdownMenu = menuContainer.querySelector('.konto-dropdown');
+
+  // Log each part to ensure they are being found
+  console.log("menuTitle:", menuTitle); 
+  console.log("dropdownMenu:", dropdownMenu);
+
+  if (!menuTitle || !dropdownMenu) {
+    console.error("Required elements (menuTitle or dropdownMenu) not found.");
+    return;
+  }
+
+  const dropdownItems = dropdownMenu.querySelectorAll('.konto-item');
+  console.log("dropdownItems:", dropdownItems); // Check dropdownItems
+
+  // Check if any dropdown items are found
+  if (!dropdownItems || dropdownItems.length === 0) {
+    console.error("No dropdown items found in dropdownMenu.");
+    return;
+  }
+
+  // Check if menu is open
+  const isOpen = menuTitle.style.display === "block";
+
+  if (!isOpen) {
+    // Show and animate title and dropdown menu
+    menuTitle.style.display = "block";
+    dropdownMenu.style.display = "block";
+    setTimeout(() => {
+      menuTitle.style.transform = "translateX(0) scaleX(1)";
+      dropdownMenu.style.transform = "scale(1)";
+      dropdownMenu.style.opacity = 1;
+
+      dropdownItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.style.opacity = 1;
+          item.style.transform = 'scale(1)';
+        }, index * 100);
+      });
+    }, 50);
+  } else {
+    // Hide and reset title and dropdown menu
+    menuTitle.style.transform = "translateX(-100%) scaleX(0)";
+    dropdownMenu.style.transform = "scale(0)";
+    dropdownMenu.style.opacity = 0;
+    setTimeout(() => {
+      menuTitle.style.display = "none";
+      dropdownMenu.style.display = "none";
+      dropdownItems.forEach(item => {
+        item.style.opacity = 0;
+        item.style.transform = 'scale(0)';
+      });
+    }, 500);
+  }
+}
