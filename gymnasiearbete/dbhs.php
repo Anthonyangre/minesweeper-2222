@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -53,6 +53,7 @@ if (isset($_POST['submit'])) {
         if (password_verify($password, $user['password'])) {
             echo "Password is correct.<br>";
             $_SESSION['userid'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
             header('Location: ./minesweeper/index.php');
             
             $_SESSION['logged_in'] = true;

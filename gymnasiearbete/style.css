@@ -394,47 +394,53 @@ textarea {
   inherits: true;
   initial-value: 0turn;
 }
-
-.konto{
+.konto {
   background-color: rgb(90, 255, 247);
   width: 80px;
-  border-radius: 20px;
-  box-shadow: 5px 5px 5px rgb(13, 0, 255);
   border-radius: 10px;
-  border-style:inset;
+  box-shadow: 5px 5px 5px rgb(13, 0, 255);
+  border-style: inset;
   border-color: #ffffff;
-  padding: px;
-  align-items: center;
-}
-.konto-title, .konto-menu {
-  display: none; /* Ensure they are hidden initially */
-  opacity: 0;
-  transform: scale(0);
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
 }
 
-/* Rubriken som glider in från vänster */
+/* Toggle button styling */
+.toggle-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* Rubriken som glider in från left */
 .konto-title {
   background-color: bisque;
   padding: 15px;
-  display: none; /* Initially hidden */
+  display: none;
   position: absolute;
-  right: 60px; /* Adjust distance from the hamburger menu */
+  left: -120px; /* Adjusted to place title to the left of the konto box */
   top: 0;
-  transform: translateX(-100%) scaleX(0); /* Start outside the screen, zero width */
-  transform-origin: left;
+  transform: translateX(-100%) scaleX(0); /* Slide in from left */
+  transform-origin: right;
   transition: transform 0.5s ease;
 }
 
-/* Dropdown menu */
-.konto-menu {
-  display: none; /* Initially hidden */
+/* Dropdown menu aligned to the left */
+.konto-dropdown {
+  display: none;
   position: absolute;
-  left: 55px; /* Adjust to be directly under the title */
+  left: -120px; /* Align dropdown menu to the left */
   top: 45px;
   padding: 5px;
   width: 100px;
-  transform: scale(0); /* Start scaled down */
-  opacity: 0; /* Start invisible */
+  transform: scale(0);
+  opacity: 0;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 

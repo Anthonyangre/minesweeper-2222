@@ -43,6 +43,8 @@ require_once 'dbhs.php';
  } else {
      echo '<div class="konto">Konto</div>';
      
+     echo $_SESSION['username'];
+
  }
  ?>
 
