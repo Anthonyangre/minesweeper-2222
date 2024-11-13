@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once '../dbhs.php';
 if (!isset($_SESSION['grid'])) {
@@ -46,6 +47,7 @@ if (isset($_GET['reset'])) {
     header("Location: index.php");
     exit();
 }
+$username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,21 +82,8 @@ if (isset($_GET['reset'])) {
         </div>
 
         <h3 class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
-        <div class="konto">
-    <!-- Toggle button -->
-    <button class="toggle-button" onclick="togglekonto(this)">Konto</button>
+        <div class="konto"> <?php echo htmlspecialchars($username); ?></div>
 
-    <div class="konto-menu-container">
-        <!-- Title that slides in -->
-        <div class="konto-title">Navigation</div>
-
-        <!-- Dropdown menu container -->
-        <div class="konto-dropdown">
-            <a href="../profil.php" class="konto-item">Leaderboard</a>
-            <!-- Add more .konto-item links if necessary -->
-        </div>
-    </div>
-</div>
 
 
         

@@ -30,6 +30,7 @@ if (isset($_POST["register"])) {
     $stmt->execute();
     $stmt->close();
     $_SESSION['userid'] = $user['id'];
+    $_SESSION['username'] = $user['username'];
     header('Location: ./minesweeper/index.php');
     }
 }
