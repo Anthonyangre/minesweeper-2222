@@ -72,10 +72,8 @@ $username = $_SESSION['username'];
 
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
-            <a href="../index.php" class="dropdown-item">Hem</a> 
-  <a href="../index.php#regler" class="dropdown-item">Regler</a>  <!-- Länk till regler-sektionen på index.php -->
-  <a href="../index.php#info" class="dropdown-item">Info</a> <!-- Länk till info-sektionen på index.php -->
-  <a href= "../leaderboard.php"class="dropdown-item">Leaderboard </a>
+            <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Hem</a> 
+  <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
                
 
             </div>
@@ -83,7 +81,9 @@ $username = $_SESSION['username'];
 
         <h3 class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto"> <?php echo htmlspecialchars($username); ?></div>
-
+       
+        <a href="../assets/logout.php"><div class="log-out">logga ut</div></a>
+        <a href="profil.php"><div class="profil">profil</div></a>
 
 
         

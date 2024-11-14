@@ -61,13 +61,12 @@ header {
 
 /* Centrera texten i headern */
 header h3 {
-  font-size: 40px; /* Minska fontstorlek om nödvändigt */
   margin: 0;
   flex-grow: 1; /* Låt rubriken växa och ta upp tillgängligt utrymme */
   text-align: center; /* Centrera rubriken */
 }
 .rainbow-text {
-  font-size: 100px; /* Minska fontstorlek om nödvändigt */
+  font-size: 70px; /* Minska fontstorlek om nödvändigt */
   text-align: center;
   text-shadow: -20px 15px 20px rgb(104, 104, 104); /* Flytta skuggan 2px åt höger och ner, med 5px oskärpa */
 }

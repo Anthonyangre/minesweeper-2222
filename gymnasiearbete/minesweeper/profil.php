@@ -1,6 +1,6 @@
 <?php 
-require_once 'dbhs.php';
-require_once 'assets/uppgifter.php';
+require_once '../dbhs.php';
+require_once '../assets/uppgifter.php';
 
 ?>
     <?php
