@@ -99,7 +99,7 @@ header h3 {
 }
 
 .header-links a {
-  border-radius: 100px; /* Rundade hörn */
+  border-radius: 2px; /* Rundade hörn */
   background: #73AD21; /* Bakgrundsfärg */
   padding: 15px; /* Justera padding */
   width: 50px; /* Bredd */
@@ -202,7 +202,7 @@ fieldset {
 
 
 fieldset a{
-  border-radius: 50px;
+  border-radius: 10px;
   border-style: solid;
   border: #333;
 }
