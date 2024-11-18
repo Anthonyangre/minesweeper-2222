@@ -1,6 +1,7 @@
 <?php
 //infogar funktionalitet för inloggningen 
 require_once '../dbhs.php';
+$username = $_SESSION['username'];
 ?> 
 <html lang="sv">
 <head>
@@ -12,9 +13,7 @@ require_once '../dbhs.php';
    
 </head>
 <body>
-
-<> 
-        <div class="menu-container" onclick="toggleMenu(this)">
+<header>   <div class="menu-container" onclick="toggleMenu(this)">
             <div class="hamburger-menu">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
@@ -33,8 +32,10 @@ require_once '../dbhs.php';
         </div>
 
         <h3 class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
-
-<!-- Länkar för inloggning och registrering -->
+        <div class="konto"> <?php echo htmlspecialchars($username); ?></div>
+<!-- Länkar för inloggning och registrering --></header>
+<> 
+     
 
    </header>
 
@@ -61,9 +62,7 @@ require_once '../dbhs.php';
             <td><?php echo htmlspecialchars($row['tid'], ENT_QUOTES, 'UTF-8'); ?></td>
             
             <!-- Ny kolumn: Länk till alla inlägg av användaren -->
-            <td>
-                <a href="search.php?username=<?php echo urlencode($row['username']); ?>">Visa alla inlägg</a>
-            </td>
+    
         </tr>
     <?php endwhile; ?>
     </table>
