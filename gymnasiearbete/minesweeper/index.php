@@ -88,10 +88,12 @@ $username = $_SESSION['username'];
 
         
     </header>
-
-    <div id="status">Game in progress...</div>
+<div class="background">
+<div id="status">Game in progress...</div>
     <div id="game-board"></div>
     <button id="reset-button">Reset</button>
+</div>
+
     
     <script src="script.js"></script>
     <script src="../java.js"></script>

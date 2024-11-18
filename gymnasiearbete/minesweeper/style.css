@@ -78,3 +78,9 @@ body.game-over button {
     cursor: not-allowed;
     background-color: #6c757d;
 }
+.background {
+    padding-top:5%;
+    padding-bottom:5%;
+    background-color: #1e7e34;
+    width:100%;
+}

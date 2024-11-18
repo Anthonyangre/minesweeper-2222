@@ -19,7 +19,7 @@ header {
   display: flex;
   align-items: center; /* Centrera vertikalt */
   padding: 10px;
-  height: 70px; /* Minska höjd */
+  height: 7%; /* Minska höjd */
   width: 100%;
 }
 
@@ -66,7 +66,7 @@ header h3 {
   text-align: center; /* Centrera rubriken */
 }
 .rainbow-text {
-  font-size: 50px; /* Minska fontstorlek om nödvändigt */
+  font-size: 400%; /* Minska fontstorlek om nödvändigt */
   margin-left:10%;
   text-align: center;
   text-shadow: -20px 15px 30px rgb(104, 104, 104); /* Flytta skuggan 2px åt höger och ner, med 5px oskärpa */
