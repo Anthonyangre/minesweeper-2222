@@ -27,10 +27,10 @@ require_once 'dbhs.php';
             <a href="index.php" class="dropdown-item">Hem</a> 
             <a href="index.php#regler" class="dropdown-item">Regler</a>  <!-- Länk till regler-sektionen på index.php -->
             <a href="index.php#info" class="dropdown-item">Info</a> <!-- Länk till info-sektionen på index.php -->
-            <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
+
   
 
-  <div class="dropdown-item">Leaderboard</div>
+
             </div>
         </div>
 
