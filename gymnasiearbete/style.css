@@ -68,13 +68,13 @@ header h3 {
 .rainbow-text {
   font-size: 70px; /* Minska fontstorlek om nödvändigt */
   text-align: center;
-  text-shadow: -20px 15px 20px rgb(104, 104, 104); /* Flytta skuggan 2px åt höger och ner, med 5px oskärpa */
+  text-shadow: -20px 15px 30px rgb(104, 104, 104); /* Flytta skuggan 2px åt höger och ner, med 5px oskärpa */
 }
 
 
 .rainbow-text span {
   display: inline-block;
-  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(45deg, red, orange, yellow, green, rgb(0, 179, 255), indigo, violet);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

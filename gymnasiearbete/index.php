@@ -1,6 +1,7 @@
-<a?php
+<?php
 
 require_once 'dbhs.php';
+require_once 'assets/uppgifter.php';
 ?> 
 <!DOCTYPE html>
 <html lang="sv">
@@ -47,8 +48,8 @@ require_once 'dbhs.php';
         
     </header>
 
-    <div id="head2"> Headerbild</div> 
-    
+    <div id="head2">  <h2> <?php echo htmlspecialchars(string: $username); ?></h2></div> 
+    z
    
 
     <div class="wrapper"> 
