@@ -99,11 +99,11 @@ header h3 {
 }
 
 .header-links a {
-  border-radius: 2px; /* Rundade hörn */
+  border-radius: 20px; /* Rundade hörn */
   background: #73AD21; /* Bakgrundsfärg */
   padding: 15px; /* Justera padding */
   width: 50px; /* Bredd */
-  height: 50px; /* Höjd */
+  height: 20px; /* Höjd */
   font-size: 20px; /* Textstorlek */
   margin-left: 10px; /* Utrymme mellan länkarna */
   text-align: center;

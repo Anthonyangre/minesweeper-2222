@@ -46,8 +46,8 @@ $username = $_SESSION['username'];
     <tr>
         <th>Namn</th>
         <th>Poäng</th>
-        <th>Datum</th>
-        <th>Användarinfo</th>
+        <th>Vintster</th>
+        <th>Förluster</th>
     </tr>
     <!-- Loopa igenom alla inlägg och visa dem i tabellen -->
     <?php while ($row = $records->fetch(PDO::FETCH_ASSOC)): ?>
@@ -62,7 +62,9 @@ $username = $_SESSION['username'];
             <td><?php echo htmlspecialchars($row['tid'], ENT_QUOTES, 'UTF-8'); ?></td>
             
             <!-- Ny kolumn: Länk till alla inlägg av användaren -->
-    
+            <td>
+                <a href="search.php?username=<?php echo urlencode($row['username']); ?>">Visa alla inlägg</a>
+            </td>
         </tr>
     <?php endwhile; ?>
     </table>
