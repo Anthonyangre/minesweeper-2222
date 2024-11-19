@@ -212,6 +212,8 @@ h1{
 
 /* Grundläggande header-styling */
 header {
+  align-items: center;
+
   background-color: rgb(0, 0, 0); /* Bakgrundsfärg för header */
   display: flex;
   align-items: center; /* Centrera vertikalt */
@@ -288,6 +290,7 @@ animation: bg-spin 3s linear infinite;
   margin: 6px 0;
   transition: 0.4s;
   box-shadow: 4px 0px 7px rgb(175, 171, 171);
+
 }
 
 /* Animering av hamburgermenyn när den klickas */
@@ -376,7 +379,7 @@ header h3 {
   border-radius: 200px;
   
   /* Gradient border */
-  --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, rgb(0, 255, 242), rgb(234, 0, 255) 99%, transparent);
+  --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, rgb(98, 0, 255), rgb(234, 0, 255) 99%, transparent);
   
   background: 
     var(--main-bg) padding-box,
@@ -386,9 +389,13 @@ header h3 {
   background-position: center center;
   
   /* Animation */
-  animation: bg-spin 3s linear infinite;
+  animation: bg-spin 5s linear infinite;
+  transition: transform 0.3s ease;
 }
+.header-links a:hover {
 
+  transform: translateY(-3px);
+}
 /* Stil för andra headern */
 #head2 {
   background-color: bisque;
@@ -408,6 +415,8 @@ header h3 {
   transform: translateX(-100%) scaleX(1); /* Initialt utanför skärmen, normal bredd */
   transform-origin: left; /* Animera från vänster */
   transition: transform 0.5s ease; /* Animera både translation och scale */
+  border-radius: 10px;
+  box-shadow: 4px 0px 7px rgb(175, 171, 171);
 }
 
 /* Dropdown-menyn */
@@ -421,6 +430,7 @@ header h3 {
   transform: scale(0); /* Starta med en mindre skala */
   opacity: 0; /* Starta med osynlig dropdown */
   transition: transform 0.5s ease, opacity 0.5s ease; /* Justera transitionens tid för mer responsivitet */
+  
 }
 
 
@@ -436,6 +446,8 @@ header h3 {
   text-align: center;
   display: block; /* Säkerställer att alla objekt får sin egen rad */
   text-decoration: none; /* Ta bort understrykning på länkar */
+  border-radius: 10px;
+  box-shadow: 4px 0px 7px rgb(175, 171, 171);
 }
 
 /* Hover effect for dropdown items */
