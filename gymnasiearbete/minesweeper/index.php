@@ -79,7 +79,7 @@ $username = $_SESSION['username'];
             </div>
         </div>
 
-        <h3 class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto"> <?php echo htmlspecialchars($username); ?></div>
        
         <a href="../assets/logout.php"><div class="log-out">logga ut</div></a>

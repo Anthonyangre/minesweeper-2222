@@ -33,7 +33,7 @@ $records = getScore();
 </div>
         </div>
 
-        <h3 class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 class="rainbow-text">Leaderboard</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto"> <?php echo htmlspecialchars($username); ?></div>
 <!-- Länkar för inloggning och registrering --></header>
 <> 

@@ -35,7 +35,7 @@ require_once 'dbhs.php';
 </div>
         </div>
 
-        <h3 class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 class="rainbow-text">Login</h3> <!-- Välkomsttext med regnbågsfärg -->
 
 <!-- Länkar för inloggning och registrering -->
 <div class="header-links">
