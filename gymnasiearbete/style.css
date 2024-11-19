@@ -40,9 +40,10 @@ header {
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: #333;
+  background-color: #ffffff;
   margin: 6px 0;
   transition: 0.4s;
+  box-shadow: 4px 0px 7px rgb(175, 171, 171);
 }
 
 /* Animering av hamburgermenyn när den klickas */
@@ -98,11 +99,14 @@ header h3 {
 }
 
 .header-links a {
-  border-radius: 20px; /* Rundade hörn */
-  background: #73AD21; /* Bakgrundsfärg */
+  margin-right:2px;
+  margin-top:3px;
+  color:black;
+  border-radius: 15px; /* Rundade hörn */
+  background: #ffffff; /* Bakgrundsfärg */
   padding: 15px; /* Justera padding */
-  width: 50px; /* Bredd */
-  height: 20px; /* Höjd */
+  width: fit-content; /* Bredd */
+  height: 15px; /* Höjd */
   font-size: 20px; /* Textstorlek */
   margin-left: 10px; /* Utrymme mellan länkarna */
   text-align: center;
@@ -110,7 +114,35 @@ header h3 {
   align-self: center;
   display: flex;
   text-decoration: none;
-  box-shadow: 5px 5px 5px green;
+  box-shadow: 3px 3px 5px rgb(113, 117, 113);
+  text-shadow: 
+        2px 2px 5px rgb(121, 105, 105);
+        --border-angle: 0turn;
+  
+  /* Main background gradient */
+  --main-bg: conic-gradient(
+      from var(--border-angle),
+      rgb(255, 255, 255),
+      rgb(255, 255, 255) 5%,
+      rgb(255, 255, 255) 60%,
+      rgb(255, 255, 255) 95%
+    );
+  
+  border: solid 3px transparent;
+  border-radius: 200px;
+  
+  /* Gradient border */
+  --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, rgb(0, 255, 242), rgb(234, 0, 255) 99%, transparent);
+  
+  background: 
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+  
+  background-position: center center;
+  
+  /* Animation */
+  animation: bg-spin 3s linear infinite;
 }
 
 /* Stil för andra headern */
@@ -270,14 +302,14 @@ textarea {
       box-shadow: 15px 15px 50px rgba(255, 1, 1, 0.2);
   }
   25% {
-      border-radius: 31% 32% 10% 13% / 30% 10% 15% 12%;
+      border-radius: 31% 32% 15% 13% / 30% 15% 1% 12%;
   }
   50% {
       border-radius: 40% 40% 33% 45% / 50% 27% 50% 150%;
       box-shadow: -10px -5px 50px rgba(0, 174, 255, 0.2);
   }
   75% {
-      border-radius: 30% 30% 10% 10% / 100% 100% 10% 10%;
+      border-radius: 30% 30% 15% 15% / 100% 100% 15% 15%;
   }
 }
 

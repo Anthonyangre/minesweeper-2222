@@ -49,7 +49,7 @@ require_once 'dbhs.php';
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     
   <fieldset>
-  <h1>    Ange inloggnings uppgifter</h1>
+    <h1>    Ange inloggnings uppgifter</h1>
          <div class=" inlogg_border">
             <li>
               <label for="username">Användarnamn</label>
