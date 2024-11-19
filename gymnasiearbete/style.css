@@ -4,6 +4,39 @@ html {
   margin: auto;
 }
 
+body{
+
+  background: linear-gradient(45deg, #6a82fb, #fc5c7d);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
+  z-index: -1; /* Ensure the background stays behind the content */
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Wave effect for background */
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 h2{
   text-align: center;
@@ -11,6 +44,170 @@ h2{
 h1{
   text-align: center;
   
+}
+/* General Form Styles */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 12px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15), -5px -5px 10px rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  animation: slideIn 0.8s ease-out;
+}
+
+/* Form Title */
+.form-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #444;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.form-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: #5b9bd5;
+  transition: width 0.3s ease;
+}
+
+.form-title:hover::after {
+  width: 100%;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  position: relative;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+  display: block;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background: #f9f9f9;
+  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.05), inset -3px -3px 5px rgba(255, 255, 255, 0.8);
+}
+
+.form-group input:focus {
+  border-color: #5b9bd5;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(91, 155, 213, 0.2);
+  transform: scale(1.02);
+}
+
+/* Form Actions */
+.form-actions {
+  margin-top: 20px;
+}
+
+.submit-button {
+  background: linear-gradient(145deg, #5b9bd5, #4177b0);
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1), -3px -3px 8px rgba(255, 255, 255, 0.9);
+}
+
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15), -5px -5px 15px rgba(255, 255, 255, 0.9);
+}
+
+/* Extra Links */
+.extra-links {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.extra-links a {
+  color: #5b9bd5;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.extra-links a:hover {
+  color: #4177b0;
+  text-shadow: 0px 2px 4px rgba(91, 155, 213, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-form {
+      padding: 15px;
+  }
+
+  .form-title {
+      font-size: 22px;
+  }
+
+  .submit-button {
+      font-size: 14px;
+      padding: 10px 20px;
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+      transform: translateY(-50px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
 /* Grundläggande header-styling */
@@ -20,8 +217,55 @@ header {
   align-items: center; /* Centrera vertikalt */
   height: 70px; /* Minska höjd */
   width: 100%;
+  margin-bottom:10px ;
 }
+fieldset {
+  margin-top: 10px;
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    rgb(255, 255, 255),
+    rgb(255, 255, 255) 5%,
+    rgb(255, 255, 255) 60%,
+    rgb(255, 255, 255) 95%
+  );
 
+border: solid 5px transparent;
+border-radius:5px;
+--gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #08f, #f03 99%, transparent);
+  
+background: 
+  var(--main-bg) padding-box,
+  var(--gradient-border) border-box,
+  var(--main-bg) border-box;
+
+background-position: center center;
+
+/* Animation */
+animation: bg-spin 3s linear infinite;
+}
+legend {
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    rgb(255, 255, 255),
+    rgb(255, 255, 255) 5%,
+    rgb(255, 255, 255) 60%,
+    rgb(255, 255, 255) 95%
+  );
+
+border: solid 5px transparent;
+border-radius:5px;
+--gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #08f, #f03 99%, transparent);
+  
+background: 
+  var(--main-bg) padding-box,
+  var(--gradient-border) border-box,
+  var(--main-bg) border-box;
+
+background-position: center center;
+
+/* Animation */
+animation: bg-spin 3s linear infinite;
+}
 /* Container för meny och rubrik */
 .menu-container {
   position: absolute; /* Gör menyn absolut positionerad */
@@ -67,7 +311,7 @@ header h3 {
 }
 .rainbow-text {
   font-size: 400%; /* Minska fontstorlek om nödvändigt */
-  margin-left:10%;
+  margin-left:5%;
   text-align: center;
   text-shadow: -20px 15px 30px rgb(104, 104, 104); /* Flytta skuggan 2px åt höger och ner, med 5px oskärpa */
 }
@@ -79,16 +323,16 @@ header h3 {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  animation: wave 2s ease-in-out infinite;
+  animation: wave 2.5s ease-in-out infinite;
   animation-delay: calc(var(--i) * 0.1s); /* Delay för varje bokstav */
 }
 
 /* Våganimation för regnbågseffekten */
 @keyframes wave {
   0%, 100% { transform: translateY(300); }
-  80% { transform: translateY(-20px); } /* Minska höjden på wave-effekten */
+  80% { transform: translateY(-8px); } /* Minska höjden på wave-effekten */
   0%, 100% { transform: translateX(60); }
-  35% { transform: translateX(-30px); } /* Minska höjden på wave-effekten */
+  35% { transform: translateX(-15px); } /* Minska höjden på wave-effekten */
 }
 
 /* Länkar för inloggning och registrering */
@@ -217,27 +461,6 @@ header h3 {
 
 
 
-fieldset {
-  display: flex;              
-  flex-direction: column;     
-  justify-content: space-between; 
-  align-items: center;    
-  background-color: #73AD21;    
-  height: 400px;
-  width: 50%;     
-  margin-top:5%;            
-  margin: 0 auto;             
-  padding: 20px;
-  border: 0px; /* Lägger till en 2px solid border i färgen #333 */
-  border-radius:10%;     /* Rundade hörn */
-}
-
-
-fieldset a{
-  border-radius: 10px;
-  border-style: solid;
-  border: #333;
-}
 
 
 
@@ -261,61 +484,6 @@ textarea {
   margin: 0 auto; /* Centrera horisontellt */
   text-align: center; /* Centrera texten inuti knappen */
 }
-
-/* cool borde för inlogg formulär */
-.inlogg_border{
-  display: flex;
-  flex-direction: column; /* Lägger elementen under varandra */
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  width: 600px;
-  height: 400px;
-  margin: auto;
-  background-color: #21D4FD;
-  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-  border-radius: 30% 30% 10% 10% / 30% 30% 10% 10%;
-  box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.2);
-  animation: morphing 10s infinite;
-  overflow: hidden;
-}
-
-
-.inlogg_border:hover {
-  animation-play-state: paused;
-}
-
-.inlogg_border h1 {
-  color: white;
-  font-family: "Helvetica Neue", Helvetica, Verdana, sans-serif;
-  font-weight: 400;
-  font-size: 35px;
-  line-height: 100%;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin: auto;
-}
-
-@keyframes morphing {
-  0% {
-      border-radius: 30% 30% 10% 10% / 30% 30% 10% 10%;
-      box-shadow: 15px 15px 50px rgba(255, 1, 1, 0.2);
-  }
-  25% {
-      border-radius: 31% 32% 15% 13% / 30% 15% 1% 12%;
-  }
-  50% {
-      border-radius: 40% 40% 33% 45% / 50% 27% 50% 150%;
-      box-shadow: -10px -5px 50px rgba(0, 174, 255, 0.2);
-  }
-  75% {
-      border-radius: 30% 30% 15% 15% / 100% 100% 15% 15%;
-  }
-}
-
-
-
-
 
 
 
@@ -347,66 +515,6 @@ textarea {
   max-width: 100%;                  /* Ser till att bilden fyller sin container */
   height: auto;                     /* Bevarar bildens proportioner */
 }
-
-
-
-
-
-
-
-
-/* cool knapp */
-
-.button {
-  font-size: 20px;
-  display: block;             /* Gör knappen till ett blockelement */
-  margin-top: auto;           /* Centrera vertikalt med hjälp av flexbox */
-  margin-bottom: auto;        /* Placera den mitt i fieldset */
-  text-align: center;
-  display: grid;
-  place-content: center;
-  color: rgb(207, 80, 207);
-  text-shadow: 0 1px 0 #000;
-  padding: 10px;
-
-  
-  /* Animations angle for the border */
-  --border-angle: 0turn;
-  
-  /* Main background gradient */
-  --main-bg: conic-gradient(
-      from var(--border-angle),
-      #213,
-      #112 5%,
-      #112 60%,
-      #213 95%
-    );
-  
-  border: solid 5px transparent;
-  border-radius: 200px;
-  
-  /* Gradient border */
-  --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #08f, #f03 99%, transparent);
-  
-  background: 
-    var(--main-bg) padding-box,
-    var(--gradient-border) border-box,
-    var(--main-bg) border-box;
-  
-  background-position: center center;
-  
-  /* Animation */
-  animation: bg-spin 3s linear infinite;
-}
-
-.button:hover{
-   box-shadow: 0 12px 16px 0 rgb(28, 229, 255),0 17px 50px 0 rgb(4, 0, 255);
-   color:#21D4FD
-
-
-}
-
-  
 
 
 @keyframes bg-spin {

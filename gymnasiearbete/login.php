@@ -45,30 +45,27 @@ require_once 'dbhs.php';
 
         
     </header>
-    
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-    
-  <fieldset>
-    <h1>    Ange inloggnings uppgifter</h1>
-         <div class=" inlogg_border">
-            <li>
-              <label for="username">Användarnamn</label>
-              <input type="text"  id="username" name="username">
-            </li>
 
-            <li>
-             <label for="password">Lösenord</label>
-             <input type="password" id="password" name="password">
-            </li>
-            </div>
-            <div class="box">
-            <input type="submit" name="submit" value="submit" class="button">
-            </div>
-            <a href="signup.php">Inget konto? Signup.</a>
-  </fieldset>
-    
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="login-form">
+    <fieldset>
+        <legend class="form-title">Logga in</legend>
+        <div class="form-group">
+            <label for="username">Användarnamn</label>
+            <input type="text" id="username" name="username" placeholder="Ange ditt användarnamn" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Lösenord</label>
+            <input type="password" id="password" name="password" placeholder="Ange ditt lösenord" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit" name="submit"  value="submit" class="submit-button">Logga in</button>
+        </div>
+        <div class="extra-links">
+            <a href="signup.php">Har du inget konto? Registrera dig här</a>
+        </div>
+    </fieldset>
+</form>
 
-    </form>
     <?php
     //kontrollerar om det finns felmeddelanden
     if (count($errors) > 0) {
