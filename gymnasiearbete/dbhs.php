@@ -24,6 +24,7 @@ if (isset($_POST["register"])) {
         $errors[] = "denna användare finns redan";
     
     } else {
+        $zero = 0;
     $passwordh = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
     $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
@@ -31,6 +32,11 @@ if (isset($_POST["register"])) {
     $stmt->close();
     $_SESSION['userid'] = $user['id'];
     $_SESSION['username'] = $user['username'];
+    $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
+    $stmt->bind_param("ssss", $username, $zero, $zero, $zero);
+    $stmt->execute();
+    $stmt->close();
+
     header('Location: ./minesweeper/index.php');
     }
 }
