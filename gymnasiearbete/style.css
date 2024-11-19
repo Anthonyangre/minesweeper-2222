@@ -15,7 +15,7 @@ h1{
 
 /* Grundläggande header-styling */
 header {
-  background-color: aqua; /* Bakgrundsfärg för header */
+  background-color: rgb(0, 0, 0); /* Bakgrundsfärg för header */
   display: flex;
   align-items: center; /* Centrera vertikalt */
   height: 70px; /* Minska höjd */
@@ -189,14 +189,15 @@ fieldset {
   display: flex;              
   flex-direction: column;     
   justify-content: space-between; 
-  align-items: center;        
-  background-color: rgb(193, 255, 234);
+  align-items: center;    
+  background-color: #73AD21;    
   height: 400px;
-  width: 50%;                 
+  width: 50%;     
+  margin-top:5%;            
   margin: 0 auto;             
   padding: 20px;
-  border: 5px solid #ffd9f8; /* Lägger till en 2px solid border i färgen #333 */
-  border-radius: 70px;     /* Rundade hörn */
+  border: 0px; /* Lägger till en 2px solid border i färgen #333 */
+  border-radius:10%;     /* Rundade hörn */
 }
 
 

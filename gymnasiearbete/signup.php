@@ -47,8 +47,9 @@ require_once 'dbhs.php';
     <div id="wrapper">
     
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-    <h1>Skapa ett konto</h1>
+    
   <fieldset>
+  <h1>Skapa ett konto</h1>
   <div class=" inlogg_border">
      
 
