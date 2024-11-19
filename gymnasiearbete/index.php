@@ -48,8 +48,8 @@ require_once 'assets/uppgifter.php';
         
     </header>
 
-    <div id="head2">  <h2> <?php echo htmlspecialchars(string: $username); ?></h2></div> 
-    z
+    <div id="head2"> </div> 
+
    
 
     <div class="wrapper"> 

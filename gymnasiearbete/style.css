@@ -18,8 +18,7 @@ header {
   background-color: aqua; /* Bakgrundsfärg för header */
   display: flex;
   align-items: center; /* Centrera vertikalt */
-  padding: 10px;
-  height: 7%; /* Minska höjd */
+  height: 70px; /* Minska höjd */
   width: 100%;
 }
 
