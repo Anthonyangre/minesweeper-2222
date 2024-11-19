@@ -28,4 +28,5 @@ if (isset($_SESSION['userid'])) {
 } else {
     $errors[] = "Du måste vara inloggad för att ändra dina uppgifter.";
 }
+
 ?>

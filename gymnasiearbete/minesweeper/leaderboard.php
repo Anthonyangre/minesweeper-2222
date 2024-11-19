@@ -1,7 +1,9 @@
 <?php
 //infogar funktionalitet för inloggningen 
 require_once '../dbhs.php';
+require_once '../assets/functions.php';
 $username = $_SESSION['username'];
+$records = getScore();
 ?> 
 <html lang="sv">
 <head>
@@ -50,21 +52,18 @@ $username = $_SESSION['username'];
         <th>Förluster</th>
     </tr>
     <!-- Loopa igenom alla inlägg och visa dem i tabellen -->
-    <?php while ($row = $records->fetch(PDO::FETCH_ASSOC)): ?>
+    <?php while ($row = $records->fetch_assoc()): ?>
         <tr>
             <!-- Visa användarnamnet för varje inlägg -->
             <td><?php echo htmlspecialchars($row['username'], ENT_QUOTES, 'UTF-8'); ?></td>
             
             <!-- Visa meddelandet och återställ HTML-tecken korrekt -->
-            <td><?php echo nl2br(html_entity_decode($row['msg'], ENT_QUOTES, 'UTF-8')); ?></td>
+            <td><?php echo htmlspecialchars($row['points'], ENT_QUOTES, 'UTF-8'); ?></td>
             
             <!-- Visa när meddelandet skickades -->
-            <td><?php echo htmlspecialchars($row['tid'], ENT_QUOTES, 'UTF-8'); ?></td>
-            
-            <!-- Ny kolumn: Länk till alla inlägg av användaren -->
-            <td>
-                <a href="search.php?username=<?php echo urlencode($row['username']); ?>">Visa alla inlägg</a>
-            </td>
+            <td><?php echo htmlspecialchars($row['wins'], ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?php echo htmlspecialchars($row['lose'], ENT_QUOTES, 'UTF-8'); ?></td>
+           
         </tr>
     <?php endwhile; ?>
     </table>
