@@ -36,6 +36,7 @@ if (isset($_POST["register"])) {
     $stmt->bind_param("ssss", $username, $zero, $zero, $zero);
     $stmt->execute();
     $stmt->close();
+    $_SESSION['']
 
     header('Location: ./minesweeper/index.php');
     }

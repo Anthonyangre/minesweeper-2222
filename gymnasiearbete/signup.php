@@ -68,7 +68,7 @@ require_once 'dbhs.php';
             <input type="password" id="password" name="password" placeholder="Ange ditt lösenord" required>
         </div>
         <div class="form-actions">
-            <button type="submit" name="register" value="register" class="submit-button">Logga in</button>
+            <button type="submit" name="register" value="register" class="submit-button">Registrera</button>
         </div>
         <div class="extra-links">
             <a href="signup.php">Har du inget konto? Registrera dig här</a>
