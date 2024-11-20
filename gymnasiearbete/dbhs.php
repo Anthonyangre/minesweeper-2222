@@ -36,8 +36,9 @@ if (isset($_POST["register"])) {
     $stmt->bind_param("ssss", $username, $zero, $zero, $zero);
     $stmt->execute();
     $stmt->close();
-    $_SESSION['']
-
+    $_SESSION['wins'] = $zero;
+    $_SESSION['lose'] = $zero;
+    $_SESSION['points'] = $zero;
     header('Location: ./minesweeper/index.php');
     }
 }
@@ -62,6 +63,15 @@ if (isset($_POST['submit'])) {
             echo "Password is correct.<br>";
             $_SESSION['userid'] = $user['id'];
             $_SESSION['username'] = $user['username'];
+            $stmt = $conn->prepare("SELECT points, wins, lose FROM score WHERE username = ?");
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $score = $result->fetch_assoc();
+            $_SESSION['wins'] = $score['wins'];
+            $_SESSION['lose'] = $score['lose'];
+            $_SESSION['points'] = $score['points'];
+            
             header('Location: ./minesweeper/index.php');
             
             $_SESSION['logged_in'] = true;
