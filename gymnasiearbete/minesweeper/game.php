@@ -176,6 +176,7 @@ function checkGameState() {
     // Check if all non-mine cells have been revealed (player wins)
     if ($revealedCount === ($totalCells - $mines)) {
         $_SESSION['game_state'] = 'won';
+        
         revealAllMines(); // Optionally reveal all mines on win
     }
 }

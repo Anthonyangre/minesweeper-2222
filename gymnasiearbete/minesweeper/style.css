@@ -79,8 +79,37 @@ body.game-over button {
     background-color: #6c757d;
 }
 .background {
-    padding-top:5%;
-    padding-bottom:5%;
+    margin:auto;
+    margin-top: 10px;
+
+    padding:5%;
     background-color: #1e7e34;
-    width:100%;
+    width:fit-content;
+    --main-bg: conic-gradient(
+        from var(--border-angle),
+        transparent,
+        transparent 5%,
+        transparent 60%,
+        transparent 95%
+      );
+    
+    border: solid 5px transparent;
+    border-radius:15px;
+    --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #08f, #f03 99%, transparent);
+      
+    background: 
+      var(--main-bg) padding-box,
+      var(--gradient-border) border-box,
+      var(--main-bg) border-box;
+    
+    background-position: center center;
+    
+    /* Animation */
+    animation: bg-spin 3s linear infinite;
 }
+
+@keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
