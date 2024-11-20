@@ -682,6 +682,7 @@ table {
     outline-width: 10px;
     outline-offset: 0;
     outline-color: rgba(0, 162, 255, 1); /* Full styrka */
+    border-radius:0px;
   }
 
   25% {
@@ -700,6 +701,7 @@ table {
     outline-width: 4px;
     outline-offset: 24px;
     outline-color: rgba(0, 162, 255, 0.25); /* Svag våg */
+    border-radius:30px;
   }
 
   100% {
@@ -716,7 +718,6 @@ th, td {
     border: 1px solid black;
     padding: 5px;
     color:darkblue
-    
 }
 
 /* Justerar varje rad i tabellen: */
@@ -725,7 +726,6 @@ tr {
 	 vertical-align: top;
     align-items: center;
     background-color: #00bbff;
-
 }
 
 /* Ger udda rader (nth-child(odd)) en mörkgrå bakgrundsfärg */
