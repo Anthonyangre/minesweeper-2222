@@ -680,26 +680,26 @@ table {
 
 @keyframes animateOutline {
   0% {
-    outline-width: 1px;
+    outline-width: 5px;
     outline-offset: 0;
     outline-color: rgba(0, 130, 206, 0);
   }
 
   10% {
-    outline-color: rgba(0, 130, 206, 0.75);
+    outline-color: rgba(0, 162, 255, 0.75);
   }
 
   /* The animation finishes at 50% */
   50% {
     outline-width: 7px;
     outline-offset: 4px;
-    outline-color: rgba(0, 130, 206, 0);
+    outline-color: rgb(0, 97, 154);
   }
 
   100% {
-    outline-width: 7px;
-    outline-offset: 4px;
-    outline-color: rgba(102, 102, 102, 0);
+    outline-width: 100px;
+    outline-offset: 50px;
+    outline-color: rgb(5, 21, 139);
   }
 }
    
