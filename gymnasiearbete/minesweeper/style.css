@@ -93,16 +93,15 @@ body.game-over button {
         rgb(65, 187, 187) 95%
       );
     
+<<<<<<< HEAD
     border: solid 2px transparent;
+=======
+    border: solid 5px;
+>>>>>>> f55e158 (commit)
     border-radius:15px;
     --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #08f, #f03 99%, transparent);
       
-    background: 
-      var(--main-bg) padding-box,
-      var(--gradient-border) border-box,
-      var(--main-bg) border-box;
-    
-    background-position: center center;
+   
     
     /* Animation */
     animation: bg-spin 3s linear infinite;

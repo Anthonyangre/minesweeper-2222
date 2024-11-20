@@ -88,6 +88,7 @@ $username = $_SESSION['username'];
 
         
     </header>
+    <?php echo $_SESSION['points'];?>
 <div class="background">
 <div id="status">Game in progress...</div>
     <div id="game-board"></div>
