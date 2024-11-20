@@ -600,7 +600,7 @@ textarea {
   font-size: 16px; /* Anpassa textstorlek */
   font-weight: bold; /* Gör texten fet */
   color: white; /* Färg på texten */
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); /* Skugga för texten */
+  text-shadow: 5px 5px 5px rgba(255, 0, 0, 0.5); /* Skugga för texten */
 }
 
 
@@ -662,14 +662,48 @@ textarea {
 }
 
 table {
-	width: 500px;
-    border: 1px solid rgb(37, 255, 3);
-    border-collapse: collapse;
-	 margin-top: 20px;
-    margin: auto;
+  width: 500px;
+  border: 3px solid rgb(3, 192, 255); /* Vanlig kant */
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin: auto;
+  outline-width: 1px;
+  outline-offset: 0;
+  outline-color: rgba(0, 130, 206, 0.75);
+  outline-style: solid;
+  animation: animateOutline 4s ease infinite;
+
+  /* Lägg till suddig kant */
+  box-shadow: 4px 4px 10px rgba(3, 192, 255, 0.6); /* Blurred kant */
+}
+
+
+@keyframes animateOutline {
+  0% {
+    outline-width: 1px;
+    outline-offset: 0;
+    outline-color: rgba(0, 130, 206, 0);
+  }
+
+  10% {
+    outline-color: rgba(0, 130, 206, 0.75);
+  }
+
+  /* The animation finishes at 50% */
+  50% {
+    outline-width: 7px;
+    outline-offset: 4px;
+    outline-color: rgba(0, 130, 206, 0);
+  }
+
+  100% {
+    outline-width: 7px;
+    outline-offset: 4px;
+    outline-color: rgba(102, 102, 102, 0);
+  }
+}
    
 
-}
 
 /* Ställer in kolumn- och cellformat:*/
 th, td {
@@ -682,6 +716,7 @@ tr {
     border: 1px solid black;
 	 vertical-align: top;
     align-items: center;
+    background-color: #00bbff;
 
 }
 
