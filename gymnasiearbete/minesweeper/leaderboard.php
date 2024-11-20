@@ -34,9 +34,11 @@ $records = getScore();
         </div>
 
         <h3 class="rainbow-text">Leaderboard</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <div class="container_konto">
         <div class="konto"> <?php echo htmlspecialchars($username); ?></div>
+        </div>
 <!-- Länkar för inloggning och registrering --></header>
-<> 
+
      
 
    </header>

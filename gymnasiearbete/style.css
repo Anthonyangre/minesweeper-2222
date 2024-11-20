@@ -546,18 +546,63 @@ textarea {
   inherits: true;
   initial-value: 0turn;
 }
+/*cool border för konto */
+:root {
+	--background: #005;
+	--primary: #88D5BF;
+	--secondary: #5D6BF8;
+	--third: #e27fcb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+
+@keyframes morph {
+  0% {
+			border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%;
+			background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+	} 
+	
+	50% {
+			border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%;
+			background: linear-gradient(45deg, var(--third) 0%, var(--secondary) 100%);
+	}
+  
+	100% {
+		border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%;
+		background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+	} 
+}
+
 .konto {
-  background-color: rgb(90, 255, 247);
-  width: 80px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px rgb(13, 0, 255);
-  border-style: inset;
-  border-color: #ffffff;
-  padding: 10px;
-  display: inline-block;
+  background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+  animation: morph 8s ease-in-out infinite;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  height: 100px;
+  width: 100px;
+  transition: all 1s ease-in-out;
+  z-index: 5;
+  display: flex; /* Gör det möjligt att centrera med flexbox */
+  justify-content: center; /* Centrerar horisontellt */
+  align-items: center; /* Centrerar vertikalt */
   text-align: center;
   position: relative;
+  font-size: 16px; /* Anpassa textstorlek */
+  font-weight: bold; /* Gör texten fet */
+  color: white; /* Färg på texten */
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); /* Skugga för texten */
 }
+
 
 /* Toggle button styling */
 .toggle-button {
@@ -572,16 +617,16 @@ textarea {
 
 /* Rubriken som glider in från left */
 .konto-title {
-  background-color: bisque;
   padding: 15px;
   display: none;
   position: absolute;
-  left: -120px; /* Adjusted to place title to the left of the konto box */
+  left: -120px; /* Justerar positionen till vänster */
   top: 0;
-  transform: translateX(-100%) scaleX(0); /* Slide in from left */
+  transform: translateX(-100%) scaleX(0); /* Glider in från vänster */
   transform-origin: right;
   transition: transform 0.5s ease;
 }
+
 
 /* Dropdown menu aligned to the left */
 .konto-dropdown {
@@ -618,7 +663,7 @@ textarea {
 
 table {
 	width: 500px;
-    border: 1px solid black;
+    border: 1px solid rgb(37, 255, 3);
     border-collapse: collapse;
 	 margin-top: 20px;
     margin: auto;
