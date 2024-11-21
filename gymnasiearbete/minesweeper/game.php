@@ -7,6 +7,10 @@ if (!isset($_SESSION['game_state'])) {
     $_SESSION['grid'] = generateGrid(10, 10, 10); // 10x10 grid with 10 mines
     $_SESSION['revealed'] = array_fill(0, 10, array_fill(0, 10, false));
     $_SESSION['flags'] = array_fill(0, 10, array_fill(0, 10, false));
+    $_SESSION['points'] = 0;  // Initialize points for the session
+    $_SESSION['pre_game_points'] = 0;  // Store points before the game starts
+    $_SESSION['wins'] = 0;  // Initialize wins
+    $_SESSION['lose'] = 0;  // Initialize losses
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -15,8 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = (int)$_POST['row'];
         $col = (int)$_POST['col'];
 
-        $_SESSION['pre_game_points'] = $_SESSION['points'];  // Points before the new game
+        $_SESSION['pre_game_points'] = $_SESSION['points'];  // Store points before the new game
         $_SESSION['points'] = 0;  // Reset points for the new game
+
         if ($action === 'reveal') {
             // Check if it's the first click
             if (isFirstClick()) {
@@ -38,7 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'grid' => $_SESSION['grid'],
         'revealed' => $_SESSION['revealed'],
         'flags' => $_SESSION['flags'],
-        'game_state' => $_SESSION['game_state']
+        'game_state' => $_SESSION['game_state'],
+        'points' => $_SESSION['points']  // Include points in the response for the frontend
     ]);
 }
 
@@ -102,43 +108,31 @@ function revealCell($row, $col) {
 
     // Reveal the clicked cell
     $_SESSION['revealed'][$row][$col] = true;
-    $_SESSION['points']++;
+    $_SESSION['points']++;  // Increment points when a cell is revealed
+
     // If it's a mine, the game is lost
     if ($_SESSION['grid'][$row][$col] == 'M') {
         $_SESSION['game_state'] = 'lost';
-        $_SESSION['lose']++;
-        $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
+        $_SESSION['lose']++;  // Increment the loss count
 
-        
-        $pointsLost =  $_SESSION['points']- 10;  // tar denna förra spel points minus aktuella
-        $_SESSION['points'] = max(0, $pointsLost); // blir ej negativt
-        $pointsLost2 = $_SESSION['pre_game_points'] + $_SESSION['points'];  // Only subtract from pre-game points
-        $_SESSION['points'] = max(0, $pointsLost2); 
-        $point = $_SESSION['points'] * 100;
-        $lose = $_SESSION['lose'];
-        $username = $_SESSION['username'] ?? '';
+        // Subtract points for the loss: -10 from all points
+        $totalPointsLost = $_SESSION['points'] + 10;  // Subtract current points plus 10
+        $_SESSION['points'] = 0;  // Reset current round's points to 0
 
-        if (!empty($username)) {
-            $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `lose` = ? WHERE `username` = ?");
-            if ($stmt) {
-                $stmt->bind_param("iis", $point, $lose, $username); // i är integer s är string
-                if (!$stmt->execute()) {
-                    error_log("Failed to update database: " . $stmt->error);
-                }
-                $stmt->close();
-            } else {
-                error_log("Failed to prepare statement: " . $conn->error);
-            }
-        }
+        // Apply the points penalty to total points (if applicable)
+        $totalPoints = $_SESSION['pre_game_points'] - $totalPointsLost;
+        $_SESSION['points'] = max(0, $totalPoints);  // Ensure points don't go below 0
 
-        $conn->close();
+        // Update database with loss and points
+        updateDatabaseLoss();
+
         revealAllMines();
         return;
     }
 
     // If it's a zero, reveal surrounding cells
     if ($_SESSION['grid'][$row][$col] == 0) {
-        revealCluster($row, $col);  // Only reveal surrounding cells if it's a 0
+        revealCluster($row, $col);  // Only reveal surrounding cells if it's 0
     }
 }
 
@@ -204,28 +198,11 @@ function checkGameState() {
     // Check if all non-mine cells have been revealed (player wins)
     if ($revealedCount === ($totalCells - $mines)) {
         $_SESSION['game_state'] = 'won';
-        $_SESSION['wins'] = ($_SESSION['wins'] ?? 0) + 1;
-        $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
+        $_SESSION['wins']++;  // Increment the win count
 
+        // Update database with win and points
+        updateDatabaseWin();
 
-        $points = $_SESSION['points'] * 100;
-        $wins = $_SESSION['wins'];
-        $username = $_SESSION['username'] ?? '';
-
-        if (!empty($username)) {
-            $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?");
-            if ($stmt) {
-                $stmt->bind_param("iis", $points, $wins, $username); // i är integer s är string
-                if (!$stmt->execute()) {
-                    error_log("Failed to update database: " . $stmt->error);
-                }
-                $stmt->close();
-            } else {
-                error_log("Failed to prepare statement: " . $conn->error);
-            }
-        }
-
-        $conn->close();
         revealAllMines(); // Optionally reveal all mines on win
     }
 }
@@ -240,4 +217,49 @@ function revealAllMines() {
     }
 }
 
+function updateDatabaseWin() {
+    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
+
+    $points = $_SESSION['points'] * 100;  // Multiply points by 100 for scoring system
+    $wins = $_SESSION['wins'];
+    $username = $_SESSION['username'] ?? '';
+
+    if (!empty($username)) {
+        $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?");
+        if ($stmt) {
+            $stmt->bind_param("iis", $points, $wins, $username);
+            if (!$stmt->execute()) {
+                error_log("Failed to update database: " . $stmt->error);
+            }
+            $stmt->close();
+        } else {
+            error_log("Failed to prepare statement: " . $conn->error);
+        }
+    }
+
+    $conn->close();
+}
+
+function updateDatabaseLoss() {
+    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
+
+    $points = $_SESSION['points'] * 100;  // Multiply points by 100 for scoring system
+    $lose = $_SESSION['lose'];
+    $username = $_SESSION['username'] ?? '';
+
+    if (!empty($username)) {
+        $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `lose` = ? WHERE `username` = ?");
+        if ($stmt) {
+            $stmt->bind_param("iis", $points, $lose, $username);
+            if (!$stmt->execute()) {
+                error_log("Failed to update database: " . $stmt->error);
+            }
+            $stmt->close();
+        } else {
+            error_log("Failed to prepare statement: " . $conn->error);
+        }
+    }
+
+    $conn->close();
+}
 ?>

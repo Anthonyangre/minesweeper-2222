@@ -423,10 +423,9 @@ header h3 {
 .dropdown-menu {
   display: none; /* Initially hidden */
   position: absolute; /* Håll den absolut så den kan positioneras i förhållande till parent */
-  left: 55px; /* Justera så den ligger direkt under rubriken */
+  left: 53px; /* Justera så den ligger direkt under rubriken */
   top: 45px; /* Flytta ner till 60px för att matcha rubrikens höjd */
   padding: 5px;
-  width: 100px;
   transform: scale(0); /* Starta med en mindre skala */
   opacity: 0; /* Starta med osynlig dropdown */
   transition: transform 0.5s ease, opacity 0.5s ease; /* Justera transitionens tid för mer responsivitet */
