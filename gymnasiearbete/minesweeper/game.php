@@ -14,13 +14,16 @@ if (!isset($_SESSION['game_state'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['pre_game_points'] = $_SESSION['points'];  
+    if ($_SESSION['game_state'] != 'ongoing') {
+        $_SESSION['points'] = 0;
+    }
     if ($_SESSION['game_state'] === 'ongoing') {
         $action = $_POST['action'];
         $row = (int)$_POST['row'];
         $col = (int)$_POST['col'];
-
-        $_SESSION['pre_game_points'] = $_SESSION['points'];  // Store points before the new game
-        $_SESSION['points'] = 0;  // Reset points for the new game
+       
+       
 
         if ($action === 'reveal') {
             // Check if it's the first click
