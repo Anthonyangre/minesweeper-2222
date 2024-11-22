@@ -14,9 +14,9 @@ if (!isset($_SESSION['game_state'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['pre_game_points'] = $_SESSION['points'];  
+ 
     if ($_SESSION['game_state'] != 'ongoing') {
-        $_SESSION['points'] = 0;
+        $_SESSION['currentpoints'] = 0;
     }
     if ($_SESSION['game_state'] === 'ongoing') {
         $action = $_POST['action'];
@@ -111,27 +111,27 @@ function revealCell($row, $col) {
 
     // Reveal the clicked cell
     $_SESSION['revealed'][$row][$col] = true;
-    $_SESSION['points']++;  // Increment points when a cell is revealed
+    $_SESSION['currentpoints']++;  // Increment points when a cell is revealed
 
     // If it's a mine, the game is lost
     if ($_SESSION['grid'][$row][$col] == 'M') {
         $_SESSION['game_state'] = 'lost';
         $_SESSION['lose']++;  // Increment the loss count
-
-        // Subtract points for the loss: -10 from all points
-        $totalPointsLost = $_SESSION['points'] + 10;  // Subtract current points plus 10
-        $_SESSION['points'] = 0;  // Reset current round's points to 0
-
-        // Apply the points penalty to total points (if applicable)
-        $totalPoints = $_SESSION['pre_game_points'] - $totalPointsLost;
-        $_SESSION['points'] = max(0, $totalPoints);  // Ensure points don't go below 0
-
-        // Update database with loss and points
+    
+        // Apply a penalty of -10 points for the loss
+        $totalPointsLost = 10;  // Define the penalty explicitly
+        $currentPoints = $_SESSION['currentpoints'];
+        $pointsloss = max(0, $currentPoints - $totalPointsLost);
+        $points = $_SESSION['points'];
+        $_SESSION['points'] = ( $points + $pointsloss);  // Apply penalty but ensure points don't go negative
+    
+        // Update the database with the loss
         updateDatabaseLoss();
-
+    
         revealAllMines();
         return;
     }
+    
 
     // If it's a zero, reveal surrounding cells
     if ($_SESSION['grid'][$row][$col] == 0) {
@@ -223,7 +223,7 @@ function revealAllMines() {
 function updateDatabaseWin() {
     $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
-    $points = $_SESSION['points'] * 100;  // Multiply points by 100 for scoring system
+    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']) * 100;  // Multiply points by 100 for scoring system
     $wins = $_SESSION['wins'];
     $username = $_SESSION['username'] ?? '';
 
