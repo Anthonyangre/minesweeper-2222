@@ -566,24 +566,36 @@ textarea {
 
 @keyframes morph {
   0% {
-			border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%;
+			border-radius:  20% 20% 20% 10% / 20% 20% 20% 10%;
 			background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
 	} 
+
+  25% {
+    border-radius:  10% 10% 100% 40% / 30% 40% 60% 60%;
+    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+}
 	
 	50% {
-			border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%;
+			border-radius:  30% 70% 70% 40% / 50% 60% 30% 30%;
 			background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
 	}
+
+  80% {
+    border-radius:  70% 20% 50% 70% / 80% 30% 60% 30%;
+    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+
   
 	100% {
-		border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%;
+		border-radius:  20% 20% 20% 10% / 20% 20% 20% 10%;
 		background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
 	} 
 }
 
 .konto {
   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-  animation: morph 8s ease-in-out infinite;
+  animation: morph 6s ease-in-out infinite;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   height: 100px;
   width: 100px;
