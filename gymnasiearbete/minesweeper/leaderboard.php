@@ -34,24 +34,18 @@ $records = getScore();
         </div>
 
         <h3 class="rainbow-text">Leaderboard</h3> <!-- Välkomsttext med regnbågsfärg -->
-        <div class="konto-dropdown-container">
-    <!-- Lägg till en tydlig knapp för att aktivera menyn -->
-    <div class="konto" onclick="togglekonto(this)">Konto</div>
+        <div class="konto" onclick="togglekonto(this)">
+    <?php echo htmlspecialchars($username); ?>
     <div class="konto-dropdown">
         <ul>
-            <li class="konto-item">Mark as read</li>
-            <li class="konto-item">Flag as important</li>
-            <li class="konto-item">Save for later</li>
-            <li class="konto-item">Move to trash</li>
-            <li class="konto-item">Mark as spam</li>
+            <li class="konto-item"><a href="../assets/logout.php">Logga ut</a></li>
+            <li class="konto-item"><a href="profil.php">Profil</a></li>
         </ul>
     </div>
 </div>
 
 
 
-
-        </div>
 <!-- Länkar för inloggning och registrering --></header>
 
      

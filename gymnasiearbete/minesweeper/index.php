@@ -80,10 +80,15 @@ $username = $_SESSION['username'];
         </div>
 
         <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
-        <div class="konto"> <?php echo htmlspecialchars($username); ?></div>
-       
-        <a href="../assets/logout.php"><div class="log-out">logga ut</div></a>
-        <a href="profil.php"><div class="profil">profil</div></a>
+        <div class="konto" onclick="togglekonto(this)">
+    <?php echo htmlspecialchars($username); ?>
+    <div class="konto-dropdown">
+        <ul>
+            <li class="konto-item"><a href="../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>
+            <li class="konto-item"><a href="profil.php">Profil</a></li>
+        </ul>
+    </div>
+</div>
 
 
         

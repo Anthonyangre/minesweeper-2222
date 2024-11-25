@@ -556,12 +556,7 @@ textarea {
 }
 
 
-.container {
-  align-items: center;
-  display: flex;
-  height: 50px;
-  justify-content: center;
-}
+
 
 
 @keyframes morph {
@@ -604,26 +599,6 @@ textarea {
 	} 
 }
 
-.konto {
-  background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-  animation: morph 20s ease-in-out infinite;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  height: 55px;
-  padding-left:20px;
-  padding-right:20px;
-  width: fit-content;
-  transition: all 1s ease-in-out;
-  z-index: 5;
-  display: flex; /* Gör det möjligt att centrera med flexbox */
-  justify-content: center; /* Centrerar horisontellt */
-  align-items: center; /* Centrerar vertikalt */
-  text-align: center;
-  position: relative;
-  font-size: 16px; /* Anpassa textstorlek */
-  font-weight: bold; /* Gör texten fet */
-  color: white; /* Färg på texten */
-  text-shadow: 5px 5px 5px rgba(255, 0, 0, 0.5); /* Skugga för texten */
-}
 
 
 /* Toggle button styling */
@@ -642,9 +617,10 @@ textarea {
   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
   animation: morph 20s ease-in-out infinite;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  height: 55px;
+  height: 60px;
   padding-left: 20px;
   padding-right: 20px;
+  right:5%;
   width: fit-content;
   transition: all 1s ease-in-out;
   z-index: 5;
@@ -663,39 +639,42 @@ textarea {
 .konto-dropdown {
   display: none; /* Dölj från början */
   position: absolute;
-  top: 55px; /* Placera dropdown precis under kontot */
-  left: 0;
-  background-color: #fff;
+  top: 60px; /* Placera dropdown precis under .konto */
+  
+  background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  overflow: hidden;
   z-index: 10;
   opacity: 0; /* Starta osynligt */
   transform: scale(0.9); /* Starta mindre storlek */
   transition: opacity 0.3s ease, transform 0.3s ease;
-}
 
+}
 
 .konto-dropdown ul {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-
 .konto-item {
-  padding: 10px;
-  text-align: left;
+  padding: 10px 20px;
   color: #333;
   cursor: pointer;
-  opacity: 0; /* Starta osynligt */
-  transform: translateY(-10px); /* Börja uppflyttat */
+  opacity: 0; /* Start osynligt */
+  transform: translateY(-10px); /* Starta uppflyttat */
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .konto-item:hover {
   background-color: #f0f0f0;
 }
+
+.konto-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 
 table {

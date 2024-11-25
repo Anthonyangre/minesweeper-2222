@@ -71,121 +71,55 @@ function toggleMenu(button) {
     }
 }
 function togglekonto(button) {
-  // Access the sibling container
-  const menuContainer = button.nextElementSibling;
-  console.log("menuContainer:", menuContainer); // Log to check
-
-  if (!menuContainer) {
-    console.error("Menu container not found.");
-    return;
-  }
-
-  const menuTitle = menuContainer.querySelector('.konto-title');
-  const dropdownMenu = menuContainer.querySelector('.konto-dropdown');
-
-  // Log each part to ensure they are being found
-  console.log("menuTitle:", menuTitle); 
-  console.log("dropdownMenu:", dropdownMenu);
-
-  if (!menuTitle || !dropdownMenu) {
-    console.error("Required elements (menuTitle or dropdownMenu) not found.");
-    return;
-  }
-
-  const dropdownItems = dropdownMenu.querySelectorAll('.konto-item');
-  console.log("dropdownItems:", dropdownItems); // Check dropdownItems
-
-  // Check if any dropdown items are found
-  if (!dropdownItems || dropdownItems.length === 0) {
-    console.error("No dropdown items found in dropdownMenu.");
-    return;
-  }
-
-  // Check if menu is open
-  const isOpen = menuTitle.style.display === "block";
-
-  if (!isOpen) {
-    // Show and animate title and dropdown menu
-    menuTitle.style.display = "block";
-    dropdownMenu.style.display = "block";
-    setTimeout(() => {
-      menuTitle.style.transform = "translateX(0) scaleX(1)";
-      dropdownMenu.style.transform = "scale(1)";
-      dropdownMenu.style.opacity = 1;
-
-      dropdownItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.style.opacity = 1;
-          item.style.transform = 'scale(1)';
-        }, index * 100);
-      });
-    }, 50);
-  } else {
-    // Hide and reset title and dropdown menu
-    menuTitle.style.transform = "translateX(-100%) scaleX(0)";
-    dropdownMenu.style.transform = "scale(0)";
-    dropdownMenu.style.opacity = 0;
-    setTimeout(() => {
-      menuTitle.style.display = "none";
-      dropdownMenu.style.display = "none";
-      dropdownItems.forEach(item => {
-        item.style.opacity = 0;
-        item.style.transform = 'scale(0)';
-      });
-    }, 500);
-  }
-}
-
-//konto
-
-function togglekonto(button) {
-  // Hitta den närliggande dropdown-menyn
-  const dropdownMenu = button.nextElementSibling;
+  // Hitta dropdown-menyn inuti konto
+  const dropdownMenu = button.querySelector('.konto-dropdown');
 
   if (!dropdownMenu) {
       console.error("konto-dropdown not found.");
       return;
   }
 
-  // Hitta dropdown-items för animation
   const dropdownItems = dropdownMenu.querySelectorAll('.konto-item');
 
-  // Kontrollera om menyn är öppen
+  // Kontrollera om dropdown är öppen
   const isOpen = dropdownMenu.style.display === "block";
 
   if (!isOpen) {
-      // Visa och animera dropdown-menyn
+      // Visa dropdown och animera
       dropdownMenu.style.display = "block";
-      dropdownMenu.style.opacity = 0; // Start osynligt
-      dropdownMenu.style.transform = "scale(0.9)"; // Start från mindre storlek
-      setTimeout(() => {
-          dropdownMenu.style.opacity = 1; // Gör menyn synlig
-          dropdownMenu.style.transform = "scale(1)"; // Skala upp till full storlek
-      }, 10); // Liten fördröjning för CSS-övergångar
+      dropdownMenu.style.opacity = 0;
+      dropdownMenu.style.transform = "scale(0.9)";
 
-      // Animera varje item i menyn
+      setTimeout(() => {
+          dropdownMenu.style.opacity = 1;
+          dropdownMenu.style.transform = "scale(1)";
+      }, 10);
+
+      // Visa och animera varje item
       dropdownItems.forEach((item, index) => {
-          item.style.opacity = 0; // Börja osynligt
-          item.style.transform = "translateY(-10px)"; // Flytta uppåt initialt
+          item.style.opacity = 0;
+          item.style.transform = "translateY(-10px)";
           setTimeout(() => {
-              item.style.opacity = 1; // Gör item synligt
-              item.style.transform = "translateY(0)"; // Återställ till sin plats
+              item.style.opacity = 1;
+              item.style.transform = "translateY(0)";
               item.style.transition = `opacity 0.3s ease ${index * 0.1}s, transform 0.3s ease ${index * 0.1}s`;
-          }, 50); // Fördröjning innan items visas
+          }, 50);
       });
   } else {
-      // Dölj dropdown-menyn
+      // Dölj dropdown och återställ
       dropdownMenu.style.opacity = 0;
-      dropdownMenu.style.transform = "scale(0.9)"; // Skala ner menyn
-      setTimeout(() => {
-          dropdownMenu.style.display = "none"; // Dölj helt efter animation
-      }, 300); // Matchar animationens längd
+      dropdownMenu.style.transform = "scale(0.9)";
 
-      // Återställ items till ursprungligt tillstånd
+      setTimeout(() => {
+          dropdownMenu.style.display = "none";
+      }, 300);
+
+      // Dölj varje item direkt
       dropdownItems.forEach((item) => {
-          item.style.opacity = 0; // Gör osynligt
-          item.style.transform = "translateY(-10px)"; // Flytta tillbaka till initialt läge
-          item.style.transition = "none"; // Ta bort övergång för att dölja snabbt
+          item.style.opacity = 0;
+          item.style.transform = "translateY(-10px)";
+          item.style.transition = "none";
       });
   }
 }
+
