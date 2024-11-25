@@ -252,8 +252,9 @@ legend {
     rgb(255, 255, 255) 5%,
     rgb(255, 255, 255) 60%,
     rgb(255, 255, 255) 95%
-  );
 
+  );
+text-align: center;
 border: solid 5px transparent;
 border-radius:5px;
 --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #08f, #f03 99%, transparent);

@@ -17,9 +17,42 @@ require_once '../assets/uppgifter.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="../java.js"></script>
     <title>Profil</title>
 </head>
 <body>
+<header> 
+        <div class="menu-container" onclick="toggleMenu(this)">
+            <div class="hamburger-menu">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+
+            <!-- Rubrik som glider in från vänster när knappen klickas -->
+            <div class="menu-title">Navigation</div>
+
+            <!-- Dropdown-menyn som visas vid klick -->
+            <div class="dropdown-menu">
+            <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Hem</a> 
+  <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
+               
+
+            </div>
+        </div>
+
+        <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <div class="konto" onclick="togglekonto(this)">
+    <?php echo htmlspecialchars($username); ?>
+    <div class="konto-dropdown">
+        <ul>
+            <li class="konto-item"><a href="../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>
+            <li class="konto-item"><a href="profil.php">Profil</a></li>
+        </ul>
+    </div>
+</div>
+</header>
     <h3><a href="andra.php">Forum Posts</a></h3>
 
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
