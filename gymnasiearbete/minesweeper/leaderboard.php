@@ -38,7 +38,7 @@ $records = getScore();
     <?php echo htmlspecialchars($username); ?>
     <div class="konto-dropdown">
         <ul>
-            <li class="konto-item"><a href="../assets/logout.php">Logga ut</a></li>
+            <li class="konto-item"><a href="../assets/logout.php" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Logga ut</a></li>
             <li class="konto-item"><a href="profil.php">Profil</a></li>
         </ul>
     </div>
