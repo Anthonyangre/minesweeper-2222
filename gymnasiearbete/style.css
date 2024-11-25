@@ -559,7 +559,7 @@ textarea {
 .container {
   align-items: center;
   display: flex;
-  height: 100vh;
+  height: 50px;
   justify-content: center;
 }
 
@@ -569,6 +569,11 @@ textarea {
 			border-radius:  20% 20% 20% 10% / 20% 20% 20% 10%;
 			background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
 	} 
+
+  12.5% {
+    border-radius:  20% 20% 50% 70% / 40% 20% 20% 10%;
+    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+} 
 
   25% {
     border-radius:  10% 10% 100% 40% / 30% 40% 60% 60%;
@@ -581,9 +586,15 @@ textarea {
 	}
 
   80% {
-    border-radius:  70% 20% 50% 70% / 80% 30% 60% 30%;
+    border-radius:  -3000% 20% 50% 70% / 80% 30% 60% 30%;
     background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
 }
+
+90% {
+  border-radius:  70% 20% 50% 70% / 80% 30% 2000% 30%;
+  background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
 
 
   
@@ -595,10 +606,12 @@ textarea {
 
 .konto {
   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-  animation: morph 6s ease-in-out infinite;
+  animation: morph 20s ease-in-out infinite;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  height: 100px;
-  width: 100px;
+  height: 55px;
+  padding-left:20px;
+  padding-right:20px;
+  width: fit-content;
   transition: all 1s ease-in-out;
   z-index: 5;
   display: flex; /* Gör det möjligt att centrera med flexbox */
@@ -625,50 +638,65 @@ textarea {
 }
 
 /* Rubriken som glider in från left */
-.konto-title {
-  padding: 15px;
-  display: none;
-  position: absolute;
-  left: -120px; /* Justerar positionen till vänster */
-  top: 0;
-  transform: translateX(-100%) scaleX(0); /* Glider in från vänster */
-  transform-origin: right;
-  transition: transform 0.5s ease;
-}
-
-
-/* Dropdown menu aligned to the left */
-.konto-dropdown {
-  display: none;
-  position: absolute;
-  left: -120px; /* Align dropdown menu to the left */
-  top: 45px;
-  padding: 5px;
-  width: 100px;
-  transform: scale(0);
-  opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-/* Each menu item */
-.konto-item {
-  opacity: 0;
-  transform: scale(0);
-  transform-origin: top center;
-  padding: 10px;
-  background-color: #ddd;
-  margin: 5px 0;
-  transition: transform 0.3s, opacity 0.3s;
+.konto {
+  background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+  animation: morph 20s ease-in-out infinite;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  height: 55px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: fit-content;
+  transition: all 1s ease-in-out;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  display: block;
-  text-decoration: none;
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 5px 5px 5px rgba(255, 0, 0, 0.5);
+  cursor: pointer;
 }
 
-/* Hover effect for dropdown items */
-.konto-item:hover {
-  background-color: #d0b2b2;
-  transform: scale(1.05);
+.konto-dropdown {
+  display: none; /* Dölj från början */
+  position: absolute;
+  top: 55px; /* Placera dropdown precis under kontot */
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 10;
+  opacity: 0; /* Starta osynligt */
+  transform: scale(0.9); /* Starta mindre storlek */
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+
+.konto-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.konto-item {
+  padding: 10px;
+  text-align: left;
+  color: #333;
+  cursor: pointer;
+  opacity: 0; /* Starta osynligt */
+  transform: translateY(-10px); /* Börja uppflyttat */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.konto-item:hover {
+  background-color: #f0f0f0;
+}
+
 
 table {
   width: 500px;

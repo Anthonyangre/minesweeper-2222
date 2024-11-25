@@ -135,3 +135,57 @@ function togglekonto(button) {
     }, 500);
   }
 }
+
+//konto
+
+function togglekonto(button) {
+  // Hitta den närliggande dropdown-menyn
+  const dropdownMenu = button.nextElementSibling;
+
+  if (!dropdownMenu) {
+      console.error("konto-dropdown not found.");
+      return;
+  }
+
+  // Hitta dropdown-items för animation
+  const dropdownItems = dropdownMenu.querySelectorAll('.konto-item');
+
+  // Kontrollera om menyn är öppen
+  const isOpen = dropdownMenu.style.display === "block";
+
+  if (!isOpen) {
+      // Visa och animera dropdown-menyn
+      dropdownMenu.style.display = "block";
+      dropdownMenu.style.opacity = 0; // Start osynligt
+      dropdownMenu.style.transform = "scale(0.9)"; // Start från mindre storlek
+      setTimeout(() => {
+          dropdownMenu.style.opacity = 1; // Gör menyn synlig
+          dropdownMenu.style.transform = "scale(1)"; // Skala upp till full storlek
+      }, 10); // Liten fördröjning för CSS-övergångar
+
+      // Animera varje item i menyn
+      dropdownItems.forEach((item, index) => {
+          item.style.opacity = 0; // Börja osynligt
+          item.style.transform = "translateY(-10px)"; // Flytta uppåt initialt
+          setTimeout(() => {
+              item.style.opacity = 1; // Gör item synligt
+              item.style.transform = "translateY(0)"; // Återställ till sin plats
+              item.style.transition = `opacity 0.3s ease ${index * 0.1}s, transform 0.3s ease ${index * 0.1}s`;
+          }, 50); // Fördröjning innan items visas
+      });
+  } else {
+      // Dölj dropdown-menyn
+      dropdownMenu.style.opacity = 0;
+      dropdownMenu.style.transform = "scale(0.9)"; // Skala ner menyn
+      setTimeout(() => {
+          dropdownMenu.style.display = "none"; // Dölj helt efter animation
+      }, 300); // Matchar animationens längd
+
+      // Återställ items till ursprungligt tillstånd
+      dropdownItems.forEach((item) => {
+          item.style.opacity = 0; // Gör osynligt
+          item.style.transform = "translateY(-10px)"; // Flytta tillbaka till initialt läge
+          item.style.transition = "none"; // Ta bort övergång för att dölja snabbt
+      });
+  }
+}
