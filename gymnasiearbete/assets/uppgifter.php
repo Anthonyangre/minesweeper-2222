@@ -26,7 +26,7 @@ if (isset($_SESSION['userid'])) {
     }
     $stmt->close();
 } else {
-    $errors[] = "Du måste vara inloggad för att ändra dina uppgifter.";
+    $errors[] = "Du måste vara inloggad för att ändra dina uppgifter";
 }
 
 ?>

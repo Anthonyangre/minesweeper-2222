@@ -54,36 +54,41 @@ require_once '../assets/uppgifter.php';
 </div>
 </header>
     <h3><a href="andra.php">Forum Posts</a></h3>
+    <div id="wrapper">
 
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-  <fieldset>
-     <legend>Redigera dina användar uppgifter</legend>
-        <ol>
-            <li>
+  <div>
+     <h1>Redigera dina användar uppgifter</h1>
+           
            
             <h4>Användarnamn: <?php echo htmlspecialchars(string: $username); ?></h4>
             
               
               
-            </li>
-            <li> 
-                <label for="email3">Email</label>
+            <div class="form-group">
+            <label for="email3">Email</label>
             <input type="mail" id="email3" name="email3" value="<?php echo htmlspecialchars($email); ?>" >
-        </li>
+            </div>
+
+    
+      
            
-            <li>
+            <div class="form-group">
             <label for="name3">Name</label>
             <input type="text" id="name3" name="name3" value="<?php echo htmlspecialchars($name); ?>" ></li>
+            </div>
             
-            <li>
+            <div class="form-group">
              <label for="password3">Lösenord</label>
              <input type="password" id="password3" name="password3" placeholder="•••••••••" >
+             </div>
             
              
-            </li>
+            
         </ol>
   </fieldset>
     <input type="submit" name="Ändra" value="Ändra" class="button1">
     </form>
+    </div>
 </body>
 </html>
