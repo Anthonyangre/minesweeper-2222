@@ -88,5 +88,55 @@ if (isset($_POST['submit'])) {
     $stmt->close();
 }
 
+if (isset($_POST["Ändra"])) {
+    // Check if the user is logged in
+    if (!isset($_SESSION['userid'])) {
+        $errors[] = "Du måste vara inloggad för att ändra dina uppgifter.";
+    } else {
+        // Retrieve current logged-in user's username (from the session)
+        $userid = $_SESSION['username'];
+
+        // Fetch the data from the form
+        $password = $_POST['password3'];
+        
+        $name = $_POST['name3'];
+        $email = $_POST['email3'];
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Ogiltig e-postadress';
+        }
+      
+        if (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
+            $errors[] = 'Namn får bara innehålla bokstäver och mellanslag.';
+        }
+
+    
+        if (preg_match('/[^a-zA-Z0-9]/', $password)) {
+            $errors[] = 'Lösenordet får inte innehålla specialtecken.';
+        }
+       
+        $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+        // Check if the new email already exists (exclude the current user)
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND username != ?");
+        $stmt->bind_param("ss", $email, $userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $errors[] = "Email används redan av en annan användare.";
+        } else {
+            // Update the user details (excluding username)
+            $stmt = $conn->prepare("UPDATE `users` SET `name` = ?, `email` = ?, `password` = ? WHERE `username` = ?");
+            $stmt->bind_param("ssss",  $name, $email, $passwordhash, $userid);
+
+            if ($stmt->execute()) {
+                echo "Dina uppgifter har uppdaterats!";
+            } else {
+                $errors[] = "Ett fel uppstod när uppgifterna skulle uppdateras.";
+            }
+        
+            $stmt->close();
+        }
+    }
+}
 $conn->close();
 ?>
