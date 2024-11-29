@@ -87,6 +87,9 @@ require_once '../assets/uppgifter.php';
             
         </ol>
   </fieldset>
+
+
+  
   <div class="form-actions">
     <input type="submit" name="Ändra" value="Ändra" class="button1">
     </div>
