@@ -12,6 +12,21 @@ body{
   z-index: -1; /* Ensure the background stays behind the content */
 }
 
+h2{
+  text-align: center;
+}
+h1{
+  text-align: center;
+}
+
+h4{
+  text-align: center;
+
+}
+
+
+
+
 ol{
   text-align: center;
   align-items: center;
@@ -45,13 +60,7 @@ ol{
 }
 
 
-h2{
-  text-align: center;
-}
-h1{
-  text-align: center;
-  
-}
+
 /* General Form Styles */
 .login-form {
   width: 100%;
