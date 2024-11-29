@@ -57,7 +57,7 @@ require_once '../assets/uppgifter.php';
     <div id="wrapper">
 
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-  <div>
+<fieldset>
      <h1>Redigera dina användar uppgifter</h1>
            
            
@@ -87,7 +87,9 @@ require_once '../assets/uppgifter.php';
             
         </ol>
   </fieldset>
+  <div class="form-actions">
     <input type="submit" name="Ändra" value="Ändra" class="button1">
+    </div>
     </form>
     </div>
 </body>
