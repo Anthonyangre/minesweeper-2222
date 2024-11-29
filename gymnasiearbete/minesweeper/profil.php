@@ -54,7 +54,6 @@ require_once '../assets/uppgifter.php';
     </div>
 </div>
 </header>
-    <h3><a href="andra.php">Forum Posts</a></h3>
     <div id="wrapper">
 
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
