@@ -61,6 +61,12 @@ ol{
 
 
 
+
+
+
+
+
+
 /* General Form Styles */
 .login-form {
   width: 100%;
@@ -510,10 +516,24 @@ textarea {
 
 
 .button1 {
-  display: block; /* Gör knappen till ett blockelement */
-  margin: 0 auto; /* Centrera horisontellt */
-  text-align: center; /* Centrera texten inuti knappen */
-}
+    background: linear-gradient(145deg, #5b9bd5, #4177b0);
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1), -3px -3px 8px rgba(255, 255, 255, 0.9);
+  
+  }
+  
+ 
+  .button1:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15), -5px -5px 15px rgba(255, 255, 255, 0.9);
+  }
 
 
 
