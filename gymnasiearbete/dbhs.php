@@ -29,9 +29,16 @@ if (isset($_POST["register"])) {
     $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
     $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
     $stmt->execute();
-    $stmt->close();
+ 
+    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+     $user = $result->fetch_assoc();
+     $stmt->close();
     $_SESSION['userid'] = $user['id'];
     $_SESSION['username'] = $user['username'];
+    echo $_SESSION['username'] ;
     $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
     $stmt->bind_param("ssss", $username, $zero, $zero, $zero);
     $stmt->execute();
@@ -40,6 +47,7 @@ if (isset($_POST["register"])) {
     $_SESSION['lose'] = $zero;
     $_SESSION['points'] = $zero;
     header('Location: ./minesweeper/index.php');
+    
     }
 }
 if (isset($_POST['submit'])) {

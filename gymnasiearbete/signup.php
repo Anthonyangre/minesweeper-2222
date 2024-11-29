@@ -77,6 +77,7 @@ require_once 'dbhs.php';
 </form>
   
     <?php
+
     //kontrollerar om det finns felmeddelanden
     if (count($errors) > 0) {
         
