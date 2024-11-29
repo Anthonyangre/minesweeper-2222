@@ -56,7 +56,7 @@ require_once '../assets/uppgifter.php';
 </header>
     <div id="wrapper">
 
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="profil-form">
 <fieldset>
      <h1>Redigera dina användar uppgifter</h1>
            
@@ -65,7 +65,7 @@ require_once '../assets/uppgifter.php';
             
               
               
-            <div class="form-group">
+            <div class="form-group2">
             <label for="email3">Email</label>
             <input type="mail" id="email3" name="email3" value="<?php echo htmlspecialchars($email); ?>" >
             </div>
@@ -73,12 +73,12 @@ require_once '../assets/uppgifter.php';
     
       
            
-            <div class="form-group">
+            <div class="form-group2">
             <label for="name3">Name</label>
             <input type="text" id="name3" name="name3" value="<?php echo htmlspecialchars($name); ?>" ></li>
             </div>
             
-            <div class="form-group">
+            <div class="form-group2">
              <label for="password3">Lösenord</label>
              <input type="password" id="password3" name="password3" placeholder="•••••••••" >
              </div>
