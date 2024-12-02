@@ -119,11 +119,13 @@ function revealCell($row, $col) {
         $_SESSION['lose']++;  // Increment the loss count
     
         // Apply a penalty of -10 points for the loss
-        $totalPointsLost = 10;  // Define the penalty explicitly
+        $totalPointsLost = 5;  // Define the penalty explicitly
         $currentPoints = $_SESSION['currentpoints'];
-        $pointsloss = max(0, $currentPoints - $totalPointsLost);
-        $points = $_SESSION['points'];
-        $_SESSION['points'] = ( $points + $pointsloss);  // Apply penalty but ensure points don't go negative
+        $cPoints = $currentPoints - $totalPointsLost;
+        $pointsloss = max(0, $cPoints);
+
+        
+        $_SESSION['points'] = ($pointsloss);  // Apply penalty but ensure points don't go negative
     
         // Update the database with the loss
         updateDatabaseLoss();
@@ -223,7 +225,7 @@ function revealAllMines() {
 function updateDatabaseWin() {
     $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
-    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']) * 100;  // Multiply points by 100 for scoring system
+    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  // Multiply points by 100 for scoring system
     $wins = $_SESSION['wins'];
     $username = $_SESSION['username'] ?? '';
 
@@ -246,7 +248,7 @@ function updateDatabaseWin() {
 function updateDatabaseLoss() {
     $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
-    $points = $_SESSION['points'] * 100;  // Multiply points by 100 for scoring system
+    $points = $_SESSION['points'];  // Multiply points by 100 for scoring system
     $lose = $_SESSION['lose'];
     $username = $_SESSION['username'] ?? '';
 

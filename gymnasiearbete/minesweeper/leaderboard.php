@@ -69,7 +69,7 @@ $records = getScore();
             <td><?php echo htmlspecialchars($row['username'], ENT_QUOTES, 'UTF-8'); ?></td>
             
             <!-- Visa meddelandet och återställ HTML-tecken korrekt -->
-            <td><?php echo htmlspecialchars($row['points'], ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?php echo htmlspecialchars($row['points']*100, ENT_QUOTES, 'UTF-8'); ?></td>
             
             <!-- Visa när meddelandet skickades -->
             <td><?php echo htmlspecialchars($row['wins'], ENT_QUOTES, 'UTF-8'); ?></td>
