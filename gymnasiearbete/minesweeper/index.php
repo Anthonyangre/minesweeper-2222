@@ -114,7 +114,26 @@ $username = $_SESSION['username'];
     <div id="game-board"></div>
     <button id="reset-button">Reset</button>
 </div>
-
+<table id="stats">
+    <tr>
+        <th>Poäng</th>
+        <th>Vintster</th>
+        <th>Förluster</th>
+    </tr>
+    <!-- Loopa igenom alla inlägg och visa dem i tabellen -->
+    <?php while ($row = $records->fetch_assoc()): ?>
+        <tr>
+            <!-- Visa användarnamnet för varje inlägg -->
+            <!-- Visa meddelandet och återställ HTML-tecken korrekt -->
+            <td><?php echo htmlspecialchars($row['points']*100, ENT_QUOTES, 'UTF-8'); ?></td>
+            
+            <!-- Visa när meddelandet skickades -->
+            <td><?php echo htmlspecialchars($row['wins'], ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?php echo htmlspecialchars($row['lose'], ENT_QUOTES, 'UTF-8'); ?></td>
+           
+        </tr>
+    <?php endwhile; ?>
+    </table>
     
     <script src="script.js"></script>
     <script src="../java.js"></script>
