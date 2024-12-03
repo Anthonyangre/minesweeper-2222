@@ -4,14 +4,18 @@ session_start();
 // Initialize the game state if it doesn't exist
 if (!isset($_SESSION['game_state'])) {
     $_SESSION['game_state'] = 'ongoing';
-    $_SESSION['grid'] = generateGrid(10, 10, 10); // 10x10 grid with 10 mines
-    $_SESSION['revealed'] = array_fill(0, 10, array_fill(0, 10, false));
-    $_SESSION['flags'] = array_fill(0, 10, array_fill(0, 10, false));
-    $_SESSION['points'] = 0;  // Initialize points for the session
-    $_SESSION['pre_game_points'] = 0;  // Store points before the game starts
-    $_SESSION['wins'] = 0;  // Initialize wins
-    $_SESSION['lose'] = 0;  // Initialize losses
+    $rows = 10;
+    $cols = 10;
+    $mines = 20;  // Change this to your desired mine count
+    $_SESSION['grid'] = generateGrid($rows, $cols, $mines);
+    $_SESSION['revealed'] = array_fill(0, $rows, array_fill(0, $cols, false));
+    $_SESSION['flags'] = array_fill(0, $rows, array_fill(0, $cols, false));
+    $_SESSION['points'] = 0;
+    $_SESSION['pre_game_points'] = 0;
+    $_SESSION['wins'] = 0;
+    $_SESSION['lose'] = 0;
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
@@ -66,35 +70,48 @@ function ensureFirstClickIsZero($row, $col) {
         regenerateGridWithZeroAt($row, $col);
     }
 }
-
 function regenerateGridWithZeroAt($safeRow, $safeCol) {
     $rows = count($_SESSION['grid']);
     $cols = count($_SESSION['grid'][0]);
-    $mines = 10;  // Adjust the number of mines as necessary
+    $mines = 20;  // Adjust this to match your desired mine count
 
     do {
         $_SESSION['grid'] = generateGrid($rows, $cols, $mines);
-    } while ($_SESSION['grid'][$safeRow][$safeCol] != 0);  // Ensure the clicked cell is a '0'
+    } while ($_SESSION['grid'][$safeRow][$safeCol] != 0);
 }
 
+
 function generateGrid($rows, $cols, $mines) {
+    // Ensure the number of mines is less than or equal to the total cells
+    $totalCells = $rows * $cols;
+    if ($mines > $totalCells) {
+        $mines = $totalCells; // Cap the number of mines to the number of available cells
+    }
+
+    // Create a flat list of all cell positions
+    $allCells = [];
+    for ($r = 0; $r < $rows; $r++) {
+        for ($c = 0; $c < $cols; $c++) {
+            $allCells[] = [$r, $c];
+        }
+    }
+
+    // Shuffle the cell positions and pick the first $mines as mine locations
+    shuffle($allCells);
+    $minePositions = array_slice($allCells, 0, $mines);
+
+    // Initialize grid with zeros
     $grid = array_fill(0, $rows, array_fill(0, $cols, 0));
 
-    // Place mines randomly on the grid
-    $minesPlaced = 0;
-    while ($minesPlaced < $mines) {
-        $r = rand(0, $rows - 1);
-        $c = rand(0, $cols - 1);
-        if ($grid[$r][$c] == 0) {
-            $grid[$r][$c] = 'M';  // Mark as mine
-            $minesPlaced++;
+    // Place mines and update surrounding counts
+    foreach ($minePositions as [$r, $c]) {
+        $grid[$r][$c] = 'M';
 
-            // Update surrounding cells' mine count
-            for ($i = max(0, $r - 1); $i <= min($r + 1, $rows - 1); $i++) {
-                for ($j = max(0, $c - 1); $j <= min($c + 1, $cols - 1); $j++) {
-                    if ($grid[$i][$j] != 'M') {
-                        $grid[$i][$j]++;
-                    }
+        // Update neighboring cells
+        for ($i = max(0, $r - 1); $i <= min($rows - 1, $r + 1); $i++) {
+            for ($j = max(0, $c - 1); $j <= min($cols - 1, $c + 1); $j++) {
+                if ($grid[$i][$j] !== 'M') {
+                    $grid[$i][$j]++;
                 }
             }
         }
@@ -102,6 +119,7 @@ function generateGrid($rows, $cols, $mines) {
 
     return $grid;
 }
+
 
 function revealCell($row, $col) {
     // If already revealed or flagged, do nothing

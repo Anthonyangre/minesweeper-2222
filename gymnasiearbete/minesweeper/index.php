@@ -9,7 +9,7 @@ if (!isset($_SESSION['grid'])) {
 function resetGame() {
     $rows = 10;
     $cols = 10;
-    $mines = 10;
+    $mines = 20;
 
     $_SESSION['grid'] = generateGrid($rows, $cols, $mines);
     $_SESSION['revealed'] = array_fill(0, $rows, array_fill(0, $cols, false));
@@ -18,29 +18,44 @@ function resetGame() {
 }
 
 function generateGrid($rows, $cols, $mines) {
+    // Ensure the number of mines is less than or equal to the total cells
+    $totalCells = $rows * $cols;
+    if ($mines > $totalCells) {
+        $mines = $totalCells; // Cap the number of mines to the number of available cells
+    }
+
+    // Create a flat list of all cell positions
+    $allCells = [];
+    for ($r = 0; $r < $rows; $r++) {
+        for ($c = 0; $c < $cols; $c++) {
+            $allCells[] = [$r, $c];
+        }
+    }
+
+    // Shuffle the cell positions and pick the first $mines as mine locations
+    shuffle($allCells);
+    $minePositions = array_slice($allCells, 0, $mines);
+
+    // Initialize grid with zeros
     $grid = array_fill(0, $rows, array_fill(0, $cols, 0));
 
-    // Place mines
-    $minesPlaced = 0;
-    while ($minesPlaced < $mines) {
-        $r = rand(0, $rows - 1);
-        $c = rand(0, $cols - 1);
-        if ($grid[$r][$c] == 0) {
-            $grid[$r][$c] = 'M'; // Mine
-            $minesPlaced++;
+    // Place mines and update surrounding counts
+    foreach ($minePositions as [$r, $c]) {
+        $grid[$r][$c] = 'M';
 
-            // Update surrounding cells
-            for ($i = max(0, $r - 1); $i <= min($r + 1, $rows - 1); $i++) {
-                for ($j = max(0, $c - 1); $j <= min($c + 1, $cols - 1); $j++) {
-                    if ($grid[$i][$j] != 'M') {
-                        $grid[$i][$j]++;
-                    }
+        // Update neighboring cells
+        for ($i = max(0, $r - 1); $i <= min($rows - 1, $r + 1); $i++) {
+            for ($j = max(0, $c - 1); $j <= min($cols - 1, $c + 1); $j++) {
+                if ($grid[$i][$j] !== 'M') {
+                    $grid[$i][$j]++;
                 }
             }
         }
     }
+
     return $grid;
 }
+
 
 if (isset($_GET['reset'])) {
     resetGame();

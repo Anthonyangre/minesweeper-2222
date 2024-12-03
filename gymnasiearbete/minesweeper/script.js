@@ -19,40 +19,65 @@ document.addEventListener('DOMContentLoaded', () => {
     resetButton.addEventListener('click', () => {
         window.location.href = 'index.php?reset=true';
     });
-
     function renderGrid() {
-        gameBoard.innerHTML = '';
-        for (let row = 0; row < currentGrid.length; row++) {
-            for (let col = 0; col < currentGrid[row].length; col++) {
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                if (currentRevealed[row][col]) {
-                    cell.classList.add('revealed');
-                    if (currentGrid[row][col] === 'M') {
-                        cell.classList.add('mine');
-                        cell.textContent = '💣';
-                    } else {
-                        cell.textContent = currentGrid[row][col] > 0 ? currentGrid[row][col] : '';
+    gameBoard.innerHTML = '';
+    for (let row = 0; row < currentGrid.length; row++) {
+        for (let col = 0; col < currentGrid[row].length; col++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+
+            if (currentRevealed[row][col]) {
+                cell.classList.add('revealed');
+                if (currentGrid[row][col] === 'M') {
+                    cell.classList.add('mine');
+                    cell.textContent = '💣';
+                } else {
+                    if (currentGrid[row][col] === 1) {
+                        cell.classList.add('one'); // Apply the 'one' class for styling
                     }
+                    if (currentGrid[row][col] === 2) {
+                        cell.classList.add('two'); // Apply the 'one' class for styling
+                    }
+                    if (currentGrid[row][col] === 3) {
+                        cell.classList.add('three'); // Apply the 'one' class for styling
+                    }
+                    if (currentGrid[row][col] === 4) {
+                        cell.classList.add('four'); // Apply the 'one' class for styling
+                    }
+                    if (currentGrid[row][col] === 5) {
+                        cell.classList.add('five'); // Apply the 'one' class for styling
+                    }
+                    if (currentGrid[row][col] === 6) {
+                        cell.classList.add('six'); // Apply the 'one' class for styling
+                    }
+                    if (currentGrid[row][col] === 7) {
+                        cell.classList.add('seven'); // Apply the 'one' class for styling
+                    }
+                    if (currentGrid[row][col] === 8) {
+                        cell.classList.add('eight'); // Apply the 'one' class for styling
+                    }
+                    cell.textContent = currentGrid[row][col] > 0 ? currentGrid[row][col] : '';
                 }
-                if (currentFlags[row][col]) {
-                    cell.classList.add('flag');
-                    cell.textContent = '🚩';
-                }
-
-                // Disable interactions if game is over
-                if (currentGameState === 'ongoing') {
-                    cell.addEventListener('click', () => revealCell(row, col));
-                    cell.addEventListener('contextmenu', (e) => {
-                        e.preventDefault();
-                        toggleFlag(row, col);
-                    });
-                }
-
-                gameBoard.appendChild(cell);
             }
+
+            if (currentFlags[row][col]) {
+                cell.classList.add('flag');
+                cell.textContent = '🚩';
+            }
+
+            // Disable interactions if game is over
+            if (currentGameState === 'ongoing') {
+                cell.addEventListener('click', () => revealCell(row, col));
+                cell.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    toggleFlag(row, col);
+                });
+            }
+
+            gameBoard.appendChild(cell);
         }
     }
+}
 
     function revealCell(row, col) {
         if (currentGameState !== 'ongoing') return;
