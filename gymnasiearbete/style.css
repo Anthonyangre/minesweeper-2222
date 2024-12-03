@@ -794,6 +794,7 @@ table {
   outline-color: rgba(0, 130, 206, 0.75);
   outline-style: solid;
   animation: animateOutline 3s ease infinite;
+  font-family: fantasy;
 
   /* Lägg till suddig kant */
   box-shadow: 4px 4px 10px rgba(3, 192, 255, 0.6); /* Blurred kant */
@@ -817,7 +818,7 @@ table {
     outline-width: 6px;
     outline-offset: 16px;
     outline-color: rgba(0, 162, 255, 0.5); /* Halv styrka */
-  }
+  } 
 
   75% {
     outline-width: 4px;
@@ -837,9 +838,10 @@ table {
 
 /* Ställer in kolumn- och cellformat:*/
 th, td {
-    border: 1px solid black;
+    border: 1px solid rgb(255, 0, 200);
     padding: 5px;
-    color:darkblue
+    color:darkblue;
+    font-family: fantasy;
 }
 
 /* Justerar varje rad i tabellen: */
