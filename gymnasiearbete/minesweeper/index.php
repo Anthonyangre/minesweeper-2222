@@ -2,6 +2,7 @@
 
 session_start();
 require_once '../dbhs.php';
+require_once '../assets/functions.php';
 if (!isset($_SESSION['grid'])) {
     resetGame();
 }
@@ -62,6 +63,7 @@ if (isset($_GET['reset'])) {
     header("Location: index.php");
     exit();
 }
+$stats = getUserPoints();
 $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
@@ -108,33 +110,13 @@ $username = $_SESSION['username'];
 
         
     </header>
-    <?php echo $_SESSION['points'];?>
+    <div class="back">
 <div class="background">
 <div id="status">Game in progress...</div>
     <div id="game-board"></div>
     <button id="reset-button">Reset</button>
 </div>
-<table id="stats">
-    <tr>
-        <th>Poäng</th>
-        <th>Vintster</th>
-        <th>Förluster</th>
-    </tr>
-    <!-- Loopa igenom alla inlägg och visa dem i tabellen -->
-    <?php while ($row = $records->fetch_assoc()): ?>
-        <tr>
-            <!-- Visa användarnamnet för varje inlägg -->
-            <!-- Visa meddelandet och återställ HTML-tecken korrekt -->
-            <td><?php echo htmlspecialchars($row['points']*100, ENT_QUOTES, 'UTF-8'); ?></td>
-            
-            <!-- Visa när meddelandet skickades -->
-            <td><?php echo htmlspecialchars($row['wins'], ENT_QUOTES, 'UTF-8'); ?></td>
-            <td><?php echo htmlspecialchars($row['lose'], ENT_QUOTES, 'UTF-8'); ?></td>
-           
-        </tr>
-    <?php endwhile; ?>
-    </table>
-    
+
     <script src="script.js"></script>
     <script src="../java.js"></script>
     <script>
@@ -143,5 +125,19 @@ $username = $_SESSION['username'];
         const flags = <?= json_encode($_SESSION['flags']) ?>;
         const gameState = '<?= $_SESSION['game_state'] ?>';
     </script>
+
+<table id="stats">
+    <tr>
+        <th>Poäng</th>
+        <th>Vinster</th>
+        <th>Förluster</th>
+    </tr>
+    <tr>
+        <td><?php echo htmlspecialchars($stats['points'] * 100); ?></td>
+        <td><?php echo htmlspecialchars($stats['wins']); ?></td>
+        <td><?php echo htmlspecialchars($stats['lose']); ?></td>
+    </tr>
+</table>
+    </div>
 </body>
 </html>

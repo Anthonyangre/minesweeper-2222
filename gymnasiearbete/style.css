@@ -861,4 +861,12 @@ tr {
 #dbres tr:first-child {
 	background-color: rgb(87, 65, 255);
 }
-
+#stats {
+  position:absolute;
+  margin-top:10%;
+  margin-left:70%;
+  width:fit-content;
+}
+.back{
+  display:flex;
+}

@@ -64,6 +64,6 @@ function getUserPoints() {
     $stats = $result->fetch_assoc();
     $stmt->close(); // Close the statement
     $conn->close(); // Close the connection
-    return $stats['points'];
+    return $stats;
 }
 ?>

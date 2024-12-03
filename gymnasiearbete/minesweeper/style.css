@@ -16,6 +16,7 @@ body {
     gap: 2px;
     justify-content: center;
     margin-bottom: 20px;
+    margin-inline:block;
 }
 
 .cell {
