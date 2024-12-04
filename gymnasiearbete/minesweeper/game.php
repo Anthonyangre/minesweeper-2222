@@ -89,7 +89,7 @@ function generateGrid($rows, $cols, $mines) {
     }
 
     // Create a flat list of all cell positions
-    $allCells = [];
+    $allCells = []; 
     for ($r = 0; $r < $rows; $r++) {
         for ($c = 0; $c < $cols; $c++) {
             $allCells[] = [$r, $c];
