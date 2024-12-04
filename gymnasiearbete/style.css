@@ -240,6 +240,7 @@ ol{
 .extra-links {
   margin-top: 15px;
   font-size: 14px;
+  text-decoration: none;
 }
 
 .extra-links a {
@@ -435,6 +436,7 @@ header h3 {
   display: flex; /* Använd flexbox för att styra layouten */
   margin-left: auto; /* Flytta länkarna längst till höger */
   margin-bottom: auto;
+  text-decoration: none;
 }
 
 .header-links a {
@@ -495,6 +497,12 @@ header h3 {
   height: 300px;
 }
 
+#head2 img{
+  width: 2000px;
+  height: 300px;
+
+}
+
 /* Rubriken som glider in från vänster */
 /* Rubriken som glider in från vänster */
 .menu-title {
@@ -538,7 +546,7 @@ header h3 {
   display: block; /* Säkerställer att alla objekt får sin egen rad */
   text-decoration: none; /* Ta bort understrykning på länkar */
   border-radius: 10px;
-  box-shadow: 4px 0px 7px rgb(175, 171, 171);
+  box-shadow: 4px 0px 7px rgb(73, 71, 71);
 }
 
 /* Hover effect for dropdown items */
@@ -613,7 +621,7 @@ textarea {
 }
 
 .info_text {
-  background-color: violet;
+  background-color: rgb(0, 255, 76);
   font-family: monospace;
   width: 50%;                       /* Tar upp 50% av bredden */
   text-align: left;                 /* Justerar texten till vänster */
@@ -622,6 +630,8 @@ textarea {
   margin-bottom: 100%;  
   align-items: center;      /* Ser till att padding inkluderas i bredden */
 }
+
+
 
 .bild {
   width: 50%;                       /* Tar upp 50% av bredden */
@@ -632,6 +642,39 @@ textarea {
   max-width: 100%;                  /* Ser till att bilden fyller sin container */
   height: auto;                     /* Bevarar bildens proportioner */
 }
+
+/* upp kanppen på hemsidan */
+#upp-knapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none; /* Börjar gömd */
+  z-index: 100; /* Överst i lager */
+  cursor: pointer;
+  background-color: #ddd;
+  border-radius: 50%; /* Gör knappen rund */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  padding: 30px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+#upp-knapp text {
+ 
+ 
+  font-weight: bolder;
+  
+}
+
+#upp-knapp:hover {
+  transform: scale(1.1); /* Förstorad vid hover */
+}
+
+
+
+
+
 
 
 @keyframes bg-spin {

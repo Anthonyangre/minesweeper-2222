@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once '../dbhs.php';
 require_once '../assets/uppgifter.php';
 
@@ -49,7 +50,7 @@ require_once '../assets/uppgifter.php';
     <div class="konto-dropdown">
         <ul>
             <li class="konto-item"><a href="../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>
-            <li class="konto-item"><a href="profil.php">Profil</a></li>
+            <li class="index.php"><a href="index.php">Spel</a></li>
         </ul>
     </div>
 </div>

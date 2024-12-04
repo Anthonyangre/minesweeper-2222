@@ -123,3 +123,16 @@ function togglekonto(button) {
   }
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const uppKnapp = document.getElementById('upp-knapp');
+
+  window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+          uppKnapp.style.display = 'block'; // Visa knappen
+      } else {
+          uppKnapp.style.display = 'none'; // Dölj knappen
+      }
+  });
+});
+

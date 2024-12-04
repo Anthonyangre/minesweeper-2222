@@ -1,9 +1,11 @@
 <?php
 //infogar funktionalitet för inloggningen 
+session_start();
 require_once '../dbhs.php';
 require_once '../assets/functions.php';
 $username = $_SESSION['username'];
 $records = getScore();
+
 ?> 
 <html lang="sv">
 <head>

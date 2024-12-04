@@ -27,13 +27,14 @@ require_once 'assets/uppgifter.php';
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
             <a href="#regler" class="dropdown-item">Regler</a>
-            <a href="#info" class="dropdown-item">Info</a>
+            <a href="#info" class="dropdown-item">Information</a>
+            
                
 
             </div>
         </div>
 
-        <h3 class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 id= 'topp'class="rainbow-text">Välkommen till Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
 
 <!-- Länkar för inloggning och registrering -->
 <div class="header-links">
@@ -47,7 +48,7 @@ require_once 'assets/uppgifter.php';
         
     </header>
 
-    <div id="head2"> </div> 
+    <div id="head2"> <img src='image/header_bild.png'> </div> 
 
    
 
@@ -75,6 +76,9 @@ require_once 'assets/uppgifter.php';
         <img src="./image/flagga.png" alt="Bild på minesweeper flagga">  
     </div>
 </div>
+
+<!-- Upp-knappen (Bild) -->
+<a href="#topp" id="upp-knapp">UPP</a>
 
 
     

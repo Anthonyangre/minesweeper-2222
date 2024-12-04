@@ -112,6 +112,30 @@ body.game-over button {
     color: rgb(255, 0, 0);
     font-weight: bold;
 }
+
+.cell.three {
+    color: #f57600;
+    font-weight: bold;
+}
+
+
+.cell.four {
+    color: rgb(0, 255, 34);
+    font-weight: bold;
+}
+.cell.five {
+
+    font-weight: bold;
+        font-size: 2rem; /* Valfri storlek */
+        background: linear-gradient(90deg, rgb(2, 49, 94), orange, yellow, green, blue, indigo, violet);
+        background-size: 200% 100%;
+        color: transparent;
+        -webkit-background-clip: text;  /* Stöd för WebKit-browsers (Chrome, Safari) */
+        background-clip: text; /* För Firefox */
+        animation: rainbow 2s linear infinite;
+    
+}
+
 @keyframes rainbow {
     0% {
         background-position: 0%;
@@ -119,24 +143,6 @@ body.game-over button {
     100% {
         background-position: 100%;
     }
-}
-
-.cell.three {
-    font-weight: bold;
-    font-size: 2rem; /* Valfri storlek */
-    background: linear-gradient(90deg, rgb(2, 49, 94), orange, yellow, green, blue, indigo, violet);
-    color: transparent;
-    -webkit-background-clip: text;  /* Stöd för WebKit-browsers (Chrome, Safari) */
-    background-clip: text; /* För Firefox */
-    animation: rainbow 2s linear infinite;
-}
-
-.cell.four {
-    color: rgb(0, 255, 34);
-    font-weight: bold;
-}
-.cell.five {
-   color: #f03;
 }
 .cell.six {
     color: rgb(255, 0, 157);
