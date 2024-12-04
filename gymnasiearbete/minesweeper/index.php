@@ -106,9 +106,9 @@ $username = $_SESSION['username'];
 </div>
 
 
-        
+    
     </header>
-    <?php echo $_SESSION['points'];?>
+    <div class="back">
 <div class="background">
 <div id="status">Game in progress...</div>
     <div id="game-board"></div>
@@ -124,5 +124,19 @@ $username = $_SESSION['username'];
         const flags = <?= json_encode($_SESSION['flags']) ?>;
         const gameState = '<?= $_SESSION['game_state'] ?>';
     </script>
+
+<table id="stats">
+    <tr>
+        <th>Poäng</th>
+        <th>Vinster</th>
+        <th>Förluster</th>
+    </tr>
+    <tr>
+        <td><?php echo htmlspecialchars($stats['points'] * 100); ?></td>
+        <td><?php echo htmlspecialchars($stats['wins']); ?></td>
+        <td><?php echo htmlspecialchars($stats['lose']); ?></td>
+    </tr>
+</table>
+    </div>
 </body>
 </html>
