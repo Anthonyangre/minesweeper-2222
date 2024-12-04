@@ -546,7 +546,7 @@ header h3 {
   display: block; /* Säkerställer att alla objekt får sin egen rad */
   text-decoration: none; /* Ta bort understrykning på länkar */
   border-radius: 10px;
-  box-shadow: 4px 0px 7px rgb(73, 71, 71);
+  box-shadow: 4px 0px 7px rgb(175, 171, 171);
 }
 
 /* Hover effect for dropdown items */
@@ -651,23 +651,17 @@ textarea {
   display: none; /* Börjar gömd */
   z-index: 100; /* Överst i lager */
   cursor: pointer;
-  background-color: #ddd;
+}
+
+#upp-knapp img {
+  width: 100px; /* Anpassa storleken */
+  height: 100px;
   border-radius: 50%; /* Gör knappen rund */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
-  padding: 30px;
-  font-weight: bolder;
-  text-decoration: none;
 }
 
-#upp-knapp text {
- 
- 
-  font-weight: bolder;
-  
-}
-
-#upp-knapp:hover {
+#upp-knapp img:hover {
   transform: scale(1.1); /* Förstorad vid hover */
 }
 
@@ -904,12 +898,4 @@ tr {
 #dbres tr:first-child {
 	background-color: rgb(87, 65, 255);
 }
-#stats {
-  position:absolute;
-  margin-top:10%;
-  margin-left:70%;
-  width:fit-content;
-}
-.back{
-  display:flex;
-}
+

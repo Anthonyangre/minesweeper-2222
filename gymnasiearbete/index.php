@@ -27,8 +27,7 @@ require_once 'assets/uppgifter.php';
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
             <a href="#regler" class="dropdown-item">Regler</a>
-            <a href="#info" class="dropdown-item">Information</a>
-            
+            <a href="#info" class="dropdown-item">Info</a>
                
 
             </div>
@@ -78,7 +77,9 @@ require_once 'assets/uppgifter.php';
 </div>
 
 <!-- Upp-knappen (Bild) -->
-<a href="#topp" id="upp-knapp">UPP</a>
+<a href="#topp" id="upp-knapp">
+    <img src="image/upp.png" alt="Upp-knapp" />
+</a>
 
 
     
