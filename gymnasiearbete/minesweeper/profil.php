@@ -1,5 +1,9 @@
 <?php 
 session_start();
+if (!isset($_SESSION['userid'])) {
+    echo "du är inte välkommen";
+    header('Location: ../index.php');
+}
 require_once '../dbhs.php';
 require_once '../assets/uppgifter.php';
 

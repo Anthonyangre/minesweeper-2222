@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if (!isset($_SESSION['userid'])) {
+    echo "du är inte välkommen";
+    header('Location: ../index.php');
+}
 // Initialize the game state if it doesn't exist
 if (!isset($_SESSION['game_state'])) {
     $_SESSION['game_state'] = 'ongoing';

@@ -5,7 +5,10 @@ require_once '../dbhs.php';
 if (!isset($_SESSION['grid'])) {
     resetGame();
 }
-
+if (!isset($_SESSION['userid'])) {
+    echo "du är inte välkommen";
+    header('Location: ../index.php');
+}
 function resetGame() {
     $rows = 10;
     $cols = 10;
