@@ -46,7 +46,7 @@ if (isset($_POST["register"])) {
     $_SESSION['wins'] = $zero;
     $_SESSION['lose'] = $zero;
     $_SESSION['points'] = $zero;
-    header('Location: ./minesweeper/index.php');
+    header('Location: ./minesweeper/pre_game_choice.php');
     
     }
 }
@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['lose'] = $score['lose'];
             $_SESSION['points'] = $score['points'];
             
-            header('Location: ./minesweeper/index.php');
+            header('Location: ./minesweeper/pre_game_choice.php');
             
             $_SESSION['logged_in'] = true;
             exit;

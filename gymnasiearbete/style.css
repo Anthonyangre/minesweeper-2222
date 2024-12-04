@@ -986,14 +986,14 @@ tr {
       
     }
 
-    @media (max-width: 580px) {
+    @media (max-width: 650px) {
       .rainbow-text {
         font-size: 2rem; /* Smallest font size for small phones */
       }
     }
 
     /* Media query to hide the text on very small screens */
-    @media (max-width: 500px) {
+    @media (max-width: 580px) {
       .rainbow-text {
         display: none; /* Hide text for very small screens */
       }

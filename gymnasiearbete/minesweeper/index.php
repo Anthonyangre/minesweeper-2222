@@ -87,7 +87,8 @@ $username = $_SESSION['username'];
 
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
-            <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Hem</a> 
+            <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Hem</a> 
+            <a href="pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a> 
             <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
                
 

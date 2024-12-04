@@ -30,7 +30,7 @@ $records = getScore();
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
             <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Hem</a>
-              <a href="pre_game_choice.php" class="dropdown-item">Spelet</a> 
+              <a href="pre_game_choice.php" class="dropdown-item">Spelmeny</a> 
             <a href="leaderboard.php" class="dropdown-item">Leaderboard</a>  <!-- Länk till regler-sektionen på index.php -->
 </div>
         </div>
