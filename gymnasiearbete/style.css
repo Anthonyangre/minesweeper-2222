@@ -7,10 +7,17 @@ html {
 body{
 
   background: linear-gradient(45deg, #6a82fb, #fc5c7d);
-  background-size: 400% 400%;
+  background-size: 100% 100%;
   animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
   z-index: -1; /* Ensure the background stays behind the content */
+  margin: 0;
+  padding: 0;
+  width: 100%; /* Se till att body och html är 100% av bredden på skärmen */
+  height: 100%; /* Se till att body och html är 100% av höjden på skärmen */
+  overflow-x: hidden; /* Förhindrar horisontell scrollning */
+  box-sizing: border-box; /* Gör så att padding och border ingår i elementens storlek */
 }
+
 
 h2{
   text-align: center;
@@ -612,18 +619,36 @@ textarea {
 
 
 
-
 /* Grundläggande stil för att centrera kuben och bilden */
 
+/* Wrapper för att gruppera kub och flagga */
+.row {
+  display: flex;
+  justify-content: space-between; /* Skapa utrymme mellan kub och flagga */
+  align-items: center; /* Justera kub och flagga vertikalt */
+  margin-bottom: 60px; /* Ökat avstånd mellan raderna */
+  padding-bottom: 500px;
+}
 
-/* Cubes */
+/* Stil för kuben */
+.cube-wrapper {
+  display: inline-block;
+  width: 600px;  /* Dubblad storlek på kuben */
+  height: 600px; /* Dubblad storlek på kuben */
+  text-align: center;
+  margin-right: 40px; /* Lägg till avstånd mellan kuben och flaggan */
+}
+
+
+
+/* Kub-styling */
 .tredim_textarea {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 600px;  /* Dubblad storlek på kuben */
+  height: 600px; /* Dubblad storlek på kuben */
   perspective: 1000px;
-  margin: 20px;
-  text-align: center;
+  margin: 200px;
+  display: inline-block;
 }
 
 .cube {
@@ -631,13 +656,9 @@ textarea {
   height: 100%;
   transform-style: preserve-3d;
   transition: transform 0.5s ease;
-  align-items: center;
-  margin-left:  20%;
 }
 
 
-
-/* Ansikterna på kuberna */
 .face {
   position: absolute;
   width: 100%;
@@ -647,58 +668,52 @@ textarea {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding: 10px;
 }
 
-.face.front {
-  transform: translateZ(150px);
-}
-.face.back {
-  transform: rotateY(180deg) translateZ(150px);
-}
-.face.left {
-  transform: rotateY(-90deg) translateZ(150px);
-}
-.face.right {
-  transform: rotateY(90deg) translateZ(150px);
-}
-.face.top {
-  transform: rotateX(90deg) translateZ(150px);
-}
-.face.bottom {
-  transform: rotateX(-90deg) translateZ(150px);
-}
+/* Justerade ansikten för den större kuben */
+.face.front { transform: translateZ(300px); }
+.face.back { transform: rotateY(180deg) translateZ(300px); }
+.face.left { transform: rotateY(-90deg) translateZ(300px); }
+.face.right { transform: rotateY(90deg) translateZ(300px); }
+.face.top { transform: rotateX(90deg) translateZ(300px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(300px); }
 
-/* För bilder */
-.bild {
-  width: 300px;
-  height: auto;
+/* Stil för flaggorna */
+.flag-wrapper {
+  display: inline-block;
+  width: 300px; /* Behåller flaggans bredd */
+  height: auto; /* Höjden justeras automatiskt beroende på bredden */
   text-align: center;
-  margin-left:70%;
-  
-
+  margin-top: 20px; /* Skapar lite utrymme från toppen om flaggan hamnar i början av en rad */
+  margin-right: 20px; /* Lägg till lite utrymme från högerkant */
+  overflow: hidden; /* Förhindrar att flaggan klipper genom skärmen om den är för stor */
 }
 
-.bild img {
-  max-width: 100%;
-  height: auto;
-
+/* För bilder (flagga) */
+.flag-wrapper img {
+  max-width: 100%; /* För att säkerställa att flaggan inte blir större än dess container */
+  height: auto; /* Bevara proportionerna på bilden */
+  display: block; /* Blocklayout för att eliminera extra utrymme under bilden */
+  margin-top: 10px; /* Lite avstånd mellan toppen av flaggan och bilden */
 }
 
-/* Knappstil */
+/* För roterande knappar */
 button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 20px;
-  font-size: 18px;
+  margin-top: 150px;
+  font-size: 50px;
   cursor: pointer;
-  margin-top: 40px;
-
 }
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* Justera avstånd mellan header-bilden och kuben */
+#head2 {
+  margin-bottom: 200px; /* Öka avståndet mellan header-bild och första raden */
 }
 
 

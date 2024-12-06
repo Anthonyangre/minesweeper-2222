@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 // Funktion för att rotera kuben åt vänster eller höger beroende på knapptryckning
 function rotateCube(cubeId, direction) {
   const cube = document.getElementById(cubeId); // Hämta kuben via ID
