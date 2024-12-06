@@ -136,3 +136,34 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+
+// Funktion för att rotera kuben åt vänster eller höger beroende på knapptryckning
+function rotateCube(cubeId, direction) {
+  const cube = document.getElementById(cubeId); // Hämta kuben via ID
+  let currentRotation = getCurrentRotation(cube); // Hämta aktuell rotation (om det finns någon)
+
+  // Justera rotation beroende på om vi trycker på vänster eller höger
+  if (direction === 'left') {
+    currentRotation -= 90;
+  } else if (direction === 'right') {
+    currentRotation += 90;
+  }
+
+  // Uppdatera rotationen för kuben
+  cube.style.transform = `rotateY(${currentRotation}deg)`;
+}
+
+// Funktion för att hämta aktuell rotation från kuben
+function getCurrentRotation(cube) {
+  const transformValue = cube.style.transform;
+  const regex = /rotateY\(([-+]?[0-9]*\.?[0-9]+)\s?deg\)/; // Hämta rotationen i grader från CSS transform
+  const match = transformValue.match(regex);
+
+  if (match && match[1]) {
+    return parseInt(match[1], 10); // Returnera rotationen som ett heltal
+  }
+
+  return 0; // Om ingen rotation hittades, returnera 0
+}
+
