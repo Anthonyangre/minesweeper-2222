@@ -1,10 +1,12 @@
 <?php
+session_start();
 require_once '../assets/functions.php';
+$username = $_SESSION['username'];
 if (!isset($_SESSION['userid'])) {
     echo "du är inte välkommen";
     header('Location: ../index.php');
 }
-$username = $_SESSION['username'];
+
 $stats = getUserPoints();
 ?>
 <html lang="en">

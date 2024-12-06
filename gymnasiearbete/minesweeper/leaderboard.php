@@ -46,6 +46,7 @@ $records = getScore();
         <ul>
             <li class="konto-item"><a href="../assets/logout.php" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Logga ut</a></li>
             <li class="konto-item"><a href="profil.php">Profil</a></li>
+            <li class="konto-item"><a href="pre_game_choice.php" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a> </li>
         </ul>
     </div>
 </div>

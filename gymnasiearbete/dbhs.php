@@ -40,7 +40,7 @@ if (isset($_POST["register"])) {
     $_SESSION['username'] = $user['username'];
     echo $_SESSION['username'] ;
     $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
-    $stmt->bind_param("ssss", $username, $zero, $zero, $zero);
+    $stmt->bind_param("siii", $username, $zero, $zero, $zero);
     $stmt->execute();
     $stmt->close();
     $_SESSION['wins'] = $zero;
