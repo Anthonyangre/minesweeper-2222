@@ -55,7 +55,7 @@ $stats = getUserPoints();
         <div class="choicelinks">
 
              <a href="index.php"><p>🎮 </p> Singleplayer</a>
-             <a href="multi.php"><p>👥 </p> Multiplayer</a>
+             <a href="multiplayer/multi.php"><p>👥 </p> Multiplayer</a>
       </div>
 <table id="stats">
 
