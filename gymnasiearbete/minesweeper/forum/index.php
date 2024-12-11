@@ -1,6 +1,9 @@
 <?php
+$sql = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
+
 require_once 'assets/functions.php';
-require_once 'assets/userdbhs.php';
+require_once '../../dbhs.php';
+
 
 session_start(); 
 
@@ -22,12 +25,47 @@ if ($_SESSION['is_admin'] == true) {
 <head>
     <meta charset="utf-8">
     <title>Forum</title>
-    <link href="css/forum.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-  <h3><a href="profil.php">Profil</a></h3>
-  <h3><a href="search.php">Sökning av användare</a></h3>
-  <h3><a href="lsearch.php">Sökning av poster</a></h3>
+<header> 
+        <div class="menu-container" onclick="toggleMenu(this)">
+            <div class="hamburger-menu">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+
+            <!-- Rubrik som glider in från vänster när knappen klickas -->
+            <div class="menu-title">Navigation</div>
+
+            <!-- Dropdown-menyn som visas vid klick -->
+            <div class="dropdown-menu">
+            <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Hem</a> 
+            <a href="pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Meny</a> 
+            <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
+               
+
+            </div>
+        </div>
+
+        <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <div class="konto" onclick="togglekonto(this)">
+    <?php echo htmlspecialchars($username); ?>
+    <div class="konto-dropdown">
+        <ul>
+            <li class="konto-item"><a href="../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>
+            <li class="konto-item"><a href="profil.php">Profil</a></li>
+            <li class="konto-item"><a href="pre_game_choice.php" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a> </li>
+        </ul>
+    </div>
+</div>
+
+
+    
+    </header>
+
 
   <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
       <table>
@@ -41,7 +79,6 @@ if ($_SESSION['is_admin'] == true) {
               <td colspan="2">
                   <input type="submit" name="skicka" id="skicka" value="Skicka">
               </td>
-              <input type="submit" name="logga_ut" id="logga_ut" value="Logga ut">
           </tr>
       </table>
       <input type="hidden" name="MM_insert" value="nypost">

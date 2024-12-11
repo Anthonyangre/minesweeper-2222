@@ -1,6 +1,20 @@
 <?php
-require_once 'userdbhs.php';
-require_once 'config/db.php';
+require_once '../../dbhs.php';
+
+$hostname_forumtest = "localhost";
+$database_forumtest = "Minesweeper";
+$username_forumtest = "Minesweeper";
+$password_forumtest = "Minesweeper";
+
+
+try {
+  $forum = new PDO("mysql:host=$hostname_forumtest;dbname=$database_forumtest", $username_forumtest, $password_forumtest);
+  // set the PDO error mode to exception
+  $forum->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+}
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

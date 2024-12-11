@@ -55,8 +55,8 @@ $stats = getUserPoints();
         <div class="choicelinks">
 
              <a href="index.php"><p>🎮 </p> Singleplayer</a>
-             <a href="forum/index.php"><p>👥 </p> Multiplayer</a>
-             funkar ej just nu...
+             <a href="forum/index.php"><p>🗣️ </p>  Forum</a>
+             
       </div>
 <table id="stats">
 
