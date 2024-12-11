@@ -10,7 +10,7 @@ function getScore() {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare("SELECT * FROM score ORDER BY id DESC");
+    $stmt = $conn->prepare("SELECT * FROM score ORDER BY username DESC");
     if (!$stmt) {
         die("Statement preparation failed: " . $conn->error);
     }
@@ -29,7 +29,7 @@ function getDatabasePoints() {
     }
 
     session_start(); // Ensure session is started
-    $username = $_SESSION['username'];
+    $username = $_SESSION['userid'];
 
     $stmt = $conn->prepare("SELECT points FROM score WHERE username = ?");
     if (!$stmt) {
@@ -51,7 +51,7 @@ function getUserPoints() {
     }
 
     session_start(); // Ensure session is started
-    $username = $_SESSION['username'];
+    $username = $_SESSION['userid'];
 
     $stmt = $conn->prepare("SELECT points, wins, lose FROM score WHERE username = ?");
     if (!$stmt) {

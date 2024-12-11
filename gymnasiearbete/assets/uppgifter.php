@@ -11,7 +11,7 @@ if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
 
     // Query to fetch user data
-    $stmt = $conn->prepare("SELECT username, name, email FROM users WHERE id = ?");
+    $stmt = $conn->prepare("SELECT username, name, email FROM users WHERE username = ?");
     $stmt->bind_param("s", $userid);
     $stmt->execute();
     $result = $stmt->get_result();

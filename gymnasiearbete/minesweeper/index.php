@@ -65,7 +65,7 @@ if (isset($_GET['reset'])) {
     header("Location: index.php");
     exit();
 }
-$username = $_SESSION['username'];
+$username = $_SESSION['userid'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

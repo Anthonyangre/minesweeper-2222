@@ -7,7 +7,7 @@ if (!isset($_SESSION['userid'])) {
 }
 require_once '../dbhs.php';
 require_once '../assets/functions.php';
-$username = $_SESSION['username'];
+$username = $_SESSION['userid'];
 $records = getScore();
 
 ?> 

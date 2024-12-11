@@ -36,8 +36,8 @@ if (isset($_POST["register"])) {
     $result = $stmt->get_result();
      $user = $result->fetch_assoc();
      $stmt->close();
-    $_SESSION['userid'] = $user['id'];
-    $_SESSION['username'] = $user['username'];
+    $_SESSION['userid'] = $user['username'];
+
     echo $_SESSION['username'] ;
     $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
     $stmt->bind_param("siii", $username, $zero, $zero, $zero);
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -69,8 +69,8 @@ if (isset($_POST['submit'])) {
 
         if (password_verify($password, $user['password'])) {
             echo "Password is correct.<br>";
-            $_SESSION['userid'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
+            $_SESSION['userid'] = $user['username'];
+
             $stmt = $conn->prepare("SELECT points, wins, lose FROM score WHERE username = ?");
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -102,7 +102,7 @@ if (isset($_POST["Ändra"])) {
         $errors[] = "Du måste vara inloggad för att ändra dina uppgifter.";
     } else {
         // Retrieve current logged-in user's username (from the session)
-        $userid = $_SESSION['username'];
+        $userid = $_SESSION['userid'];
 
         // Fetch the data from the form
         $password = $_POST['password3'];

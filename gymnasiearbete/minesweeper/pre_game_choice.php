@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../assets/functions.php';
-$username = $_SESSION['username'];
+$username = $_SESSION['userid'];
 if (!isset($_SESSION['userid'])) {
     echo "du är inte välkommen";
     header('Location: ../index.php');
@@ -55,7 +55,8 @@ $stats = getUserPoints();
         <div class="choicelinks">
 
              <a href="index.php"><p>🎮 </p> Singleplayer</a>
-             <a href="multiplayer/multi.php"><p>👥 </p> Multiplayer</a>
+             <a href="forum/index.php"><p>👥 </p> Multiplayer</a>
+             funkar ej just nu...
       </div>
 <table id="stats">
 
