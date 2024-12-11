@@ -27,7 +27,7 @@ require_once 'assets/uppgifter.php';
                     <a href="#info" class="dropdown-item">Info</a>
                 </div>
             </div>
-            <h3 class="rainbow-text">Välkommen till Minesweeper</h3>
+            <h3 class="rainbow-text" id="topp">Välkommen till Minesweeper</h3>
             <div class="header-links">
                 <a href="login.php">Login</a>
                 <a href="signup.php">Signup</a>
@@ -41,86 +41,39 @@ require_once 'assets/uppgifter.php';
 
         <!-- Första rad: Kub och flagga -->
         <div class="row">
-            <div class="cube-wrapper">
-                <div class="tredim_textarea">
-                    <div class="cube" id="cube1">
-                        <div class="face front">
-                            <h2>Framsidan</h2>
-                            <p>Text på framsidan.</p>
-                        </div>
-                        <div class="face back">
-                            <h2>Baksidan</h2>
-                            <p>Text på baksidan.</p>
-                        </div>
-                        <div class="face left">
-                            <h2>Vänster</h2>
-                            <p>Text på vänster sida.</p>
-                        </div>
-                        <div class="face right">
-                            <h2>Höger</h2>
-                            <p>Text på höger sida.</p>
-                        </div>
-                        <div class="face top">
-                            <h2>Toppen</h2>
-                            <p>Text på toppen.</p>
-                        </div>
-                        <div class="face bottom">
-                            <h2>Botten</h2>
-                            <p>Text på botten.</p>
-                        </div>
-                    </div>
-                    <button class="rotate-left" onclick="rotateCube('cube1', 'left')">◄</button>
-                    <button class="rotate-right" onclick="rotateCube('cube1', 'right')">►</button>
-                </div>
-            </div>
+        <div class="textruta">
+
+        År 1789, då den franska revolutionen inleddes, var Ludvig XVI kung i Frankrike. Ludvig var en liten, närsynt och fumlig man. Hans främsta intressen var mat och jakt.
+        </div>
+                
+                    
+        
+
             <div class="flag-wrapper">
                 <img src="image/flagga.png" alt="Minesweeper flagga">
             </div>
+        </div>
         </div>
 
         <!-- Andra rad: Kub och flagga -->
         <div class="row">
-            <div class="cube-wrapper">
-                <div class="tredim_textarea">
-                    <div class="cube" id="cube2">
-                        <div class="face front">
-                            <h2>Framsidan</h2>
-                            <p>Text på framsidan.</p>
-                        </div>
-                        <div class="face back">
-                            <h2>Baksidan</h2>
-                            <p>Text på baksidan.</p>
-                        </div>
-                        <div class="face left">
-                            <h2>Vänster</h2>
-                            <p>Text på vänster sida.</p>
-                        </div>
-                        <div class="face right">
-                            <h2>Höger</h2>
-                            <p>Text på höger sida.</p>
-                        </div>
-                        <div class="face top">
-                            <h2>Toppen</h2>
-                            <p>Text på toppen.</p>
-                        </div>
-                        <div class="face bottom">
-                            <h2>Botten</h2>
-                            <p>Text på botten.</p>
-                        </div>
-                    </div>
-                    <button class="rotate-left" onclick="rotateCube('cube2', 'left')">◄</button>
-                    <button class="rotate-right" onclick="rotateCube('cube2', 'right')">►</button>
-                </div>
-            </div>
+        <div class="textruta">
+
+            Hello
+
+        </div>
+
+
             <div class="flag-wrapper">
                 <img src="image/flagga.png" alt="Minesweeper flagga">
             </div>
-        </div>
+            </div>
+
 
         <!-- Upp-knappen -->
         <a href="#topp" id="upp-knapp">
             <img src="image/upp.png" alt="Upp-knapp">
         </a>
-    </div>
+
 </body>
 </html>
