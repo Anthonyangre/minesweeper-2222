@@ -109,6 +109,8 @@ if ($_SESSION['is_admin'] == true) {
               <td colspan="3">Inga meddelanden att visa.</td>
           </tr>
       <?php endif; ?>
+
   </table>
+  <script src="../../java.js"></script>
 </body>
 </html>
