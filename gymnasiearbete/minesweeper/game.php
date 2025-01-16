@@ -19,6 +19,7 @@ if (!isset($_SESSION['game_state'])) {
     $_SESSION['pre_game_points'] = $stats['points']; 
     $_SESSION['wins'] = 0;
     $_SESSION['lose'] = 0;
+    $_SESSION['currentpoints'] = 0;
 }
 
 
@@ -26,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
     if ($_SESSION['game_state'] != 'ongoing') {
         $_SESSION['currentpoints'] = 0;
+        
     }
     if ($_SESSION['game_state'] === 'ongoing') {
         $action = $_POST['action'];
@@ -150,8 +152,10 @@ function revealCell($row, $col) {
         if ($cPoints > 0) {
             $pointsloss = $cPoints;
             $_SESSION['points'] = ($pointsloss); 
+            $cPoints = 0;
         } elseif ($cPoints < 0 ) {
             $_SESSION['points'] = 0;
+            $cPoints = 0;
          } else {
             $_SESSION['points'] = 0; 
 
@@ -300,7 +304,10 @@ function updateDatabaseLoss() {
     $_SESSION['pre_game_points'] = $stats['points'];
 
     $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  
+    error_log($_SESSION['points']);
     $_SESSION['points'] = 0;
+    $_SESSION['currentpoints'] = 0;
+ 
     $lose = $_SESSION['lose'];
     $username = $_SESSION['userid'] ?? '';
 
