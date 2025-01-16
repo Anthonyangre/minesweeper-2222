@@ -425,7 +425,8 @@ header h3 {
 
 .rainbow-text span {
   display: inline-block;
-  background: linear-gradient(45deg, red, orange, yellow, green, rgb(0, 179, 255), indigo, violet);
+  background: linear-gradient(45deg, rgb(0, 255, 221), rgb(0, 119, 255), rgb(0, 60, 255), rgb(138, 0, 252), rgb(204, 0, 255), indigo, rgb(255, 0, 119));
+
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
