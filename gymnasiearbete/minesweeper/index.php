@@ -117,7 +117,7 @@ $stats = getUserPoints();
     </header>
     <div class="back">
 <div class="background">
-<div id="status">Game in progress...</div>
+<div id="status">Game In Progress...</div>
     <div id="game-board"></div>
     <button id="reset-button">Reset</button>
 </div>

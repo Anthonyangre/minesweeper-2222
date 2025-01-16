@@ -124,23 +124,3 @@ function togglekonto(button) {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const uppKnapp = document.getElementById('upp-knapp');
-
-  window.addEventListener('scroll', () => {
-      if (window.scrollY > 200) {
-          uppKnapp.style.display = 'block'; // Visa knappen
-      } else {
-          uppKnapp.style.display = 'none'; // Dölj knappen
-      }
-  });
-});
-
-
-function rotateCube(cubeId, direction) {
-  const cube = document.getElementById(cubeId); // Hämta kuben via ID
-  const currentRotation = parseInt(cube.dataset.rotation || "0", 10); // Läs den nuvarande rotationen från data-attribut
-  const newRotation = currentRotation + (direction === "left" ? -90 : 90); // Uppdatera rotationen
-  cube.dataset.rotation = newRotation; // Spara den nya rotationen i data-attribut
-  cube.style.transform = `rotateY(${newRotation}deg)`; // Använd CSS-transform för att uppdatera kubens utseende
-}
