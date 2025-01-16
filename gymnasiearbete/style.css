@@ -833,6 +833,8 @@ textarea {
 
 
 table {
+  background-color:black;
+  color: white;
   width: 500px;
   border: 3px solid rgb(3, 192, 255); /* Vanlig kant */
   border-collapse: collapse;
@@ -842,7 +844,29 @@ table {
   outline-offset: 0;
   outline-color: rgba(0, 130, 206, 0.75);
   outline-style: solid;
-  animation: animateOutline 3s ease infinite;
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.103) 5%,
+    rgb(255, 255, 255) 60%,
+    rgb(255, 255, 255) 95%
+  );
+
+border: solid 4px transparent;
+
+
+/* Gradient border */
+--gradient-border: conic-gradient(from var(--border-angle), transparent 25%, rgb(98, 0, 255), rgb(234, 0, 255) 99%, transparent);
+
+background: 
+  var(--main-bg) padding-box,
+  var(--gradient-border) border-box,
+  var(--main-bg) border-box;
+
+background-position: center center;
+
+/* Animation */
+animation: bg-spin 5s linear infinite;
   font-family: fantasy;
 
   /* Lägg till suddig kant */
@@ -887,10 +911,12 @@ table {
 
 /* Ställer in kolumn- och cellformat:*/
 th, td {
-    border: 1px solid rgb(255, 0, 200);
+  background-color:rgb(51, 35, 35);
+  color: white;
+    border: 2px solid rgb(162, 0, 255);
     padding: 5px;
-    color:darkblue;
-    font-family: fantasy;
+ 
+    font-family:sans-serif;
 }
 
 /* Justerar varje rad i tabellen: */
@@ -898,17 +924,17 @@ tr {
     border: 1px solid black;
 	 vertical-align: top;
     align-items: center;
-    background-color: #00bbff;
+    background-color: #ffffff;
 }
 
 /* Ger udda rader (nth-child(odd)) en mörkgrå bakgrundsfärg */
 #dbres tr:nth-child(odd) {
-	background-color: rgb(0, 255, 213);
+	background-color: rgb(219, 231, 229);
 }
 
 /* Sätter bakgrundsfärg på den första raden i tabellen till mörkgrå */
 #dbres tr:first-child {
-	background-color: rgb(87, 65, 255);
+	background-color: rgb(255, 255, 255);
 }
 #stats {
   position:absolute;
@@ -1014,4 +1040,86 @@ tr {
     #stats {
       display: none;
     }
+  }
+  .username {
+    color: red;
+    font-weight: bold;
+  }
+  #message{
+    padding:15px;
+    color:white;
+    font-weight: bold;
+    background-color:gray;
+    border-radius: 5px;
+  }
+.yes {
+  background-color:black;
+  color: white;
+  width: 500px;
+  border: 3px solid rgb(3, 192, 255); /* Vanlig kant */
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin: auto;
+
+  outline-offset: 0;
+  outline-color: rgba(0, 130, 206, 0.75);
+  outline-style: solid;
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.103) 5%,
+    rgb(255, 255, 255) 60%,
+    rgb(255, 255, 255) 95%
+  );
+
+border: solid 10px transparent;
+
+
+/* Gradient border */
+--gradient-border: conic-gradient(from var(--border-angle), transparent 25%, rgb(98, 0, 255), rgb(234, 0, 255) 99%, transparent);
+
+background: 
+  var(--main-bg) padding-box,
+  var(--gradient-border) border-box,
+  var(--main-bg) border-box;
+
+background-position: center center;
+
+/* Animation */
+animation: bg-spin 5s linear infinite;
+  font-family: fantasy;
+
+  /* Lägg till suddig kant */
+  box-shadow: 4px 4px 10px rgba(3, 192, 255, 0.6); /* Blurred kant */
+  }
+  .form-group3 {
+    margin-bottom: 20px;
+    position: relative;
+    text-align: center;
+    padding-bottom: 30px;
+    
+  }
+  
+  .form-group3 label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+    display: block;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInUp 0.5s forwards;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .form-group3 input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: #f9f9f9;
+    text-align: center;
   }

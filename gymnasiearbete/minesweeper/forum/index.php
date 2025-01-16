@@ -15,9 +15,7 @@ if (!isset($_SESSION['userid'])) {
 $username = $_SESSION['userid'];
 
 $records = getForumPosts();
-if ($_SESSION['is_admin'] == true) {
-    echo "<h1><a href='admin/admin.php'>Admin</a></h1>";
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +53,8 @@ if ($_SESSION['is_admin'] == true) {
     <?php echo htmlspecialchars($username); ?>
     <div class="konto-dropdown">
         <ul>
-            <li class="konto-item"><a href="../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>
-            <li class="konto-item"><a href="profil.php">Profil</a></li>
+            <li class="konto-item"><a href="../../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>
+            <li class="konto-item"><a href="../profil.php">Profil</a></li>
             <li class="konto-item"><a href="pre_game_choice.php" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a> </li>
         </ul>
     </div>
@@ -68,10 +66,10 @@ if ($_SESSION['is_admin'] == true) {
 
 
   <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-      <table>
-          <tr>
-              <td>Meddelande</td>
-              <td>
+      <table class="yes">
+          <tr >
+              <td> <?php echo "<p>Skicka meddelande genom:<span class='username'> $username</span></p>"; ?>
+              
                   <textarea class="textFiled" name="msg" rows="8" id="msg"></textarea>
               </td>
           </tr>
@@ -84,24 +82,18 @@ if ($_SESSION['is_admin'] == true) {
       <input type="hidden" name="MM_insert" value="nypost">
   </form>
 
-  <table id="dbres">
-      <tr>
-          <th>Användare</th>
-          <th>Meddelande</th>
-          <th>Datum</th>
-          <th>Länk till inlägg</th>
-      </tr>
+  <table id="dbres" class="yes">
       <?php if (!empty($records)): ?>
           <?php foreach ($records as $row_Recordset1): ?>
               <tr>
                   <td>
-                      <?php echo htmlspecialchars($row_Recordset1['username']); ?>
+                    
+                      <?php echo "<strong>" . htmlspecialchars($row_Recordset1['username']) . "</strong>"; ?> <?php echo "<small>" . htmlspecialchars($row_Recordset1['tid']) . "</small>"; ?>
                       <!-- Link to search page for user's posts -->
                       
-                  </td>
-                  <td><?php echo nl2br(htmlspecialchars_decode($row_Recordset1['msg'])); ?></td>
-                  <td><?php echo htmlspecialchars($row_Recordset1['tid']); ?></td>
-                  <td><a href="lsearch.php?user=<?php echo urlencode($row_Recordset1['username']); ?>">Visa inlägg</a></td>
+                      <div id="message"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['msg'])); ?></div>
+                    
+                </td>
               </tr>
           <?php endforeach; ?>
       <?php else: ?>

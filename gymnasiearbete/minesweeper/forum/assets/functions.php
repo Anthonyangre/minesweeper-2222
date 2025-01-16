@@ -18,11 +18,13 @@ try {
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$username = $_SESSION['userid'];
+
 
 if (!isset($_SESSION['userid'])) {
     echo "You must be logged in to post a message.";
     header('Location: index.php'); 
+} else {
+    $username = $_SESSION['userid'];
 }
 
 

@@ -61,15 +61,18 @@ require_once '../assets/uppgifter.php';
 </header>
     <div id="wrapper">
 
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="profil-form">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="profil-form" enctype="multipart/form-data">
 <fieldset>
      <h1>Redigera dina användar uppgifter</h1>
            
            
             <h4>Användarnamn: <?php echo htmlspecialchars(string: $username); ?></h4>
+            <div class="form-group3">
+            <label for="profile_picture">Profilbild</label>
+            <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+            </div>
             
-              
-              
+
             <div class="form-group2">
             <label for="email3">Email</label>
             <input type="mail" id="email3" name="email3" value="<?php echo htmlspecialchars($email); ?>" >
