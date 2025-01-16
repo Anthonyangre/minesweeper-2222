@@ -6,7 +6,7 @@ html {
 
 body{
 
-  background: linear-gradient(45deg, #6a82fb, #fc5c7d);
+  background: linear-gradient(45deg, #5e4ef1b4, #ff2e5b);
   background-size: 100% 100%;
   animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
   z-index: -1; /* Ensure the background stays behind the content */
@@ -425,8 +425,7 @@ header h3 {
 
 .rainbow-text span {
   display: inline-block;
-  background: linear-gradient(45deg, rgb(0, 255, 221), rgb(0, 119, 255), rgb(0, 60, 255), rgb(138, 0, 252), rgb(204, 0, 255), indigo, rgb(255, 0, 119));
-
+  background: linear-gradient(45deg, red, orange, yellow, green, rgb(0, 179, 255), indigo, violet);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -703,8 +702,8 @@ textarea {
 }
 /*cool border för konto */
 :root {
-	--primary: #88D5BF;
-	--secondary: #5D6BF8;
+	--primary: #88d5c8;
+	--secondary: #cc00ff;
 }
 
 * {

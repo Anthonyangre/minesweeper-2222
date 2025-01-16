@@ -79,12 +79,14 @@ body.game-over button {
     cursor: not-allowed;
     background-color: #6c757d;
 }
+
+
 .background {
     margin:auto;
     width: 750px;
     margin-top: 10px;
     padding:4%;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%), ;
     animation: morph 25s ease-in-out infinite;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     transition: all 0.05s ease-in-out;
@@ -92,6 +94,8 @@ body.game-over button {
     font-weight: bold;
     color: white;
     text-shadow: 5px 5px 4px rgba(255, 0, 234, 0.5);
+    --primary: #00ffdd;
+	--secondary: #5754ff;
 }
 
 @keyframes morph {
