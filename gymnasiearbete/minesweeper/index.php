@@ -2,6 +2,7 @@
 
 session_start();
 require_once '../dbhs.php';
+require_once '../assets/functions.php';
 if (!isset($_SESSION['grid'])) {
     resetGame();
 }
@@ -66,6 +67,7 @@ if (isset($_GET['reset'])) {
     exit();
 }
 $username = $_SESSION['userid'];
+$stats = getUserPoints();
 ?>
 <!DOCTYPE html>
 <html lang="en">

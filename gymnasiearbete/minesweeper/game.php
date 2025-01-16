@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../assets/functions.php';
 if (!isset($_SESSION['userid'])) {
     echo "du är inte välkommen";
     header('Location: ../index.php');
@@ -14,7 +15,8 @@ if (!isset($_SESSION['game_state'])) {
     $_SESSION['revealed'] = array_fill(0, $rows, array_fill(0, $cols, false));
     $_SESSION['flags'] = array_fill(0, $rows, array_fill(0, $cols, false));
     $_SESSION['points'] = 0;
-    $_SESSION['pre_game_points'] = 0;
+    $stats = getUserPoints();
+    $_SESSION['pre_game_points'] = $stats['points']; 
     $_SESSION['wins'] = 0;
     $_SESSION['lose'] = 0;
 }
@@ -132,8 +134,10 @@ function revealCell($row, $col) {
 
     // Reveal the clicked cell
     $_SESSION['revealed'][$row][$col] = true;
-    $_SESSION['currentpoints']++;  // Increment points when a cell is revealed
-
+ // Increment points when a cell is revealed
+    if ($_SESSION['grid'][$row][$col] != 'M') {
+        $_SESSION['currentpoints']++;
+    }
     // If it's a mine, the game is lost
     if ($_SESSION['grid'][$row][$col] == 'M') {
         $_SESSION['game_state'] = 'lost';
@@ -141,17 +145,26 @@ function revealCell($row, $col) {
     
         // Apply a penalty of -10 points for the loss
         $totalPointsLost = 5;  // Define the penalty explicitly
-        $currentPoints = $_SESSION['currentpoints'];
-        $cPoints = $currentPoints - $totalPointsLost;
-        $pointsloss = max(0, $cPoints);
-
+        $cPoints =  $_SESSION['currentpoints'] - $totalPointsLost;
         
-        $_SESSION['points'] = ($pointsloss);  // Apply penalty but ensure points don't go negative
+        if ($cPoints > 0) {
+            $pointsloss = $cPoints;
+            $_SESSION['points'] = ($pointsloss); 
+        } elseif ($cPoints < 0 ) {
+            $_SESSION['points'] = 0;
+         } else {
+            $_SESSION['points'] = 0; 
+
+         }
+        
+        
+          // Apply penalty but ensure points don't go negative
     
         // Update the database with the loss
         updateDatabaseLoss();
     
         revealAllMines();
+
         return;
     }
     
@@ -159,6 +172,7 @@ function revealCell($row, $col) {
     // If it's a zero, reveal surrounding cells
     if ($_SESSION['grid'][$row][$col] == 0) {
         revealCluster($row, $col);  // Only reveal surrounding cells if it's 0
+        
     }
 }
 
@@ -246,21 +260,30 @@ function revealAllMines() {
 function updateDatabaseWin() {
     $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
-    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  // Multiply points by 100 for scoring system
+    if ($conn->connect_error) {
+        error_log("Database connection failed: " . $conn->connect_error);
+        return;
+    }
+
+    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  
     $wins = $_SESSION['wins'];
-    $username = $_SESSION['username'] ?? '';
+    $username = $_SESSION['userid'] ?? '';
 
     if (!empty($username)) {
         $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?");
         if ($stmt) {
             $stmt->bind_param("iis", $points, $wins, $username);
             if (!$stmt->execute()) {
-                error_log("Failed to update database: " . $stmt->error);
+                error_log("Failed to execute statement in updateDatabaseWin: " . $stmt->error);
+            } else {
+                error_log("Successfully updated points and wins for user: $username");
             }
             $stmt->close();
         } else {
-            error_log("Failed to prepare statement: " . $conn->error);
+            error_log("Failed to prepare statement in updateDatabaseWin: " . $conn->error);
         }
+    } else {
+        error_log("Username is empty in updateDatabaseWin.");
     }
 
     $conn->close();
@@ -269,23 +292,34 @@ function updateDatabaseWin() {
 function updateDatabaseLoss() {
     $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
-    $points = $_SESSION['points'];  // Multiply points by 100 for scoring system
+    if ($conn->connect_error) {
+        error_log("Database connection failed: " . $conn->connect_error);
+        return;
+    }
+    $stats = getUserPoints();
+    $_SESSION['pre_game_points'] = $stats['points'];
+
+    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  
+    $_SESSION['points'] = 0;
     $lose = $_SESSION['lose'];
-    $username = $_SESSION['username'] ?? '';
+    $username = $_SESSION['userid'] ?? '';
 
     if (!empty($username)) {
         $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `lose` = ? WHERE `username` = ?");
         if ($stmt) {
             $stmt->bind_param("iis", $points, $lose, $username);
             if (!$stmt->execute()) {
-                error_log("Failed to update database: " . $stmt->error);
+                error_log("Failed to execute statement in updateDatabaseLoss: " . $stmt->error);
+            } else {
+                error_log("Successfully updated points and losses for user: $username");
             }
             $stmt->close();
         } else {
-            error_log("Failed to prepare statement: " . $conn->error);
+            error_log("Failed to prepare statement in updateDatabaseLoss: " . $conn->error);
         }
+    } else {
+        error_log("Username is empty in updateDatabaseLoss.");
     }
 
     $conn->close();
 }
-?>
