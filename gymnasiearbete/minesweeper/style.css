@@ -42,10 +42,12 @@ body {
 .cell.flag {
     background-color: rgb(0, 255, 60);
     cursor: default;
+    text-shadow: 5px 5px 4px rgba(255, 0, 234, 0.5);
 }
 
 .cell.mine {
     background-color: #f99;
+    text-shadow: 5px 5px 4px rgba(255, 0, 234, 0.5);
 }
 
 .cell:hover:not(.revealed):not(.flag) {
@@ -55,16 +57,17 @@ body {
 button {
     padding: 10px 20px;
     font-size: 16px;
-    cursor: pointer;
+    background-color: #007bff;
+    color: white;
     border: none;
-    background-color: #28a745;
-    color: #fff;
     border-radius: 5px;
-    transition: background-color 0.2s;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animation */
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: #218838;
+    transform: scale(1.2); /* Make the button 20% larger */
+    background-color: #0056b3; /* Optional: change background color on hover */
 }
 
 button:active {
@@ -76,8 +79,7 @@ body.game-over .cell {
 }
 
 body.game-over button {
-    cursor: not-allowed;
-    background-color: #6c757d;
+    background-color: #28a745;
 }
 
 
@@ -86,57 +88,18 @@ body.game-over button {
     width: 750px;
     margin-top: 10px;
     padding:4%;
-    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%), ;
-    animation: morph 25s ease-in-out infinite;
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    transition: all 0.05s ease-in-out;
+    background: linear-gradient(0deg, var(--primary) 0%, var(--secondary) 100%);
+    border: 3px solid black;
+    border-radius: 50px;
     font-size: 18px;
     font-weight: bold;
     color: white;
-    text-shadow: 5px 5px 4px rgba(255, 0, 234, 0.5);
-    --primary: #00ffdd;
-	--secondary: #5754ff;
+   
+    --primary: #000000;
+	--secondary: #0841ff;
 }
 
-@keyframes morph {
-    0% {
-              border-radius:  20% 20% 20% 10% / 20% 20% 20% 10%;
-              background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-      } 
-  
-    12.5% {
-      border-radius:  20% 20% 50% 70% / 40% 20% 20% 10%;
-      background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-  } 
-  
-    25% {
-      border-radius:  10% 10% 100% 40% / 30% 40% 60% 60%;
-      background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-  }
-      
-      50% {
-              border-radius:  30% 70% 70% 40% / 50% 60% 30% 30%;
-              background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-      }
-  
-    80% {
-      border-radius:  -3000% 20% 50% 70% / 80% 30% 60% 30%;
-      background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-  }
-  
-  90% {
-    border-radius:  70% 20% 50% 70% / 80% 30% 2000% 30%;
-    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-  }
-  
-  
-  
-    
-      100% {
-          border-radius:  20% 20% 20% 10% / 20% 20% 20% 10%;
-          background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-      } 
-  }
+
 
 
 .cell.one {
@@ -204,4 +167,21 @@ body.game-over button {
       --border-angle: 1turn;
     }
   }
+
+  #arrow {
+    position: relative;
+    right: 200px;
+    font-size: 20px; /* Justerbar storlek */
+    transition: transform 0.3s ease; /* Smidig animation */
+}
+
+.up-arrow {
+    transform: rotate(180deg); /* Valfritt: gör pilen upp-och-ned */
+}
+
+.down-arrow {
+    transform: rotate(0deg);
+}
+
+
  
