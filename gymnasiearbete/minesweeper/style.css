@@ -168,9 +168,10 @@ body.game-over button {
     }
   }
 
-  #arrow {
+#arrow {
     position: relative;
-    right: 200px;
+    left: 10px;
+    top:10px;
     font-size: 20px; /* Justerbar storlek */
     transition: transform 0.3s ease; /* Smidig animation */
 }
