@@ -641,8 +641,6 @@ textarea {
 h4 {
   text-align: center;  /* Centrera rubriken */
   margin-bottom: 20px;  /* Skapa avstånd mellan rubriken och textrutan */
-  margin-right:200px;
-  font-size: 60px;
 }
 
 /* Wrapper för textrutan och flaggan */

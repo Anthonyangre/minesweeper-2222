@@ -63,7 +63,7 @@ require_once '../assets/uppgifter.php';
 
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="profil-form" enctype="multipart/form-data">
 <fieldset>
-     <h1>Redigera dina användar uppgifter</h1>
+     <h3>Redigera dina användar uppgifter</h3>
            
            
             <h4>Användarnamn: <?php echo htmlspecialchars(string: $username); ?></h4>
