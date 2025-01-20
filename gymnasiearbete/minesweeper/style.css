@@ -22,7 +22,7 @@ body {
 .cell {
     width: 40px;
     height: 40px;
-    background-color: #aaaaaa;
+    background-color: #00eeff;
     border: 1px solid #5e5e5e;
     display: flex;
     align-items: center;
@@ -127,21 +127,30 @@ body.game-over button {
     
 }
 
-@keyframes rainbow {
-    0% {
-        background-position: 0%;
-    }
-    100% {
-        background-position: 100%;
-    }
-}
+
 .cell.six {
-    color: rgb(255, 0, 157);
     font-weight: bold;
+    background-color: inherit; /* Behåll bakgrunden */
+    animation: rainbow-text 8s infinite; /* Lägg till animation för regnbågsfärger */
+    background-color: #f0f0f0;
 }
+
+/* Skapa regnbågsanimation */
+@keyframes rainbow-text {
+    0% { color: rgb(255, 0, 0); }     /* Röd */
+    16% { color: rgb(255, 165, 0); } /* Orange */
+    33% { color: rgb(0, 134, 31); } /* Gul */
+    50% { color: rgb(0, 255, 0); }   /* Grön */
+    66% { color: rgb(0, 0, 255); }   /* Blå */
+    83% { color: rgb(75, 0, 130); }  /* Indigo */
+    100% { color: rgb(238, 130, 238); } /* Violett */
+}
+
 .cell.seven {
-    color: rgb(0, 255, 242);
     font-weight: bold;
+    background-color: inherit; /* Behåll bakgrunden */
+    animation: rainbow-text 8s infinite; /* Lägg till animation för regnbågsfärger */
+    background-color: #f0f0f0;
 }
 .cell.eight {
     color: rgb(255, 251, 0);
