@@ -16,7 +16,7 @@ if (isset($_POST["register"])) {
     $email = $_POST['email'];
     $name = $_POST['name'];
     $password = $_POST['password'];
-    $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -30,7 +30,7 @@ if (isset($_POST["register"])) {
     $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
     $stmt->execute();
  
-    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -144,46 +144,6 @@ if (isset($_POST["Ändra"])) {
         
             $stmt->close();
         }
-    }
-}
-
-if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
-    $file = $_FILES['profile_picture'];
-
-    // Validate the file type (only allow images)
-    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-    $fileType = mime_content_type($file['tmp_name']);
-    if (!in_array($fileType, $allowedTypes)) {
-        $errors[] = "Endast JPG, PNG och GIF-filer är tillåtna.";
-    }
-
-    // Validate file size (e.g., max 2MB)
-    $maxFileSize = 2 * 1024 * 1024; // 2MB
-    if ($file['size'] > $maxFileSize) {
-        $errors[] = "Filen är för stor. Maxstorlek är 2MB.";
-    }
-
-    if (empty($errors)) {
-        // Generate a unique filename to prevent overwriting
-        $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $uniqueFilename = uniqid('profile_', true) . '.' . $fileExtension;
-
-        // Move the uploaded file to the upload directory
-        $profilePicturePath = $uploadDir . $uniqueFilename;
-        if (move_uploaded_file($file['tmp_name'], $profilePicturePath)) {
-            echo "Profilbilden har laddats upp: <a href='$profilePicturePath'>$profilePicturePath</a>";
-        } else {
-            $errors[] = "Misslyckades att flytta filen.";
-        }
-    }
-} else {
-    $errors[] = "Ingen fil har valts eller ett fel uppstod.";
-}
-
-// Display errors if any
-if (!empty($errors)) {
-    foreach ($errors as $error) {
-        echo '<p>' . htmlspecialchars($error) . '</p>';
     }
 }
 
