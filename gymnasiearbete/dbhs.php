@@ -137,7 +137,7 @@ if (isset($_POST["Ändra"])) {
             $stmt->bind_param("ssss",  $name, $email, $passwordhash, $userid);
 
             if ($stmt->execute()) {
-                echo "Dina uppgifter har uppdaterats!";
+            
             } else {
                 $errors[] = "Ett fel uppstod när uppgifterna skulle uppdateras.";
             }

@@ -29,7 +29,7 @@ if (isset($_SESSION['userid'])) {
     $errors[] = "Du måste vara inloggad för att ändra dina uppgifter";
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $errors = [];
+    
     $uploadDir = 'uploads/'; // Directory to save uploaded files
 
     // Check if the uploads directory exists, if not create it
@@ -42,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file = $_FILES['profile_picture'];
 
         // Validate the file type (only allow images)
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        $allowedTypes = ['image/jpeg'];
         $fileType = mime_content_type($file['tmp_name']);
         if (!in_array($fileType, $allowedTypes)) {
-            $errors[] = "Only JPG, PNG, and GIF files are allowed.";
+            $errors[] = "Only JPG files are allowed.";
         }
 
         // Validate file size (e.g., max 2MB)
@@ -66,7 +66,6 @@ $_SESSION["userid"] = $username;
 
             // Move the uploaded file to the upload directory
             if (move_uploaded_file($file['tmp_name'], $profilePicturePath)) {
-                echo "<p>Profile picture uploaded successfully: <a href='$profilePicturePath'>View Image</a></p>";
             } else {
                 $errors[] = "Failed to move the uploaded file.";
             }
@@ -75,12 +74,7 @@ $_SESSION["userid"] = $username;
         $errors[] = "No file selected or an error occurred.";
     }
 
-    // Display errors if any
-    if (!empty($errors)) {
-        foreach ($errors as $error) {
-            echo '<p>' . htmlspecialchars($error) . '</p>';
-        }
-    }
+
 }
 
 ?>

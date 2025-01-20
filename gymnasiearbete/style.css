@@ -7,13 +7,7 @@ html {
 body{
 
   background: linear-gradient(45deg, #5e4ef1b4, #ff2e5b);
-  background-size: 100% 100%;
   animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
-  z-index: -1; /* Ensure the background stays behind the content */
-  margin: 0;
-  padding: 0;
-  width: 100%; /* Se till att body och html är 100% av bredden på skärmen */
-  height: 100%; /* Se till att body och html är 100% av höjden på skärmen */
   overflow-x: hidden; /* Förhindrar horisontell scrollning */
   box-sizing: border-box; /* Gör så att padding och border ingår i elementens storlek */
 }
@@ -42,28 +36,18 @@ ol{
 }
 @keyframes gradientAnimation {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 500%;
   }
-  50% {
-    background-position: 100% 50%;
+  500% {
+    background-position: 1000% 500%;
   }
-  100% {
-    background-position: 0% 50%;
+  1000% {
+    background-position: 00% 500%;
   }
 }
 
 /* Wave effect for background */
 
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 
 
 
@@ -71,7 +55,6 @@ ol{
 
 
 
-}
 .form-group2 {
   margin-bottom: 20px;
   position: relative;
@@ -1135,7 +1118,13 @@ animation: bg-spin 5s linear infinite;
     text-align: center;
     padding: 10px;
   }
-  
+  .profil_bild {
+    width:50px;
+    height:50px;
+    border-radius:50px;
+    border:3px solid black;
+    margin-bottom:1%;
+  }
   .form-group3 input {
     width: 100%;
     padding: 10px;
