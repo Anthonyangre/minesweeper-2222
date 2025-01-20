@@ -12,7 +12,6 @@ require_once 'assets/uppgifter.php';
     <script type="text/javascript" src="java.js" defer></script>
 </head>
 <body>
-    <div class="minesweeper-page">
         <!-- Header -->
         <header>
             <div class="menu-container" onclick="toggleMenu(this)">
@@ -38,36 +37,69 @@ require_once 'assets/uppgifter.php';
         <div id="head2">
             <img src="image/header_bild.png" alt="Header-bild">
         </div>
+      
+        <div class="container">
+  <h4>Rolig fakta</h4> <!-- Rubrik utanför textrutan -->
+  <div class="row">
+    <div class="textruta">
+    1. Minesweeper utvecklades av Microsoft 1989 och inkluderades först i Windows 3.1 1992.
+Minesweeper skapades av Curt Johnson, en programmerare på Microsoft, 1989. Det ingick först i Windows Entertainment Pack 1990 och blev populärt först med Windows 3.1 1992.  <br> <br> 
 
-        <!-- Första rad: Kub och flagga -->
-        <div class="row">
-        <div class="textruta">
+2. Minesweeper var ursprungligen designat som ett verktyg för att lära folk använda musen.
+Spelet var inte tänkt att vara ett spel utan ett sätt att lära användare hur man använder en mus. Det var inspirerat av ett äldre spel, Cube, och erbjöd ett intuitivt sätt att lära sig navigera på datorn.<br> <br>
 
-        År 1789, då den franska revolutionen inleddes, var Ludvig XVI kung i Frankrike. Ludvig var en liten, närsynt och fumlig man. Hans främsta intressen var mat och jakt.
-        </div>
-                
-                    
-        
+3. Minesweeper var inspirerat av ett mainframe-spel som kallades Cube.
+Minesweeper togs fram efter inspiration från ett äldre spel, Cube, som användes för att samla skatter och undvika hinder. <br> <br>
 
-            <div class="flag-wrapper">
-                <img src="image/flagga.png" alt="Minesweeper flagga">
-            </div>
-        </div>
-        </div>
+4. Spelet var aldrig tänkt att vara beroendeframkallande, men det blev snabbt ett av de mest populära spelen på Windows.
+Minesweeper blev så populärt eftersom det var gratis, enkelt att lära sig och fanns förinstallerat på miljontals datorer. Dess popularitet har hållit i sig i årtionden. <br> <br>
 
-        <!-- Andra rad: Kub och flagga -->
-        <div class="row">
-        <div class="textruta">
+5. Spelet designades först för att likna ett minfält under andra världskriget.
+Spelet visade svarta rutor som representerade minor och vita rutor som var säkra områden, en design som härstammar från andra världskriget. <br> <br> 
 
-            Hello
+6. Den smiley som visas när du vinner spelet kallas "Victory Smile".
+Victory Smile introducerades 1992 och blev en ikon för spelet. Det är en belöning för att framgångsrikt navigera genom minfältet.   <br> <br> 
 
-        </div>
+7. Spelet var förbjudet i vissa länder, inklusive Kina, eftersom det ansågs vara ett symbol för Vietnamkriget.
+Minesweeper förbjöds i vissa länder på grund av dess kopplingar till Vietnamkriget, men trots detta förblev spelet älskat över hela världen.  <br> <br> 
 
+8. Världsrekordet för det snabbaste Minesweeper-spelet hålls av Kamil Muranski, som löste Expert-nivån på 31 sekunder.
+Minesweeper är ett utmanande pusselspel och Muranskis  <class="minesweeper-page"></class>rekord på 31 sekunder är en fantastisk prestation och ett bevis på hans skicklighet i spelet. <br> <br>
 
-            <div class="flag-wrapper">
-                <img src="image/flagga.png" alt="Minesweeper flagga">
-            </div>
-            </div>
+Sammanfattningsvis har Minesweeper haft en fascinerande resa från att vara ett utbildningsverktyg till att bli ett av världens mest älskade och beroendeframkallande spel.
+
+ </div>
+
+    <div class="flag-wrapper">
+    <img src="image/flagga.png" alt="Minesweeper flagga">
+    </div>
+  </div>
+</div>
+
+.
+
+<div class="container">
+  <h4>Spelregler</h4> <!-- Rubrik utanför textrutan -->
+  <div class="row">
+    <div class="textruta">
+    Minesweeper är ett spel där miner är dolda i ett rutnät av rutor. Säkra rutor har siffror som visar hur många miner som finns runt omkring. Du använder siffrorna för att lista ut vilka rutor som är säkra och öppnar dem. Om du klickar på en mina, förlorar du spelet!
+
+I Windows Minesweeper gör första klicket alltid en säker ruta. Du öppnar rutor med vänster musknapp och sätter flaggor på miner med höger musknapp. Om du trycker på höger musknapp igen omvandlas flaggan till ett frågetecken. När du öppnar en ruta utan närhet till miner, blir den tom och angränsande rutor öppnas automatiskt tills du når rutor med siffror. En vanlig strategi för att starta är att slumpmässigt klicka tills du får en stor öppning med många siffror.
+
+Om du flaggar alla miner som är kopplade till en siffra, kan du öppna de återstående rutorna genom att trycka båda musknapparna samtidigt (chording). Detta sparar mycket arbete, men om du flaggar fel rutor kan chording orsaka att minerna exploderar.
+
+De tre svårighetsnivåerna är Nybörjare (8x8 eller 9x9 med 10 miner), Medelnivå (16x16 med 40 miner) och Expert (30x16 med 99 miner). Spelet avslutas när alla säkra rutor har öppnats. En räknare visar antalet miner utan flaggor och en klocka visar tiden i sekunder. Minesweeper sparar din bästa tid för varje svårighetsnivå.
+
+Du kan också spela anpassade spel upp till 30x24 med minst 10 miner och maximalt (x-1)(y-1) miner.
+
+ </div>
+
+    <div class="flag-wrapper">
+    <img src="image/flagga.png" alt="Minesweeper flagga">
+    </div>
+  </div>
+</div>
+
 
 
         <!-- Upp-knappen -->

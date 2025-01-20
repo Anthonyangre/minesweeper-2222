@@ -168,21 +168,20 @@ body.game-over button {
     }
   }
 
-#arrow {
+  #arrow {
     position: relative;
     left: 10px;
-    top:10px;
+    top: 10px;
     font-size: 20px; /* Justerbar storlek */
     transition: transform 0.3s ease; /* Smidig animation */
 }
 
-.up-arrow {
-    transform: rotate(180deg); /* Valfritt: gör pilen upp-och-ned */
+/* Lägg till en klass för att rotera pilen */
+#arrow.rotate {
+    transform: rotate(180deg); /* Roterar pilen 180 grader */
 }
 
-.down-arrow {
-    transform: rotate(0deg);
-}
+
 
 
  

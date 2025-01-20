@@ -71,31 +71,28 @@ function toggleMenu(button) {
     }
 }
 function togglekonto(button) {
-  // Hitta dropdown-menyn inuti konto
-  const dropdownMenu = button.querySelector('.konto-dropdown');
+  const dropdown = button.querySelector('.konto-dropdown');
+  const arrow = document.getElementById('arrow');
 
-  if (!dropdownMenu) {
+  if (!dropdown) {
       console.error("konto-dropdown not found.");
       return;
   }
 
-  const dropdownItems = dropdownMenu.querySelectorAll('.konto-item');
-
-  // Kontrollera om dropdown är öppen
-  const isOpen = dropdownMenu.style.display === "block";
+  const dropdownItems = dropdown.querySelectorAll('.konto-item');
+  const isOpen = dropdown.style.display === 'block';
 
   if (!isOpen) {
-      // Visa dropdown och animera
-      dropdownMenu.style.display = "block";
-      dropdownMenu.style.opacity = 0;
-      dropdownMenu.style.transform = "scale(0.9)";
-
+      // Visa dropdown
+      dropdown.style.display = 'block';
+      dropdown.style.opacity = 0;
+      dropdown.style.transform = "scale(0.9)";
       setTimeout(() => {
-          dropdownMenu.style.opacity = 1;
-          dropdownMenu.style.transform = "scale(1)";
+          dropdown.style.opacity = 1;
+          dropdown.style.transform = "scale(1)";
       }, 10);
 
-      // Visa och animera varje item
+      // Animera dropdown-items
       dropdownItems.forEach((item, index) => {
           item.style.opacity = 0;
           item.style.transform = "translateY(-10px)";
@@ -105,23 +102,40 @@ function togglekonto(button) {
               item.style.transition = `opacity 0.3s ease ${index * 0.1}s, transform 0.3s ease ${index * 0.1}s`;
           }, 50);
       });
-  } else {
-      // Dölj dropdown och återställ
-      dropdownMenu.style.opacity = 0;
-      dropdownMenu.style.transform = "scale(0.9)";
 
+      // Roterar pilen
+      arrow.classList.add('rotate');
+  } else {
+      // Dölj dropdown
+      dropdown.style.opacity = 0;
+      dropdown.style.transform = "scale(0.9)";
       setTimeout(() => {
-          dropdownMenu.style.display = "none";
+          dropdown.style.display = 'none';
       }, 300);
 
-      // Dölj varje item direkt
+      // Dölj varje item
       dropdownItems.forEach((item) => {
           item.style.opacity = 0;
           item.style.transform = "translateY(-10px)";
           item.style.transition = "none";
       });
+
+      // Återställer pilen
+      arrow.classList.remove('rotate');
   }
 }
+
+
+// Visa/ta bort upp-knappen när man rullar ner på sidan
+window.onscroll = function() {
+  var uppKnapp = document.getElementById("upp-knapp");
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    uppKnapp.style.display = "block";  // Visa knappen
+  } else {
+    uppKnapp.style.display = "none";   // Dölj knappen
+  }
+};
+
 
 
 

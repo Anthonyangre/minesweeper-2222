@@ -415,6 +415,14 @@ header h3 {
   flex-grow: 1; /* Låt rubriken växa och ta upp tillgängligt utrymme */
   text-align: center; /* Centrera rubriken */
 }
+
+h4{
+  text-align: center;
+  margin-bottom: 0%;
+  font-size: larger;
+  bottom:0px;
+  
+}
 .rainbow-text {
   font-size: 400%; /* Minska fontstorlek om nödvändigt */
   margin-left:5%;
@@ -504,7 +512,6 @@ header h3 {
 #head2 {
   background-color: bisque;
   text-align: center;
-  height: 300px;
 }
 
 #head2 img{
@@ -622,30 +629,47 @@ textarea {
 
 
 
-/* Grundläggande stil för att centrera kuben och bilden */
+/* Wrapper för hela innehållet */
+.container {
+  display: flex;
+  flex-direction: column; /* Sätt rubriken över textrutan */
+  align-items: center; /* Centrerar rubrik<en och textrutan */
+  margin-bottom: 40px;
+}
 
-/* Wrapper för att gruppera kub och flagga */
+/* Rubrik */
+h4 {
+  text-align: center;  /* Centrera rubriken */
+  margin-bottom: 20px;  /* Skapa avstånd mellan rubriken och textrutan */
+  margin-right:200px;
+  font-size: 60px;
+}
+
+/* Wrapper för textrutan och flaggan */
 .row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-  padding:200px;
+  justify-content: center;  /* Centrerar textrutan */
+  align-items: flex-start;  /* Gör så att flaggan är i höjd med textrutan */
+  gap: 20px; /* Avstånd mellan textrutan och bilden */
 }
-.textruta{
+
+/* Textruta */
+.textruta {
   background-color: #ddd;
-  text-align: center;
-  width:50%;
-  height: 100px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6), -5px -5px 15px rgba(300, 300, 300, 0.9);
-  
+  font-size: 20px;
+  padding: 20px;
+  width: 900px;  /* Textrutans bredd */
+  text-align: left;  /* Texten i textrutan är vänsterjusterad */
+  box-shadow: 5px 5px 15px black, -5px -5px 15px rgba(300, 300, 300, 0.9);
 }
 
-.flag-wrapper{
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8), -5px -5px 15px rgba(300, 300, 300, 0.9);
-
-  
+/* Flagga till höger */
+.flag-wrapper img {
+  width: 100px;  /* Justera bildens storlek */
+  height: auto;
 }
+
+
 
 
 
@@ -658,7 +682,7 @@ textarea {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  display: none; /* Börjar gömd */
+  
   z-index: 100; /* Överst i lager */
   cursor: pointer;
 }
@@ -674,6 +698,8 @@ textarea {
 #upp-knapp img:hover {
   transform: scale(1.1); /* Förstorad vid hover */
 }
+
+
 
 
 
@@ -788,7 +814,7 @@ textarea {
   text-shadow: 5px 5px 5px rgba(66, 97, 93, 0.5);
   cursor: pointer;
   --primary:#00eeff;
-  --secondary:rgb(38, 0, 255);
+  --secondary:rgb(16, 0, 107);
 }
 
 .konto-dropdown {
