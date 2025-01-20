@@ -459,13 +459,13 @@ h4{
 
 .header-links a {
   margin-right:2px;
-  margin-top:3px;
+  margin-top:15px;
   color:black;
   border-radius: 15px; /* Rundade hörn */
   background: #ffffff; /* Bakgrundsfärg */
   padding: 15px; /* Justera padding */
   width: fit-content; /* Bredd */
-  height: 15px; /* Höjd */
+  height: 40px; /* Höjd */
   font-size: 20px; /* Textstorlek */
   margin-left: 10px; /* Utrymme mellan länkarna */
   text-align: center;
