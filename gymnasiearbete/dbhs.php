@@ -37,7 +37,7 @@ if (isset($_POST["register"])) {
      $user = $result->fetch_assoc();
      $stmt->close();
     $_SESSION['userid'] = $user['username'];
-
+    $username = $_POST['username'];
     echo $_SESSION['username'] ;
     $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
     $stmt->bind_param("siii", $username, $zero, $zero, $zero);
@@ -95,7 +95,6 @@ if (isset($_POST['submit'])) {
 
     $stmt->close();
 }
-
 if (isset($_POST["Ändra"])) {
     // Check if the user is logged in
     if (!isset($_SESSION['userid'])) {
@@ -106,23 +105,29 @@ if (isset($_POST["Ändra"])) {
 
         // Fetch the data from the form
         $password = $_POST['password3'];
-        
         $name = $_POST['name3'];
         $email = $_POST['email3'];
+
+        // Validate email
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Ogiltig e-postadress';
         }
-      
+
+        // Validate name
         if (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
             $errors[] = 'Namn får bara innehålla bokstäver och mellanslag.';
         }
 
-    
-        if (preg_match('/[^a-zA-Z0-9]/', $password)) {
-            $errors[] = 'Lösenordet får inte innehålla specialtecken.';
+        // Validate password if provided
+        $passwordhash = null; // Default to null
+        if (!empty($password)) {
+            if (preg_match('/[^a-zA-Z0-9]/', $password)) {
+                $errors[] = 'Lösenordet får inte innehålla specialtecken.';
+            } else {
+                $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+            }
         }
-       
-        $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+
         // Check if the new email already exists (exclude the current user)
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND username != ?");
         $stmt->bind_param("ss", $email, $userid);
@@ -132,20 +137,28 @@ if (isset($_POST["Ändra"])) {
         if ($result->num_rows > 0) {
             $errors[] = "Email används redan av en annan användare.";
         } else {
-            // Update the user details (excluding username)
-            $stmt = $conn->prepare("UPDATE `users` SET `name` = ?, `email` = ?, `password` = ? WHERE `username` = ?");
-            $stmt->bind_param("ssss",  $name, $email, $passwordhash, $userid);
+            // Update the user details
+            if (empty($errors)) {
+                if ($passwordhash) {
+                    // Update all fields including password
+                    $stmt = $conn->prepare("UPDATE `users` SET `name` = ?, `email` = ?, `password` = ? WHERE `username` = ?");
+                    $stmt->bind_param("ssss", $name, $email, $passwordhash, $userid);
+                } else {
+                    // Update fields excluding password
+                    $stmt = $conn->prepare("UPDATE `users` SET `name` = ?, `email` = ? WHERE `username` = ?");
+                    $stmt->bind_param("sss", $name, $email, $userid);
+                }
 
-            if ($stmt->execute()) {
-                echo "Dina uppgifter har uppdaterats!";
-            } else {
-                $errors[] = "Ett fel uppstod när uppgifterna skulle uppdateras.";
+                if ($stmt->execute()) {
+                    echo "Dina uppgifter har uppdaterats.";
+                } else {
+                    $errors[] = "Ett fel uppstod när uppgifterna skulle uppdateras.";
+                }
+
+                $stmt->close();
             }
-        
-            $stmt->close();
         }
     }
 }
-
 $conn->close();
 ?>

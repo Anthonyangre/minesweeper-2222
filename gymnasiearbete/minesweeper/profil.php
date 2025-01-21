@@ -8,16 +8,7 @@ require_once '../dbhs.php';
 require_once '../assets/uppgifter.php';
 
 ?>
-    <?php
-    // Display errors if there are any
-    if (!empty($errors)) {
-        echo '<ul>';
-        foreach ($errors as $error) {
-            echo '<li>' . htmlspecialchars($error) . '</li>';
-        }
-        echo '</ul>';
-    }
-    ?>
+    
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,7 +34,6 @@ require_once '../assets/uppgifter.php';
             <div class="dropdown-menu">
             <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Hem</a> 
             <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
-            <a href="pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a> 
                         
 
             </div>
@@ -70,7 +60,16 @@ require_once '../assets/uppgifter.php';
             <h4>Användarnamn: <?php echo htmlspecialchars(string: $username); ?></h4>
             <div class="form-group3">
             <label for="profile_picture">Profilbild</label>
-            <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+            <?php
+// Define the path to the profile picture
+$profilePicturePath = 'uploads/' . $_SESSION["userid"] . '_picture.jpg';
+
+// Check if the profile picture exists
+if (file_exists($profilePicturePath)) {
+    echo "<img class='profil_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
+}
+?>
+            <input type="file" id="profile_picture" name="profile_picture" accept="image">
             </div>
             
 
@@ -91,7 +90,16 @@ require_once '../assets/uppgifter.php';
              <label for="password3">Lösenord</label>
              <input type="password" id="password3" name="password3" placeholder="•••••••••" >
              </div>
-            
+             <?php
+    // Display errors if there are any
+    if (!empty($errors)) {
+        echo '<ul>';
+        foreach ($errors as $error) {
+            echo '<li>' . htmlspecialchars($error) . '</li>';
+        }
+        echo '</ul>';
+    }
+    ?>
              
             
         </ol>

@@ -42,8 +42,12 @@ $records = getForumPosts();
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
             <a href="../../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Hem</a> 
+<<<<<<< HEAD
             <a href="../pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Meny</a> 
             <a href= "../leaderboard.php"class="dropdown-item">Leaderboard </a>
+=======
+            <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
+>>>>>>> dfc998a7ee20ca167e792f9589b1bb91c4face0b
                
 
             </div>
