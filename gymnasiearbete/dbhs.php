@@ -19,9 +19,6 @@ if (isset($_POST["register"])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Ogiltig e-postadress. En giltig e-postadress måste innehålla ett @-tecken och en domän.';
         }
-        if (strpos($email, '@') === false) {
-            $errors[] = 'E-postadress måste innehålla ett @-tecken.';
-        }
 
         if (!preg_match('/^[a-zA-Z0-9]+$/', $username)) {
             $errors[] = 'Användarnamn får bara innehålla bokstäver och siffror.';
