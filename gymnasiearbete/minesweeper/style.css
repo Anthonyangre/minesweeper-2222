@@ -94,7 +94,6 @@ body.game-over button {
     font-size: 18px;
     font-weight: bold;
     color: white;
-   
     --primary: #000000;
 	--secondary: #0841ff;
 }

@@ -5,15 +5,9 @@ html {
 }
 
 body{
-
   background: linear-gradient(45deg, #5e4ef1b4, #ff2e5b);
-  background-size: 100% 100%;
   animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
   z-index: -1; /* Ensure the background stays behind the content */
-  margin: 0;
-  padding: 0;
-  width: 100%; /* Se till att body och html är 100% av bredden på skärmen */
-  height: 100%; /* Se till att body och html är 100% av höjden på skärmen */
   overflow-x: hidden; /* Förhindrar horisontell scrollning */
   box-sizing: border-box; /* Gör så att padding och border ingår i elementens storlek */
 }
@@ -680,20 +674,32 @@ h4 {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  
+  font-size: 100px;
+  font-weight: 900;
+  color:#ff0000;
+  height: 150px;
+  width:150px;
   z-index: 100; /* Överst i lager */
   cursor: pointer;
-}
-
-#upp-knapp img {
-  width: 100px; /* Anpassa storleken */
-  height: 100px;
+  transition: transform 0.3s;
   border-radius: 50%; /* Gör knappen rund */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  background-color: white;
 }
 
-#upp-knapp img:hover {
+#upp-knapp {
+  line-height: 0px; /* Samma som höjden */
+}
+
+
+
+
+#upp-knapp:hover {
   transform: scale(1.1); /* Förstorad vid hover */
 }
 

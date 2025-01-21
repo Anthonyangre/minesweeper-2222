@@ -23,6 +23,7 @@ require_once '../assets/uppgifter.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="../java.js"></script>
     <title>Profil</title>
 </head>
@@ -50,7 +51,7 @@ require_once '../assets/uppgifter.php';
 
         <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto" onclick="togglekonto(this)">
-    <?php echo htmlspecialchars($username); ?>
+        <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>
     <div class="konto-dropdown">
         <ul>
             <li class="konto-item"><a href="../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>

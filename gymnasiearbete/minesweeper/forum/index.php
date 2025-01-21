@@ -25,6 +25,7 @@ $records = getForumPosts();
     <title>Forum</title>
 
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <header> 
@@ -40,9 +41,9 @@ $records = getForumPosts();
 
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
-            <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Hem</a> 
-            <a href="pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Meny</a> 
-            <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
+            <a href="../../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Hem</a> 
+            <a href="../pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Meny</a> 
+            <a href= "../leaderboard.php"class="dropdown-item">Leaderboard </a>
                
 
             </div>
@@ -50,7 +51,7 @@ $records = getForumPosts();
 
         <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto" onclick="togglekonto(this)">
-    <?php echo htmlspecialchars($username); ?>
+        <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>   <!-- skriver ut användarnamnet i konto delen samt pilen som kan ändra riktning när man trycker på kanppen -->
     <div class="konto-dropdown">
         <ul>
             <li class="konto-item"><a href="../../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>

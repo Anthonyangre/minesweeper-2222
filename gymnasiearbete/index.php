@@ -104,7 +104,7 @@ Du kan också spela anpassade spel upp till 30x24 med minst 10 miner och maximal
 
         <!-- Upp-knappen -->
         <a href="#topp" id="upp-knapp">
-            <img src="image/upp.png" alt="Upp-knapp">
+            <p> ⇧ </p>
         </a>
 
 </body>
