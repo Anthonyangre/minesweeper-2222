@@ -11,50 +11,52 @@ $errors = array();
 if (isset($_POST["register"])) {
     if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email']) || empty($_POST['name'])) {
         $errors[] = 'Fyll i fälten för användarnamn och lösenord';
-    } 
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $name = $_POST['name'];
-    $password = $_POST['password'];
-    $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt = $conn->prepare("SELECT email FROM users WHERE username = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $mailres = $stmt->get_result();
-    if ($result ->num_rows > 0)  {
-        $errors[] = "Denna användare finns redan";
-    
-    } elseif ($mailres ->num_rows > 0)  {
-        $errors[] = "Detta mejl finns redan";
-    } else  {
-        $zero = 0;
-    $passwordh = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
-    $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
-    $stmt->execute();
- 
-    $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-     $user = $result->fetch_assoc();
-     $stmt->close();
-    $_SESSION['userid'] = $user['username'];
-    $username = $_POST['username'];
-    echo $_SESSION['username'] ;
-    $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
-    $stmt->bind_param("siii", $username, $zero, $zero, $zero);
-    $stmt->execute();
-    $stmt->close();
-    $_SESSION['wins'] = $zero;
-    $_SESSION['lose'] = $zero;
-    $_SESSION['points'] = $zero;
-    header('Location: ./minesweeper/pre_game_choice.php');
-    
+    } else {$username = $_POST['username'];
+        $email = $_POST['email'];
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+        $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt = $conn->prepare("SELECT email FROM users WHERE username = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $mailres = $stmt->get_result();
+        
+        if ($result ->num_rows > 0)  {
+            $errors[] = "Denna användare finns redan";
+        
+        } elseif ($mailres ->num_rows > 0)  {
+            $errors[] = "Detta mejl finns redan";
+        } else  {
+            $zero = 0;
+        $passwordh = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
+        $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
+        $stmt->execute();
+     
+        $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+         $user = $result->fetch_assoc();
+         $stmt->close();
+        $_SESSION['userid'] = $user['username'];
+        $username = $_POST['username'];
+        echo $_SESSION['username'] ;
+        $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
+        $stmt->bind_param("siii", $username, $zero, $zero, $zero);
+        $stmt->execute();
+        $stmt->close();
+        $_SESSION['wins'] = $zero;
+        $_SESSION['lose'] = $zero;
+        $_SESSION['points'] = $zero;
+        header('Location: ./minesweeper/pre_game_choice.php');
+        
+        } 
     }
+    
 }
 if (isset($_POST['submit'])) {
 

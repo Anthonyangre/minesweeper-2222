@@ -35,6 +35,7 @@ $records = getScore();
             <div class="dropdown-menu">
             <a href="../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Hem</a>
             <a href="leaderboard.php" class="dropdown-item">Leaderboard</a>  <!-- Länk till regler-sektionen på index.php -->
+            <a href="pre_game_choice.php" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
 </div>
         </div>
 
@@ -45,7 +46,6 @@ $records = getScore();
         <ul>
             <li class="konto-item"><a href="../assets/logout.php" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Logga ut</a></li>
             <li class="konto-item"><a href="profil.php">Profil</a></li>
-            <li class="konto-item"><a href="pre_game_choice.php" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a> </li>
         </ul>
     </div>
 </div>
