@@ -15,8 +15,12 @@ if (isset($_POST["register"])) {
         $email = $_POST['email'];
         $name = $_POST['name'];
         $password = $_POST['password'];
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Ogiltig e-postadress';
+        
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Ogiltig e-postadress. En giltig e-postadress måste innehålla ett @-tecken och en domän.';
+        }
+        if (strpos($email, '@') === false) {
+            $errors[] = 'E-postadress måste innehålla ett @-tecken.';
         }
 
         if (!preg_match('/^[a-zA-Z0-9]+$/', $username)) {
@@ -61,7 +65,7 @@ if (isset($_POST["register"])) {
          $stmt->close();
         $_SESSION['userid'] = $user['username'];
         $username = $_POST['username'];
-        echo $_SESSION['username'] ;
+        
         $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
         $stmt->bind_param("siii", $username, $zero, $zero, $zero);
         $stmt->execute();
