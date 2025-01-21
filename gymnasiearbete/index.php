@@ -82,15 +82,12 @@ Sammanfattningsvis har Minesweeper haft en fascinerande resa från att vara ett 
   <h4>Spelregler</h4> <!-- Rubrik utanför textrutan -->
   <div class="row">
     <div class="textruta">
-    Minesweeper är ett spel där miner är dolda i ett rutnät av rutor. Säkra rutor har siffror som visar hur många miner som finns runt omkring. Du använder siffrorna för att lista ut vilka rutor som är säkra och öppnar dem. Om du klickar på en mina, förlorar du spelet!
+    Minesweeper är ett spel där miner är dolda i ett fält av rutor. Vid första klicket visas alltid tomma rutor och rutor med sifror i sig. De delar med siffror används till att lista ut vilka rutor som har minor och vilka som är säkra. Säkra rutor har siffror som visar hur många miner som finns runt omkring. Du använder siffrorna för att lista ut vilka rutor som är säkra och kan med hjälp av informationen öppna dem. Men om du klickar på en mina, förlorar du spelet och behöver starta om med ett nytt fält!
 
-I Windows Minesweeper gör första klicket alltid en säker ruta. Du öppnar rutor med vänster musknapp och sätter flaggor på miner med höger musknapp. Om du trycker på höger musknapp igen omvandlas flaggan till ett frågetecken. När du öppnar en ruta utan närhet till miner, blir den tom och angränsande rutor öppnas automatiskt tills du når rutor med siffror. En vanlig strategi för att starta är att slumpmässigt klicka tills du får en stor öppning med många siffror.
+I Minesweeper gör första klicket alltid en säker ruta. Du öppnar rutor med vänster musknapp och sätter flaggor på miner med höger musknapp. Om du trycker på höger musknapp igen omvandlas flaggan till ett frågetecken. När du öppnar en ruta utan närhet till miner, blir den tom och angränsande rutor öppnas automatiskt tills du når rutor med siffror. En vanlig strategi för att starta är att slumpmässigt klicka tills du får en stor öppning med många siffror.
 
-Om du flaggar alla miner som är kopplade till en siffra, kan du öppna de återstående rutorna genom att trycka båda musknapparna samtidigt (chording). Detta sparar mycket arbete, men om du flaggar fel rutor kan chording orsaka att minerna exploderar.
+Om du flaggar alla miner som är kopplade till en siffra, kan du öppna de återstående rutorna genom att trycka båda musknapparna samtidigt (chording). Detta sparar mycket arbete, men om du flaggar fel rutor kan chording orsaka att minerna exploderar. <br> I vårat spel finns endast en svårighets nivå med en tio gånger tio ruta som spelplan. Dock kommer det finnas många monor så var försiktiga!
 
-De tre svårighetsnivåerna är Nybörjare (8x8 eller 9x9 med 10 miner), Medelnivå (16x16 med 40 miner) och Expert (30x16 med 99 miner). Spelet avslutas när alla säkra rutor har öppnats. En räknare visar antalet miner utan flaggor och en klocka visar tiden i sekunder. Minesweeper sparar din bästa tid för varje svårighetsnivå.
-
-Du kan också spela anpassade spel upp till 30x24 med minst 10 miner och maximalt (x-1)(y-1) miner.
 
  </div>
 

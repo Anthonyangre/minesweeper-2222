@@ -7,10 +7,7 @@ html {
 body{
   background: linear-gradient(45deg, #5e4ef1b4, #ff2e5b);
   animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
-<<<<<<< HEAD
   z-index: -1; /* Ensure the background stays behind the content */
-=======
->>>>>>> dfc998a7ee20ca167e792f9589b1bb91c4face0b
   overflow-x: hidden; /* Förhindrar horisontell scrollning */
   box-sizing: border-box; /* Gör så att padding och border ingår i elementens storlek */
 }
@@ -532,6 +529,10 @@ h4{
   transform: scale(0); /* Starta med en mindre skala */
   opacity: 0; /* Starta med osynlig dropdown */
   transition: transform 0.5s ease, opacity 0.5s ease; /* Justera transitionens tid för mer responsivitet */
+  display: flex; /* Använd flexbox för bättre layout */
+  flex-direction: column; /* Placera länkarna vertikalt */
+  min-width: 115px; /* Ställ in en minsta bredd */
+  
   
 }
 
@@ -550,6 +551,12 @@ h4{
   text-decoration: none; /* Ta bort understrykning på länkar */
   border-radius: 10px;
   box-shadow: 4px 0px 7px rgb(175, 171, 171);
+  width: 100%; /* Gör varje länk lika bred som dropdown-menyn */
+  box-sizing: border-box; /* Inkludera padding och border i bredd */
+  
+  
+
+  
 }
 
 /* Hover effect for dropdown items */
@@ -639,13 +646,26 @@ h4 {
 
 /* Textruta */
 .textruta {
-  background-color: #ddd;
-  font-size: 20px;
-  padding: 20px;
-  width: 900px;  /* Textrutans bredd */
-  text-align: left;  /* Texten i textrutan är vänsterjusterad */
-  box-shadow: 5px 5px 15px black, -5px -5px 15px rgba(300, 300, 300, 0.9);
+  background-color: #ddd; /* Grundfärg på textrutan */
+  font-size: 20px; /* Textstorlek */
+  padding: 20px; /* Utrymme inuti textrutan */
+  width: 900px; /* Textrutans bredd */
+  text-align: left; /* Texten är vänsterjusterad */
+  border-radius: 10px; /* Rundade hörn för ett mjukare utseende */
+  
+  /* 3D-effekt med skuggor */
+  box-shadow: 
+    5px 5px 15px rgba(0, 0, 0, 0.5), /* Mörkare skugga åt nedre högra hörnet */
+    -5px -5px 15px rgba(255, 255, 255, 0.7); /* Ljusa högdagrar åt övre vänstra hörnet */
+
+  /* Lägg till en subtil gradient för djup */
+  background: linear-gradient(145deg, #e4e4e4, #c8c8c8);
+
+  /* Skapa känsla av djup */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Svag kant */
 }
+
+
 
 /* Flagga till höger */
 .flag-wrapper img {
