@@ -16,7 +16,7 @@ if (isset($_POST["register"])) {
         $name = $_POST['name'];
         $password = $_POST['password'];
         
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Ogiltig e-postadress. En giltig e-postadress måste innehålla ett @-tecken och en domän.';
         }
         if (strpos($email, '@') === false) {
