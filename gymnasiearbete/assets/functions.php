@@ -10,7 +10,7 @@ function getScore() {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare("SELECT * FROM score ORDER BY username DESC");
+    $stmt = $conn->prepare("SELECT * FROM score ORDER BY points DESC");
     if (!$stmt) {
         die("Statement preparation failed: " . $conn->error);
     }
