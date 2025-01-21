@@ -15,6 +15,23 @@ if (isset($_POST["register"])) {
         $email = $_POST['email'];
         $name = $_POST['name'];
         $password = $_POST['password'];
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Ogiltig e-postadress';
+        }
+
+        if (!preg_match('/^[a-zA-Z0-9]+$/', $username)) {
+            $errors[] = 'Användarnamn får bara innehålla bokstäver och siffror.';
+        }
+
+      
+        if (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
+            $errors[] = 'Namn får bara innehålla bokstäver och mellanslag.';
+        }
+
+    
+        if (preg_match('/[^a-zA-Z0-9]/', $password)) {
+            $errors[] = 'Lösenordet får inte innehålla specialtecken.';
+        }
         $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
