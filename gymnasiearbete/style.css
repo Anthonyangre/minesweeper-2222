@@ -493,7 +493,7 @@ h4{
 }
 /* Stil för andra headern */
 #head2 {
-  background-color: bisque;
+  background-color: rgb(6, 255, 251);
   text-align: center;
 }
 
@@ -655,8 +655,8 @@ h4 {
   
   /* 3D-effekt med skuggor */
   box-shadow: 
-    5px 5px 15px rgba(0, 0, 0, 0.5), /* Mörkare skugga åt nedre högra hörnet */
-    -5px -5px 15px rgba(255, 255, 255, 0.7); /* Ljusa högdagrar åt övre vänstra hörnet */
+    5px 5px 15px rgba(8, 8, 68, 0.708), /* Mörkare skugga åt nedre högra hörnet */
+    -5px -5px 15px rgba(64, 242, 233, 0.7); /* Ljusa högdagrar åt övre vänstra hörnet */
 
   /* Lägg till en subtil gradient för djup */
   background: linear-gradient(145deg, #e4e4e4, #c8c8c8);
@@ -688,7 +688,7 @@ h4 {
   right: 20px;
   font-size: 100px;
   font-weight: 900;
-  color:#ff0000;
+  color:#00ffee;
   height: 150px;
   width:150px;
   z-index: 100; /* Överst i lager */
@@ -696,12 +696,11 @@ h4 {
   transition: transform 0.3s;
   border-radius: 50%; /* Gör knappen rund */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
   align-items: center;
   justify-content: center;
   text-align: center;
   text-decoration: none;
-  background-color: white;
+ 
 }
 
 #upp-knapp {
