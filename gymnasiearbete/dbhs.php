@@ -50,32 +50,34 @@ if (isset($_POST["register"])) {
         
         } elseif ($mailres ->num_rows > 0)  {
             $errors[] = "Detta mejl finns redan";
-        } else  {
-            $zero = 0;
-        $passwordh = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
-        $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
-        $stmt->execute();
-     
-        $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-         $user = $result->fetch_assoc();
-         $stmt->close();
-        $_SESSION['userid'] = $user['username'];
-        $username = $_POST['username'];
-        
-        $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
-        $stmt->bind_param("siii", $username, $zero, $zero, $zero);
-        $stmt->execute();
-        $stmt->close();
-        $_SESSION['wins'] = $zero;
-        $_SESSION['lose'] = $zero;
-        $_SESSION['points'] = $zero;
-        header('Location: ./minesweeper/pre_game_choice.php');
-        
-        } 
+        } else  { 
+            if (empty($errors)) { $zero = 0;
+            $passwordh = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
+            $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
+            $stmt->execute();
+         
+            $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+             $user = $result->fetch_assoc();
+             $stmt->close();
+            $_SESSION['userid'] = $user['username'];
+            $username = $_POST['username'];
+            
+            $stmt = $conn->prepare("INSERT INTO `score`(`username`,`points`,`wins`, `lose`) VALUES (?,?,?,?)");
+            $stmt->bind_param("siii", $username, $zero, $zero, $zero);
+            $stmt->execute();
+            $stmt->close();
+            $_SESSION['wins'] = $zero;
+            $_SESSION['lose'] = $zero;
+            $_SESSION['points'] = $zero;
+            header('Location: ./minesweeper/pre_game_choice.php');
+            
+            } 
+        }
+            
     }
     
 }
