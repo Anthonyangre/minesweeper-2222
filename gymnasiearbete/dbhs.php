@@ -20,10 +20,16 @@ if (isset($_POST["register"])) {
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    if ($result ->num_rows > 0) {
-        $errors[] = "denna användare finns redan";
+    $stmt = $conn->prepare("SELECT email FROM users WHERE username = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $mailres = $stmt->get_result();
+    if ($result ->num_rows > 0)  {
+        $errors[] = "Denna användare finns redan";
     
-    } else {
+    } elseif ($mailres ->num_rows > 0)  {
+        $errors[] = "Detta mejl finns redan";
+    } else  {
         $zero = 0;
     $passwordh = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
