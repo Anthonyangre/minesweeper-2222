@@ -71,7 +71,7 @@ $_SESSION["userid"] = $username;
             }
         }
     } else {
-        $errors[] = "No file selected or an error occurred.";
+        
     }
 
 
