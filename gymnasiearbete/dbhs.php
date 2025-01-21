@@ -12,15 +12,12 @@ if (isset($_POST["register"])) {
     if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email']) || empty($_POST['name'])) {
         $errors[] = 'Fyll i fälten för användarnamn och lösenord';
     } else {$username = $_POST['username'];
-        $email = $_POST['email'];
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $name = $_POST['name'];
         $password = $_POST['password'];
         
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Ogiltig e-postadress. En giltig e-postadress måste innehålla ett @-tecken och en domän.';
-        }
-        if (strpos($email, '@') === false) {
-            $errors[] = 'E-postadress måste innehålla ett @-tecken.';
         }
 
         if (!preg_match('/^[a-zA-Z0-9]+$/', $username)) {

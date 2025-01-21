@@ -84,7 +84,6 @@ require_once 'dbhs.php';
         echo '<ul>
             <li>'.implode('</li><li>', $errors).'</li>
         </ul>';
-        return;
         }
         
     ?>
