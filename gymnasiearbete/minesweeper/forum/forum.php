@@ -48,7 +48,6 @@ $records = getForumPosts($id);
             <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
             <a href="pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
 
-            </div>
         </div>
 
         <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
@@ -66,7 +65,6 @@ if (file_exists($profilePicturePath)) {
         <ul>
             <li class="konto-item"><a href="../../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>
             <li class="konto-item"><a href="../profil.php">Profil</a></li>
-            
         </ul>
     </div>
 </div>

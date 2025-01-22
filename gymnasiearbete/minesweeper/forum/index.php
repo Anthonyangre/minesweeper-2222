@@ -48,10 +48,6 @@ $records2 = getporumPosts();
             </div>
         </div>
 
-<<<<<<< HEAD
-        <h3 class="rainbow-text">Forum</h3> <!-- Välkomsttext med regnbågsfärg -->
-        <div class="konto" onclick="togglekonto(this)">
-=======
         <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto" onclick="togglekonto(this)"><?php
 // Define the path to the profile picture
@@ -62,7 +58,6 @@ if (file_exists($profilePicturePath)) {
     echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
 }
 ?>
->>>>>>> 0f1f2f0 (commit)
         <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>   <!-- skriver ut användarnamnet i konto delen samt pilen som kan ändra riktning när man trycker på kanppen -->
     <div class="konto-dropdown">
         <ul>
