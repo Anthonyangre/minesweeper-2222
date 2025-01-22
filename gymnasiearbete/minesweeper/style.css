@@ -1,4 +1,7 @@
-
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 #status {
     margin-bottom: 10px;
     font-size: 18px;
@@ -174,9 +177,10 @@ body.game-over button {
 
   #arrow {
     position: relative;
+    padding-right: 10px;
     left: 10px;
     top: 10px;
-    font-size: 20px; /* Justerbar storlek */
+    font-size: 25px; /* Justerbar storlek */
     transition: transform 0.3s ease; /* Smidig animation */
 }
 

@@ -14,7 +14,7 @@ function resetGame() {
     $rows = 10;
     $cols = 10;
     $mines = 20;
-
+    $_SESSION['currentpoints'] = 0;
     $_SESSION['grid'] = generateGrid($rows, $cols, $mines);
     $_SESSION['revealed'] = array_fill(0, $rows, array_fill(0, $cols, false));
     $_SESSION['flags'] = array_fill(0, $rows, array_fill(0, $cols, false));

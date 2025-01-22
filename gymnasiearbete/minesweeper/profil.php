@@ -57,7 +57,7 @@ require_once '../assets/uppgifter.php';
      <h3>Redigera dina användar uppgifter</h3>
            
            
-            <h2>Användarnamn: <?php echo htmlspecialchars(string: $username); ?></h2>
+            <h3>Användarnamn: <?php echo htmlspecialchars(string: $username); ?></h3>
             <div class="form-group3">
             <label for="profile_picture">Profilbild</label>
             <?php
