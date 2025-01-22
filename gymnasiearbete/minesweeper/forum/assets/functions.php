@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['msg'])) {
 
     // Call the insert function with validated id
     if (insertForumpost($id, $username, $message)) {
-        echo 'Message posted successfully!';
+        echo '';
     } else {
         echo htmlspecialchars("Error posting message.");
     }

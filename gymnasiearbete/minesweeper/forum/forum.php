@@ -47,7 +47,7 @@ $records = getForumPosts($id);
             <a href="../../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Hem</a> 
             <a href= "leaderboard.php"class="dropdown-item">Leaderboard </a>
             <a href="pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
-
+            <a href="index.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå tillbaka till startforumet?');">Forum</a>
             </div>
         </div>
 
@@ -76,7 +76,7 @@ if (file_exists($profilePicturePath)) {
     </header>
 
 
-  <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . '?id=' . urlencode($id); ?>">
+  <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ; ?>">
       <table class="yes">
           <tr >
               <td> <?php echo "<p>Skicka meddelande genom:<span class='username'> $username</span></p>"; ?>
