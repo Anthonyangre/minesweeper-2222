@@ -56,16 +56,16 @@ require_once 'dbhs.php';
             <input type="text" id="username" name="username" placeholder="Ange ditt användarnamn" required>
         </div>
         <div class="form-group">
-             <label for="email">email</label>
-             <input type="mail" id="email" name="email">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Ange din email" required>
 </div>
 <div class="form-group">
              <label for="name">name</label>
-             <input type="text" id="name" name="name">
+             <input type="text" id="name" name="name"placeholder="Ange ditt lösenord" required>
 </div>
         <div class="form-group">
             <label for="password">Lösenord</label>
-            <input type="password" id="password" name="password" placeholder="Ange ditt lösenord" required>
+            <input type="password" id="password" name="password" placeholder="Ange ditt namn" required>
         </div>
         <div class="form-actions">
             <button type="submit" name="register" value="register" class="submit-button">Registrera</button>
