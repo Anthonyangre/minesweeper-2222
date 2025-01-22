@@ -126,15 +126,14 @@ function togglekonto(button) {
 }
 
 
-// Visa/ta bort upp-knappen när man rullar ner på sidan
-window.onscroll = function() {
-  var uppKnapp = document.getElementById("upp-knapp");
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    uppKnapp.style.display = "block";  // Visa knappen
+document.addEventListener("scroll", function() {
+  const uppKnapp = document.getElementById("upp-knapp");
+  if (window.scrollY > 100) { // Justera 100 till önskad gräns
+    uppKnapp.classList.add("show");
   } else {
-    uppKnapp.style.display = "none";   // Dölj knappen
+    uppKnapp.classList.remove("show");
   }
-};
+});
 
 
 
