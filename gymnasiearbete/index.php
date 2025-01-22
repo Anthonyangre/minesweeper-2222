@@ -33,13 +33,10 @@ require_once 'assets/uppgifter.php';
             </div>
         </header>
 
-        <!-- Header image -->
-        <div id="head2">
-            <img src="image/header_bild.png" alt="Header-bild">
-        </div>
+      
       
         <div class="container">
-  <h4>Rolig fakta</h4> <!-- Rubrik utanför textrutan -->
+  <h4>Rolig Fakta</h4> <!-- Rubrik utanför textrutan -->
   <div class="row">
     <div class="textruta">
     1. Minesweeper utvecklades av Microsoft 1989 och inkluderades först i Windows 3.1 1992.

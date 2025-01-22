@@ -40,7 +40,7 @@ require_once '../assets/uppgifter.php';
             </div>
         </div>
 
-        <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 class="rainbow-text">Profil</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto" onclick="togglekonto(this)">
         <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>
     <div class="konto-dropdown">
@@ -57,7 +57,7 @@ require_once '../assets/uppgifter.php';
      <h3>Redigera dina användar uppgifter</h3>
            
            
-            <h4>Användarnamn: <?php echo htmlspecialchars(string: $username); ?></h4>
+            <h2>Användarnamn: <?php echo htmlspecialchars(string: $username); ?></h2>
             <div class="form-group3">
             <label for="profile_picture">Profilbild</label>
             <?php

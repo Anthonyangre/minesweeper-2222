@@ -1,7 +1,9 @@
 html {
-  scroll-behavior: smooth; /* Gör scrollning smidig */
-  display: grid;
-  margin: auto;
+    margin: 0; /* Ta bort marginaler */
+  padding: 0; /* Ta bort padding */
+  width: 100%; /* Sätt bredden till 100% */
+
+  overflow-x: hidden; /* Förhindra horisontell scroll */
 }
 
 body{
@@ -9,7 +11,11 @@ body{
   animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
   z-index: -1; /* Ensure the background stays behind the content */
   overflow-x: hidden; /* Förhindrar horisontell scrollning */
-  box-sizing: border-box; /* Gör så att padding och border ingår i elementens storlek */
+  margin: 0; /* Ta bort marginaler */
+  padding: 0; /* Ta bort padding */
+ 
+ 
+ 
 }
 
 
@@ -22,6 +28,7 @@ h1{
 
 h4{
   text-align: center;
+  font-size: 200px;
 
 }
 
@@ -295,17 +302,21 @@ ol{
   }
 }
 
-/* Grundläggande header-styling */
 header {
   align-items: center;
-
   background-color: rgb(0, 0, 0); /* Bakgrundsfärg för header */
   display: flex;
-  align-items: center; /* Centrera vertikalt */
-  height: 70px; /* Minska höjd */
-  width: 100%;
-  margin-bottom:10px ;
+  justify-content: space-between; /* För att hantera innehållets position horisontellt */
+  height: 100px; /* Specificera höjden */
+  width: 100%; /* Se till att headern tar upp hela skärmbredden */
+  margin: 0; /* Ta bort eventuella marginaler */
+  padding: 0; /* Ta bort eventuella padding */
+  box-sizing: border-box; /* Inkludera padding i total bredd och höjd */
+  
+  top: 0; /* Placera headern längst upp */
+  left: 0; /* Justera så att den börjar från vänster */
 }
+
 fieldset {
   margin-top: 10px;
   --main-bg: conic-gradient(
@@ -357,7 +368,7 @@ animation: bg-spin 3s linear infinite;
 /* Container för meny och rubrik */
 .menu-container {
   position: absolute; /* Gör menyn absolut positionerad */
-  top: 10px; /* Avstånd från toppen */
+  top: 28px; /* Avstånd från toppen */
   left: 10px; /* Avstånd från vänster */
   display: flex; /* Låt menyn använda flexbox */
   align-items: center; /* Centrera innehållet vertikalt */
@@ -402,12 +413,13 @@ header h3 {
 h4{
   text-align: center;
   margin-bottom: 0%;
-  font-size: larger;
-  bottom:0px;
-  
+  font-size: 100px;
+  margin-right: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
 }
 .rainbow-text {
-  font-size: 400%; /* Minska fontstorlek om nödvändigt */
+  font-size: 500%; /* fontstorlek */
   margin-left:5%;
   text-align: center;
   text-shadow: -20px 15px 30px rgb(104, 104, 104); /* Flytta skuggan 2px åt höger och ner, med 5px oskärpa */
@@ -441,8 +453,8 @@ h4{
 }
 
 .header-links a {
-  margin-right:2px;
-  margin-top:15px;
+  margin-right:15px;
+  margin-top:28px;
   color:black;
   border-radius: 15px; /* Rundade hörn */
   background: #ffffff; /* Bakgrundsfärg */
@@ -491,17 +503,6 @@ h4{
 
   transform: translateY(-3px);
 }
-/* Stil för andra headern */
-#head2 {
-  background-color: rgb(6, 255, 251);
-  text-align: center;
-}
-
-#head2 img{
-  width: 2000px;
-  height: 300px;
-
-}
 
 /* Rubriken som glider in från vänster */
 /* Rubriken som glider in från vänster */
@@ -532,8 +533,6 @@ h4{
   display: flex; /* Använd flexbox för bättre layout */
   flex-direction: column; /* Placera länkarna vertikalt */
   min-width: 115px; /* Ställ in en minsta bredd */
-  
-  
 }
 
 
@@ -694,6 +693,9 @@ h4 {
   z-index: 100; /* Överst i lager */
   cursor: pointer;
   transition: transform 0.3s;
+  opacity: 0; /* Gör knappen osynlig */
+  visibility: hidden; /* Döljer knappen från layouten */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Lägg till en mjuk övergång */
   border-radius: 50%; /* Gör knappen rund */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   align-items: center;
