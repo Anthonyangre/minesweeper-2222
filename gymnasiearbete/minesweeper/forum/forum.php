@@ -1,7 +1,7 @@
 <?php
 $sql = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
-require_once 'assets/functions2.php';
+require_once 'assets/functions.php';
 require_once '../../dbhs.php';
 
 
@@ -13,8 +13,11 @@ if (!isset($_SESSION['userid'])) {
 }
 
 $username = $_SESSION['userid'];
+// Retrieve the 'id' from the GET parameters
+$id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-$records2 = getporumPosts();
+
+$records = getForumPosts($id);
 
 ?>
 
@@ -48,10 +51,6 @@ $records2 = getporumPosts();
             </div>
         </div>
 
-<<<<<<< HEAD
-        <h3 class="rainbow-text">Forum</h3> <!-- Välkomsttext med regnbågsfärg -->
-        <div class="konto" onclick="togglekonto(this)">
-=======
         <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto" onclick="togglekonto(this)"><?php
 // Define the path to the profile picture
@@ -62,7 +61,6 @@ if (file_exists($profilePicturePath)) {
     echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
 }
 ?>
->>>>>>> 0f1f2f0 (commit)
         <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>   <!-- skriver ut användarnamnet i konto delen samt pilen som kan ändra riktning när man trycker på kanppen -->
     <div class="konto-dropdown">
         <ul>
@@ -78,12 +76,12 @@ if (file_exists($profilePicturePath)) {
     </header>
 
 
-  <form name="nyppost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+  <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . '?id=' . urlencode($id); ?>">
       <table class="yes">
           <tr >
-              <td> <?php echo "<p>Skapa ett forum genom:<span class='username'> $username</span></p>"; ?>
+              <td> <?php echo "<p>Skicka meddelande genom:<span class='username'> $username</span></p>"; ?>
               
-                  <textarea class="textFiled" name="title" rows="8" id="title"></textarea>
+                  <textarea class="textFiled" name="msg" rows="8" id="msg"></textarea>
               </td>
           </tr>
           <tr>
@@ -96,16 +94,16 @@ if (file_exists($profilePicturePath)) {
   </form>
 
   <table id="dbres" class="yes">
-      <?php if (!empty($records2)): ?>
-          <?php foreach ($records2 as $row_Recordset1): ?>
+      <?php if (!empty($records)): ?>
+          <?php foreach ($records as $row_Recordset1): ?>
               <tr>
                   <td>
                     
-                  <?php echo "<strong> BY:" . htmlspecialchars($row_Recordset1['username']) . "</strong>"; ?>
+                      <?php echo "<strong>" . htmlspecialchars($row_Recordset1['username']) . "</strong>"; ?> <?php echo "<small>" . htmlspecialchars($row_Recordset1['tid']) . "</small>"; ?>
                       <!-- Link to search page for user's posts -->
-                      <a href="forum.php?id=<?php echo htmlspecialchars($row_Recordset1['id']); ?>">
-                      <div id="title"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['title'])); ?></div>
-                      </a>
+                      
+                      <div id="message"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['msg'])); ?></div>
+                    
                 </td>
               </tr>
           <?php endforeach; ?>
