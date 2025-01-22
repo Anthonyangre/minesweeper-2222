@@ -40,7 +40,15 @@ $records = getScore();
         </div>
 
         <h3 class="rainbow-text">Leaderboard</h3> <!-- Välkomsttext med regnbågsfärg -->
-        <div class="konto" onclick="togglekonto(this)">
+        <div class="konto" onclick="togglekonto(this)"><?php
+// Define the path to the profile picture
+$profilePicturePath = 'uploads/' . $_SESSION["userid"] . '_picture.jpg';
+
+// Check if the profile picture exists
+if (file_exists($profilePicturePath)) {
+    echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
+}
+?>
     <?php echo htmlspecialchars($username); ?>
     <div class="konto-dropdown">
         <ul>

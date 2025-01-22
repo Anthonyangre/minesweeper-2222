@@ -29,25 +29,39 @@ if (!isset($_SESSION['userid'])) {
 
 
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['msg'])) {
-    $message = trim($_POST['msg']); 
-    $message = filter_input(INPUT_POST, "msg", FILTER_SANITIZE_FULL_SPECIAL_CHARS) ;
-
-    if (insertForumpost($username, $message)) {
-        echo '';
+    // Ensure $_GET['id'] is set and is a valid integer
+    if (isset($_GET['id']) && is_numeric($_GET['id']) && intval($_GET['id']) > 0) {
+        $id = intval($_GET['id']);
     } else {
-        echo htmlspecialchars("Fel vid insättning av inlägget."); 
+        // Handle error if id is not valid
+        echo "Invalid parent ID.";
+        exit;
+    }
+
+    // Debug: Log the retrieved ID value
+    error_log("Retrieved ID: " . $id); // Log the id to check if it's being correctly set
+
+    // Sanitize message input
+    $message = filter_input(INPUT_POST, "msg", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    // Call the insert function with validated id
+    if (insertForumpost($id, $username, $message)) {
+        echo 'Message posted successfully!';
+    } else {
+        echo htmlspecialchars("Error posting message.");
     }
 }
-
-function insertForumpost($username, $message) {
+function insertForumpost($id, $username, $message) {
     global $forum;
+    error_log($id);
+    error_log("Inserting: ID = $id, Username = $username, Message = $message");
 
     try {
-        $sql = "INSERT INTO forum (username, msg) VALUES (:username, :msg)";
+        $sql = "INSERT INTO forum (parent_id, username, msg) VALUES (:id, :username, :msg)";
         $stmt = $forum->prepare($sql);
 
+        $stmt->bindValue(':id', $id);
         $stmt->bindValue(':username', $username);
         $stmt->bindValue(':msg', $message);
 
@@ -59,20 +73,34 @@ function insertForumpost($username, $message) {
             return false;
         }
     } catch (Exception $e) {
-        
         error_log("Error inserting message: " . $e->getMessage());
         return false;
     }
 }
 
 
-
-function getForumPosts() {
+function getForumPosts($id = null) {
     global $forum;
 
     try {
-        $sql = "SELECT username, msg, tid FROM forum ORDER BY tid DESC";
+        // Base SQL query
+        $sql = "SELECT username, msg, tid FROM forum";
+
+        // Add a WHERE clause if $id is provided
+        if ($id !== null) {
+            $sql .= " WHERE parent_id = :parent_id";
+        }
+
+        // Order the results by tid in descending order
+        $sql .= " ORDER BY tid DESC";
+
         $stmt = $forum->prepare($sql);
+
+        // Bind the id parameter if provided
+        if ($id !== null) {
+            $stmt->bindParam(':parent_id', $id, PDO::PARAM_INT);
+        }
+
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 
     } catch (Exception $e) {
@@ -81,7 +109,11 @@ function getForumPosts() {
     }
 }
 
+
+
+
 $records = getForumPosts();
+
 if (isset($_POST["logga_ut"])) { 
     session_unset();
 
