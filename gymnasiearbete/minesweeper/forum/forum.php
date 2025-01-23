@@ -76,7 +76,7 @@ if (file_exists($profilePicturePath)) {
     </header>
 
 
-  <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ; ?>">
+  <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . '?id=' . urlencode($id); ?>">
       <table class="yes">
           <tr >
               <td> <?php echo "<p>Skicka meddelande genom:<span class='username'> $username</span></p>"; ?>
