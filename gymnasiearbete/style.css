@@ -1184,3 +1184,9 @@ animation: bg-spin 5s linear infinite;
     color:white;
     border-radius:10px;
   }
+  .forum_bild{
+    width:30px;
+    height:30px;
+    border-radius:50px;
+    border:3px solid black;
+  }
