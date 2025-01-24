@@ -44,11 +44,10 @@ if (isset($_POST["register"])) {
         
         if ($result ->num_rows > 0)  {
             $errors[] = "Denna användare finns redan";
-        
-        } elseif ($mailres ->num_rows > 0)  {
+        } elseif ($mailres ->num_rows > 0) {
             $errors[] = "Detta mejl finns redan";
-        } else  { 
-            if (empty($errors)) { $zero = 0;
+
+        } elseif (empty($errors)) { $zero = 0;
             $passwordh = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
             $stmt->bind_param("ssss", $username, $email, $name, $passwordh);
@@ -77,7 +76,6 @@ if (isset($_POST["register"])) {
             
     }
     
-}
 if (isset($_POST['submit'])) {
 
     if (empty($_POST['username']) || empty($_POST['password'])) {

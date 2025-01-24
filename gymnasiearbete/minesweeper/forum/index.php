@@ -95,8 +95,15 @@ if (file_exists($profilePicturePath)) {
           <?php foreach ($records2 as $row_Recordset1): ?>
               <tr>
                   <td>
-                    
-                  <?php echo "<strong> BY:" . htmlspecialchars($row_Recordset1['username']) . "</strong>"; ?>
+                  <?php
+// Define the path to the profile picture
+$profilePicturePath = '../uploads/' . htmlspecialchars($row_Recordset1['username']) . '_picture.jpg';
+
+// Check if the profile picture exists
+if (file_exists($profilePicturePath)) {
+    echo "<div class='textdiv'>" . "<strong> Forum BY:" . "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>" . htmlspecialchars($row_Recordset1['username']) . "</strong>" . "</div>";
+} else { echo "<strong> Forum BY:" . htmlspecialchars($row_Recordset1['username']) . "</strong>";}
+ ?>
                       <!-- Link to search page for user's posts -->
                       <a href="forum.php?id=<?php echo htmlspecialchars($row_Recordset1['id']); ?>">
                       <div id="title"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['title'])); ?></div>

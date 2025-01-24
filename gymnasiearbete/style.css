@@ -1185,3 +1185,15 @@ animation: bg-spin 5s linear infinite;
     color:white;
     border-radius:10px;
   }
+  .textdiv {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Vertically center the image and text */
+}
+
+.forum_bild {
+    width: 30px; /* Set a fixed width for the image */
+    height: 30px; /* Set a fixed height for the image */
+    border-radius: 50%; /* Make the image circular */
+    border:3px solid black;
+    vertical-align: middle; /* Ensure image aligns properly with text */
+}

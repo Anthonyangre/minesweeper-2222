@@ -61,11 +61,11 @@ require_once 'dbhs.php';
 </div>
 <div class="form-group">
              <label for="name">name</label>
-             <input type="text" id="name" name="name"placeholder="Ange ditt lösenord" required>
+             <input type="text" id="name" name="name"placeholder="Ange ditt namn" required>
 </div>
         <div class="form-group">
             <label for="password">Lösenord</label>
-            <input type="password" id="password" name="password" placeholder="Ange ditt namn" required>
+            <input type="password" id="password" name="password" placeholder="Ange ditt ĺösenord" required>
         </div>
         <div class="form-actions">
             <button type="submit" name="register" value="register" class="submit-button">Registrera</button>

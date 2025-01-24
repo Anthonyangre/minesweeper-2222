@@ -188,7 +188,9 @@ body.game-over button {
     transform: rotate(180deg); /* Roterar pilen 180 grader */
    
 }
-
+.user {
+    text-align:none;
+}
 
 
 

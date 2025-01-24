@@ -99,7 +99,15 @@ if (file_exists($profilePicturePath)) {
               <tr>
                   <td>
                     
-                      <?php echo "<strong>" . htmlspecialchars($row_Recordset1['username']) . "</strong>"; ?> <?php echo "<small>" . htmlspecialchars($row_Recordset1['tid']) . "</small>"; ?>
+                  <?php
+// Define the path to the profile picture
+$profilePicturePath = '../uploads/' . htmlspecialchars($row_Recordset1['username']) . '_picture.jpg';
+
+// Check if the profile picture exists
+if (file_exists($profilePicturePath)) {
+    echo "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
+}
+?><?php echo "<strong class='user'>" . htmlspecialchars($row_Recordset1['username']) . "</strong>"; ?> <?php echo "<small>" . htmlspecialchars($row_Recordset1['tid']) . "</small>"; ?>
                       <!-- Link to search page for user's posts -->
                       
                       <div id="message"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['msg'])); ?></div>
