@@ -17,6 +17,7 @@ $records = getScore();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minesweeper login</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="../java.js"></script>
    
 </head>
@@ -39,7 +40,7 @@ $records = getScore();
 </div>
         </div>
 
-        <h3 class="rainbow-text">Leaderboard</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 class="rainbow-text">Leaderboard</h3>  <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto" onclick="togglekonto(this)"><?php
 // Define the path to the profile picture
 $profilePicturePath = 'uploads/' . $_SESSION["userid"] . '_picture.jpg';
@@ -49,7 +50,7 @@ if (file_exists($profilePicturePath)) {
     echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
 }
 ?>
-    <?php echo htmlspecialchars($username); ?>
+      <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>
     <div class="konto-dropdown">
         <ul>
             <li class="konto-item"><a href="../assets/logout.php" onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');">Logga ut</a></li>

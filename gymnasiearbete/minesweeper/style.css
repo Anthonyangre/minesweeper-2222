@@ -177,7 +177,6 @@ body.game-over button {
 
   #arrow {
     position: relative;
-    padding-right: 10px;
     left: 10px;
     top: 10px;
     font-size: 25px; /* Justerbar storlek */
@@ -187,6 +186,7 @@ body.game-over button {
 /* Lägg till en klass för att rotera pilen */
 #arrow.rotate {
     transform: rotate(180deg); /* Roterar pilen 180 grader */
+   
 }
 
 
