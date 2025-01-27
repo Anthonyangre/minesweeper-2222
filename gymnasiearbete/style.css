@@ -1128,7 +1128,7 @@ animation: bg-spin 5s linear infinite;
     border-radius:10px;
   }
   .textdiv {
-    display: flex; /* Use flexbox to align items */
+    display:flex; flex-direction: column; align-items: flex-start; /* Use flexbox to align items */
     align-items: center; /* Vertically center the image and text */
 }
 

@@ -78,7 +78,7 @@ if (file_exists($profilePicturePath)) {
           <tr >
               <td> <?php echo "<p>Skapa ett forum genom:<span class='username'> $username</span></p>"; ?>
               
-                  <textarea class="textFiled" name="title" rows="8" id="title"></textarea>
+                  <textarea class="textFiled" name="title" rows="8" id="title" placeholder="Title:"></textarea>
               </td>
           </tr>
           <tr>
@@ -95,18 +95,20 @@ if (file_exists($profilePicturePath)) {
           <?php foreach ($records2 as $row_Recordset1): ?>
               <tr>
                   <td>
+
                   <?php
 // Define the path to the profile picture
 $profilePicturePath = '../uploads/' . htmlspecialchars($row_Recordset1['username']) . '_picture.jpg';
 
 // Check if the profile picture exists
 if (file_exists($profilePicturePath)) {
-    echo "<div class='textdiv'>" . "<strong> Forum BY:" . "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>" . htmlspecialchars($row_Recordset1['username']) . "</strong>" . "</div>";
-} else { echo "<strong> Forum BY:" . htmlspecialchars($row_Recordset1['username']) . "</strong>";}
+    echo "<div class='textdiv'>" . "<strong> Forum" . "</strong>";
+echo  "<div id='title'>" . nl2br(htmlspecialchars_decode($row_Recordset1['title'])) . "</div>" . "</div>";
+echo  "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>" . htmlspecialchars($row_Recordset1['username']);} else { echo "<strong> Forum" . htmlspecialchars($row_Recordset1['username']) . "</strong>";}
  ?>
                       <!-- Link to search page for user's posts -->
                       <a href="forum.php?id=<?php echo htmlspecialchars($row_Recordset1['id']); ?>">
-                      <div id="title"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['title'])); ?></div>
+                      
                       </a>
                 </td>
               </tr>
