@@ -81,7 +81,7 @@ if (file_exists($profilePicturePath)) {
           <tr >
               <td> <?php echo "<p>Skicka meddelande genom:<span class='username'> $username</span></p>"; ?>
               
-                  <textarea class="textFiled" name="msg" rows="8" id="msg"></textarea>
+                  <textarea class="textFiled" name="msg" rows="8" id="msg" placeholder="message"></textarea>
               </td>
           </tr>
           <tr>
