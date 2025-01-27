@@ -417,7 +417,6 @@ h4{
   font-size: 500%; /* fontstorlek */
   margin-left:5%;
   text-align: center;
-  text-shadow: -20px 15px 30px rgb(104, 104, 104); /* Flytta skuggan 2px åt höger och ner, med 5px oskärpa */
 }
 
 
@@ -955,6 +954,7 @@ th, td {
     padding: 5px;
  
     font-family:sans-serif;
+    
 }
 
 /* Justerar varje rad i tabellen: */
