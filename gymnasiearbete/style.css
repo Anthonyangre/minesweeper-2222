@@ -502,7 +502,7 @@ h4{
 /* Rubriken som glider in från vänster */
 /* Rubriken som glider in från vänster */
 .menu-title {
-  background-color: bisque;
+  background-color: #ffffff;
   padding: 15px;
   display: none; /* Initially hidden */
   position: absolute;
@@ -512,7 +512,11 @@ h4{
   transform-origin: left; /* Animera från vänster */
   transition: transform 0.5s ease; /* Animera både translation och scale */
   border-radius: 10px;
-  box-shadow: 4px 0px 7px rgb(175, 171, 171);
+  font-family:Arial, Helvetica, sans-serif;
+  color: rgb(0, 0, 0);
+  font-weight: 900;
+  text-decoration: dotted;
+  
 }
 
 /* Dropdown-menyn */
@@ -528,36 +532,36 @@ h4{
   display: flex; /* Använd flexbox för bättre layout */
   flex-direction: column; /* Placera länkarna vertikalt */
   min-width: 115px; /* Ställ in en minsta bredd */
+
 }
 
 
 /* Varje menyitem */
 .dropdown-item {
+  background: rgb(255, 255, 255);
   opacity: 0;
   transform: scale(0);
   transform-origin: top center;
   padding: 10px;
-  background-color: #ddd;
   margin: 5px 0;
   transition: transform 0.3s, opacity 0.3s; /* Transition för animation */
   text-align: center;
   display: block; /* Säkerställer att alla objekt får sin egen rad */
   text-decoration: none; /* Ta bort understrykning på länkar */
   border-radius: 10px;
-  box-shadow: 4px 0px 7px rgb(175, 171, 171);
   width: 100%; /* Gör varje länk lika bred som dropdown-menyn */
   box-sizing: border-box; /* Inkludera padding och border i bredd */
-  
-  
+  font-weight: 600;
+  box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.1);
+  color:rgb(0, 0, 0);
 
-  
 }
 
 /* Hover effect for dropdown items */
 .dropdown-item:hover {
-  background-color: #d0b2b2; /* Change background color on hover */
-  transform: scale(1.05); /* Slightly scale up on hover */
+  background: rgb(216, 202, 202);
 }
+
 
 /* Animation för dropdown-items */
 @keyframes scaleZ {
