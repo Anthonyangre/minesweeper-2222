@@ -54,14 +54,11 @@ Minesweeper blev så populärt eftersom det var gratis, enkelt att lära sig och
 5. Spelet designades först för att likna ett minfält under andra världskriget.
 Spelet visade svarta rutor som representerade minor och vita rutor som var säkra områden, en design som härstammar från andra världskriget. <br> <br> 
 
-6. Den smiley som visas när du vinner spelet kallas "Victory Smile".
-Victory Smile introducerades 1992 och blev en ikon för spelet. Det är en belöning för att framgångsrikt navigera genom minfältet.   <br> <br> 
-
 7. Spelet var förbjudet i vissa länder, inklusive Kina, eftersom det ansågs vara ett symbol för Vietnamkriget.
 Minesweeper förbjöds i vissa länder på grund av dess kopplingar till Vietnamkriget, men trots detta förblev spelet älskat över hela världen.  <br> <br> 
 
 8. Världsrekordet för det snabbaste Minesweeper-spelet hålls av Kamil Muranski, som löste Expert-nivån på 31 sekunder.
-Minesweeper är ett utmanande pusselspel och Muranskis  <class="minesweeper-page"></class>rekord på 31 sekunder är en fantastisk prestation och ett bevis på hans skicklighet i spelet. <br> <br>
+Minesweeper är ett utmanande pusselspel och Muranskis  rekord på 31 sekunder är en fantastisk prestation och ett bevis på hans skicklighet i spelet. <br> <br>
 
 Sammanfattningsvis har Minesweeper haft en fascinerande resa från att vara ett utbildningsverktyg till att bli ett av världens mest älskade och beroendeframkallande spel.
 
@@ -79,11 +76,15 @@ Sammanfattningsvis har Minesweeper haft en fascinerande resa från att vara ett 
   <h4>Spelregler</h4> <!-- Rubrik utanför textrutan -->
   <div class="row">
     <div class="textruta">
-    Minesweeper är ett spel där miner är dolda i ett fält av rutor. Vid första klicket visas alltid tomma rutor och rutor med sifror i sig. De delar med siffror används till att lista ut vilka rutor som har minor och vilka som är säkra. Säkra rutor har siffror som visar hur många miner som finns runt omkring. Du använder siffrorna för att lista ut vilka rutor som är säkra och kan med hjälp av informationen öppna dem. Men om du klickar på en mina, förlorar du spelet och behöver starta om med ett nytt fält!
+    Minesweeper är ett spel där miner är dolda i ett fält av rutor. Vid första klicket visas alltid tomma rutor och rutor med sifror i sig.
+     De delar med siffror används till att lista ut vilka rutor som har minor och vilka som är säkra. Säkra rutor har siffror som visar hur många miner som finns runt omkring. 
+    Du använder siffrorna för att lista ut vilka rutor som är säkra och kan med hjälp av informationen öppna dem. Men om du klickar på en mina, förlorar du spelet och behöver starta om med ett nytt fält! <br>
 
-I Minesweeper gör första klicket alltid en säker ruta. Du öppnar rutor med vänster musknapp och sätter flaggor på miner med höger musknapp. Om du trycker på höger musknapp igen omvandlas flaggan till ett frågetecken. När du öppnar en ruta utan närhet till miner, blir den tom och angränsande rutor öppnas automatiskt tills du når rutor med siffror. En vanlig strategi för att starta är att slumpmässigt klicka tills du får en stor öppning med många siffror.
+I Minesweeper gör första klicket alltid en säker ruta. Du öppnar rutor med vänster musknapp och sätter flaggor på miner med höger musknapp. När du öppnar en ruta med flera toma rutor runtom kommer de alla öpnnas automatsikt tills du når en ruta med en siffra i sig. <br> <br>
+ En vanlig strategi för att starta är att slumpmässigt klicka tills du får en stor öppning med många siffror.
 
-Om du flaggar alla miner som är kopplade till en siffra, kan du öppna de återstående rutorna genom att trycka båda musknapparna samtidigt (chording). Detta sparar mycket arbete, men om du flaggar fel rutor kan chording orsaka att minerna exploderar. <br> I vårat spel finns endast en svårighets nivå med en tio gånger tio ruta som spelplan. Dock kommer det finnas många monor så var försiktiga!
+Om du flaggar alla miner som är kopplade till en siffra, kan du öppna de återstående rutorna genom att trycka båda musknapparna samtidigt (chording). Detta sparar mycket arbete, men om du flaggar fel rutor kan chording orsaka att minerna exploderar.
+ <br> I vårat spel finns endast en svårighets nivå med en tio gånger tio ruta som spelplan. Dock kommer det finnas många monor så var försiktiga!
 
 
  </div>

@@ -450,7 +450,7 @@ h4{
 
 .header-links a {
  
-  margin-top:28px;
+  margin-top:25px;
   color:black;
 
   
@@ -579,17 +579,6 @@ h4{
 
 
 
-li {
-  text-align: center;       
-  margin: 0 auto; 
-  padding: 10px;
-  font-size: larger;
-}
-
-textarea {
-  width: 100% ;                /* Gör textrutorna 80% breda */
-  margin-bottom: 10px;        /* Ge textrutorna lite mellanrum */
-}
 
 
 
@@ -664,6 +653,17 @@ textarea {
 
 
 
+li {
+  text-align: center;       
+  margin: 0 auto; 
+  padding: 10px;
+  font-size: larger;
+}
+
+textarea {
+  width: 100% ;                /* Gör textrutorna 80% breda */
+  margin-bottom: 10px;        /* Ge textrutorna lite mellanrum */
+}
 
 
 
@@ -737,72 +737,14 @@ textarea {
   inherits: true;
   initial-value: 0turn;
 }
-/*cool border för konto */
-:root {
-	--primary: #88d5c8;
-	--secondary: #cc00ff;
-}
-
-* {
-  box-sizing: border-box;
-}
 
 
 
 
 
-@keyframes morph {
-  0% {
-			border-radius:  20% 20% 20% 10% / 20% 20% 20% 10%;
-			background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-	} 
-
-  12.5% {
-    border-radius:  20% 20% 20% 20% / 20% 20% 20% 10%;
-    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-} 
-
-  25% {
-    border-radius:  10% 20% 40% 40% / 30% 30% 10% 30%;
-    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-}
-	
-	50% {
-			border-radius:  20% 30% 20% 20% / 20% 20% 40% 10%;
-			background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-	}
-
-  80% {
-    border-radius:  -30% 20% 20% 10% / 30% 30% 20% 30%;
-    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-}
-
-90% {
-  border-radius:  10% 20% 50% 20% / 40% 30% 20% 40%;
-  background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-}
 
 
 
-  
-	100% {
-		border-radius:  20% 20% 20% 10% / 20% 20% 20% 10%;
-		background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-	} 
-}
-
-
-
-/* Toggle button styling */
-.toggle-button {
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 10px;
-}
 
 .konto {
   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
