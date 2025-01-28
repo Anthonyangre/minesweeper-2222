@@ -31,7 +31,6 @@ ol{
   text-align: center;
   align-items: center;
   align-self: center;
-
 }
 @keyframes gradientAnimation {
   0% {
@@ -404,9 +403,8 @@ header h3 {
 
 h4{
   text-align: center;
-  margin-bottom: 0%;
+  margin-bottom: 0%;  
   font-size: 100px;
-  margin-right: 200px;
   font-family: Arial, Helvetica, sans-serif;
   color:rgb(0, 0, 0);
   font-weight: 900;
@@ -586,7 +584,7 @@ h4{
 
 
 
-
+ /* knapp i profil som ändrar profilen */
 .button1 {
     background: linear-gradient(145deg, #5b9bd5, #4177b0);
     color: white;
@@ -608,31 +606,18 @@ h4{
   }
 
 
-
-/* Wrapper för hela innehållet */
-.container {
+.textruta_mitten{
   display: flex;
-  flex-direction: column; /* Sätt rubriken över textrutan */
-  align-items: center; /* Centrerar rubrik<en och textrutan */
-  margin-bottom: 40px;
+  align-items: center;
+  justify-content: center;
 }
-
-
-/* Wrapper för textrutan och flaggan */
-.row {
-  display: flex;
-  justify-content: center;  /* Centrerar textrutan */
-  align-items: flex-start;  /* Gör så att flaggan är i höjd med textrutan */
-  gap: 20px; /* Avstånd mellan textrutan och bilden */
-}
-
 /* Textruta */
 .textruta {
   background-color: #ddd; /* Grundfärg på textrutan */
   font-size: 20px; /* Textstorlek */
   padding: 20px; /* Utrymme inuti textrutan */
   width: 900px; /* Textrutans bredd */
-  text-align: left; /* Texten är vänsterjusterad */
+  text-align: center; /* Texten är vänsterjusterad */
   border-radius: 10px; /* Rundade hörn för ett mjukare utseende */
   
   /* 3D-effekt med skuggor */
@@ -641,19 +626,13 @@ h4{
     -5px -5px 15px rgba(64, 242, 233, 0.7); /* Ljusa högdagrar åt övre vänstra hörnet */
 
   /* Lägg till en subtil gradient för djup */
-  background: linear-gradient(145deg, #e4e4e4, #c8c8c8);
+  background: linear-gradient(145deg, #e4e4e4, #bda0ff);
 
   /* Skapa känsla av djup */
   border: 1px solid rgba(0, 0, 0, 0.1); /* Svag kant */
 }
 
 
-
-/* Flagga till höger */
-.flag-wrapper img {
-  width: 100px;  /* Justera bildens storlek */
-  height: auto;
-}
 
 
 
@@ -925,7 +904,7 @@ tr {
 #stats {
   position:absolute;
   margin-top:10%;
-  margin-left:80%;
+  margin-left:70%;
   width:fit-content;
 }
 .back{
