@@ -9,8 +9,11 @@ session_start();
 
 if (!isset($_SESSION['userid'])) {
     echo "Du måste vara inloggad för att komma åt den här sidan.";
-    exit;
+    header('Location: ../../index.php');
+} else {
+    $username = $_SESSION['userid'];
 }
+
 
 $username = $_SESSION['userid'];
 // Retrieve the 'id' from the GET parameters

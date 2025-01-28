@@ -9,10 +9,12 @@ session_start();
 
 if (!isset($_SESSION['userid'])) {
     echo "Du måste vara inloggad för att komma åt den här sidan.";
-    exit;
+    header('Location: ../../index.php');
+} else {
+    $username = $_SESSION['userid'];
 }
 
-$username = $_SESSION['userid'];
+
 
 $records2 = getporumPosts();
 
@@ -78,7 +80,7 @@ if (file_exists($profilePicturePath)) {
           <tr >
               <td> <?php echo "<p>Skapa ett forum genom:<span class='username'> $username</span></p>"; ?>
               
-                  <textarea class="textFiled" name="title" rows="8" id="title" placeholder="Title:"></textarea>
+                  <textarea class="textFiled" name="title" rows="8" id="title1" placeholder="Title:"></textarea>
               </td>
           </tr>
           <tr>
@@ -95,20 +97,18 @@ if (file_exists($profilePicturePath)) {
           <?php foreach ($records2 as $row_Recordset1): ?>
               <tr>
                   <td>
-
                   <?php
 // Define the path to the profile picture
 $profilePicturePath = '../uploads/' . htmlspecialchars($row_Recordset1['username']) . '_picture.jpg';
 
 // Check if the profile picture exists
 if (file_exists($profilePicturePath)) {
-    echo "<div class='textdiv'>" . "<strong> Forum" . "</strong>";
-echo  "<div id='title'>" . nl2br(htmlspecialchars_decode($row_Recordset1['title'])) . "</div>" . "</div>";
-echo  "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>" . htmlspecialchars($row_Recordset1['username']);} else { echo "<strong> Forum" . htmlspecialchars($row_Recordset1['username']) . "</strong>";}
+    echo "<div class='textdiv'>" . "<strong>" . "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>" . htmlspecialchars($row_Recordset1['username']) . "</strong>" . "</div>";
+} else { echo "<strong>" . htmlspecialchars($row_Recordset1['username']) . "</strong>";}
  ?>
                       <!-- Link to search page for user's posts -->
                       <a href="forum.php?id=<?php echo htmlspecialchars($row_Recordset1['id']); ?>">
-                      
+                      <div id="title"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['title'])); ?></div>
                       </a>
                 </td>
               </tr>
