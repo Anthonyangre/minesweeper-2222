@@ -1,5 +1,6 @@
 html {
   overflow-x: hidden; /* Förhindra horisontell scroll */
+  scroll-behavior: smooth;
 }
 
 body{
@@ -9,9 +10,6 @@ body{
   overflow-x: hidden; /* Förhindrar horisontell scrollning */
   margin: 0; /* Ta bort marginaler */
   padding: 0; /* Ta bort padding */
- 
- 
- 
 }
 
 
@@ -21,9 +19,23 @@ h2{
 h1{
   text-align: center;
 }
+/* Centrera texten i headern */
+header h3 {
+  margin: 0;
+  flex-grow: 1; /* Låt rubriken växa och ta upp tillgängligt utrymme */
+  text-align: center; /* Centrera rubriken */
+}
 
-
-
+/*rubrikerna på första sidan */
+h4{
+  text-align: center;
+  margin-bottom: 0%;  
+  font-size: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  color:rgb(0, 0, 0);
+  font-weight: 900;
+  text-shadow:1px 2px 2px white;
+}
 
 
 
@@ -43,14 +55,6 @@ ol{
     background-position: 00% 500%;
   }
 }
-
-/* Wave effect for background */
-
-
-
-
-
-
 
 
 .form-group2 {
@@ -394,26 +398,9 @@ animation: bg-spin 3s linear infinite;
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
-/* Centrera texten i headern */
-header h3 {
-  margin: 0;
-  flex-grow: 1; /* Låt rubriken växa och ta upp tillgängligt utrymme */
-  text-align: center; /* Centrera rubriken */
-}
 
-h4{
-  text-align: center;
-  margin-bottom: 0%;  
-  font-size: 100px;
-  font-family: Arial, Helvetica, sans-serif;
-  color:rgb(0, 0, 0);
-  font-weight: 900;
-  text-shadow:1px 2px 2px white;
-
-}
 .rainbow-text {
   font-size: 500%; /* fontstorlek */
-  margin-left:5%;
   text-align: center;
 }
 
@@ -617,15 +604,15 @@ h4{
   font-size: 20px; /* Textstorlek */
   padding: 20px; /* Utrymme inuti textrutan */
   width: 900px; /* Textrutans bredd */
-  text-align: center; /* Texten är vänsterjusterad */
-  border-radius: 10px; /* Rundade hörn för ett mjukare utseende */
+  
+  border-radius: 10px; /* Rundade hörn */
   
   /* 3D-effekt med skuggor */
   box-shadow: 
     5px 5px 15px rgba(8, 8, 68, 0.708), /* Mörkare skugga åt nedre högra hörnet */
     -5px -5px 15px rgba(64, 242, 233, 0.7); /* Ljusa högdagrar åt övre vänstra hörnet */
 
-  /* Lägg till en subtil gradient för djup */
+  /* Lägg till en subtil gradient  */
   background: linear-gradient(145deg, #e4e4e4, #bda0ff);
 
   /* Skapa känsla av djup */
@@ -636,8 +623,7 @@ h4{
 
 
 
-li {
-  text-align: center;       
+li {     
   margin: 0 auto; 
   padding: 10px;
   font-size: larger;

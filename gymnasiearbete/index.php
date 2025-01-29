@@ -26,7 +26,7 @@ require_once 'assets/uppgifter.php';
                     <a href="#info" class="dropdown-item">Info</a>
                 </div>
             </div>
-            <h3 class="rainbow-text" id="topp">Välkommen tillll Minesweeper</h3>
+            <h3 class="rainbow-text" id="topp">Välkommen till Minesweeper</h3>
             <div class="header-links">
                 <a href="login.php">Login</a>
                 <a href="signup.php">Signup</a>
@@ -36,7 +36,7 @@ require_once 'assets/uppgifter.php';
       
       
         
-  <h4>Rolig Fakta</h4> <!-- Rubrik utanför textrutan -->
+  <h4 id="info">Rolig Fakta</h4> <!-- Rubrik utanför textrutan -->
      <div class=" textruta_mitten">
     <div class="textruta">
     <ul>
@@ -69,7 +69,7 @@ Minesweeper är ett utmanande pusselspel och Muranskis  rekord på 31 sekunder �
 
  
 
-  <h4>Spelregler</h4> <!-- Rubrik utanför textrutan -->
+  <h4 id="regler">Spelregler</h4> <!-- Rubrik utanför textrutan -->
   <div class=" textruta_mitten">
     <div class="textruta">
         <ul>

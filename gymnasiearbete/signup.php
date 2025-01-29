@@ -53,7 +53,7 @@ require_once 'dbhs.php';
         <legend class="form-title">Registrera Konto</legend>
         <div class="form-group">
             <label for="username">Användarnamn</label>
-            <input type="text" id="username" name="username" placeholder="Ange ditt användarnamn" required>
+            <input type="text" id="username" name="username" placeholder="Ange ditt användarnamn" maxlength="16" required>
         </div>
         <div class="form-group">
     <label for="email">Email</label>
@@ -61,7 +61,7 @@ require_once 'dbhs.php';
 </div>
 <div class="form-group">
              <label for="name">name</label>
-             <input type="text" id="name" name="name"placeholder="Ange ditt namn" required>
+             <input type="text" id="name" name="name"placeholder="Ange ditt namn" maxlength="16" required>
 </div>
         <div class="form-group">
             <label for="password">Lösenord</label>
