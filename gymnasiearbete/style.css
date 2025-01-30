@@ -336,7 +336,6 @@ background-position: center center;
 /* Animation */
 animation: bg-spin 3s linear infinite;
 }
-
 legend {
   --main-bg: conic-gradient(
     from var(--border-angle),
@@ -402,7 +401,7 @@ animation: bg-spin 3s linear infinite;
 .rainbow-text {
   font-size: 500%; /* fontstorlek */
   text-align: center;
-
+  align-items: center;
 }
 
 
@@ -489,7 +488,6 @@ animation: bg-spin 3s linear infinite;
 /* Rubriken som glider in från vänster */
 .menu-title {
   background-color: #ffffff;
-  font-weight: 900;
   padding: 15px;
   display: none; /* Initially hidden */
   position: absolute;
@@ -500,7 +498,10 @@ animation: bg-spin 3s linear infinite;
   transition: transform 0.5s ease; /* Animera både translation och scale */
   border-radius: 10px;
   font-family:Arial, Helvetica, sans-serif;
-  color: rgb(0, 0, 0); 
+  color: rgb(0, 0, 0);
+  font-weight: 900;
+  text-decoration: dotted;
+  
 }
 
 /* Dropdown-menyn */
@@ -529,19 +530,15 @@ animation: bg-spin 3s linear infinite;
   padding: 10px;
   margin: 5px 0;
   transition: transform 0.3s, opacity 0.3s; /* Transition för animation */
+  text-align: center;
   display: block; /* Säkerställer att alla objekt får sin egen rad */
   text-decoration: none; /* Ta bort understrykning på länkar */
   border-radius: 10px;
-  height:50px;
   width: 100%; /* Gör varje länk lika bred som dropdown-menyn */
   box-sizing: border-box; /* Inkludera padding och border i bredd */
   font-weight: 600;
   box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.1);
   color:rgb(0, 0, 0);
-  text-align: center;
-  align-self: center;
-  align-content: center;
-  border: 5px dotted rgba(71, 148, 248, 0.6);
 
 }
 
