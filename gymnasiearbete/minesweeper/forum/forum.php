@@ -79,8 +79,6 @@ $forumTitle = getForumTitle($id);
             <a href= "../leaderboard.php"class="dropdown-item">Leaderboard </a>
             <a href="../pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
             <a href="index.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå tillbaka till startforumet?');">Forum</a>
-            <a href="../assets/logout.php#regler"onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');" class="dropdown-item">Regler</a>  <!-- Länk till regler-sektionen på index.php -->
-            <a href="../assets/logout.php#info"onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');"  #regler" class="dropdown-item">Info</a>  <!-- Länk till regler-sektionen på index.php -->
             </div>
         </div>
 
