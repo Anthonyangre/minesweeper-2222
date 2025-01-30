@@ -134,7 +134,7 @@ body.game-over button {
     background-color: #f0f0f0;
 }
 
-/* Skapa regnbågsanimation */
+/* Skapa regnbågsanimation för speciella tal */
 @keyframes rainbow-text {
     0% { color: rgb(255, 0, 0); }     /* Röd */
     16% { color: rgb(255, 165, 0); } /* Orange */
@@ -169,7 +169,7 @@ body.game-over button {
 
 
 
-
+/*  pil som snurar vid klick i konto diven */
 @keyframes bg-spin {
     to {
       --border-angle: 1turn;
