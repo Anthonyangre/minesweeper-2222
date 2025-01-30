@@ -21,7 +21,35 @@ $id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
 
 $records = getForumPosts($id);
+function getForumTitle($id) {
+    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $title = "Okänt Forum"; // Default title in case of failure
+
+    try {
+        $sql = "SELECT title FROM pforum WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($row = $result->fetch_assoc()) {
+            $title = $row['title'];
+        }
+
+        $stmt->close();
+        $conn->close();
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+    }
+
+    return $title;
+}
+$forumTitle = getForumTitle($id);
 ?>
 
 <!DOCTYPE html>
@@ -47,11 +75,10 @@ $records = getForumPosts($id);
 
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
+            <a href="../../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Hem</a> 
             <a href= "../leaderboard.php"class="dropdown-item">Leaderboard </a>
-            <a href="pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
+            <a href="../pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
             <a href="index.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå tillbaka till startforumet?');">Forum</a>
-            <a href="../assets/logout.php#regler"onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');" class="dropdown-item">Regler</a>  <!-- Länk till regler-sektionen på index.php -->
-            <a href="../assets/logout.php#info"onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');"  #regler" class="dropdown-item">Info</a>  <!-- Länk till regler-sektionen på index.php -->
             </div>
         </div>
 
@@ -82,8 +109,11 @@ if (file_exists($profilePicturePath)) {
 
   <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . '?id=' . urlencode($id); ?>">
       <table class="yes">
+      
           <tr >
-              <td> <?php echo "<p>Skicka meddelande genom:<span class='username'> $username</span></p>"; ?>
+          
+              <td> <?php echo "<strong>Forum: $forumTitle</strong>"; ?>
+                <?php echo "<p>Skicka meddelande genom:<span class='username'> $username</span></p>"; ?>
               
                   <textarea class="textFiled" name="msg" rows="8" id="msg" placeholder="message"></textarea>
               </td>
