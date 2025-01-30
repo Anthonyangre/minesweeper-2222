@@ -75,8 +75,7 @@ $forumTitle = getForumTitle($id);
 
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
-            <a href="../../assets/logout.php" class="dropdown-item" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Hem</a> 
-            <a href= "../leaderboard.php"class="dropdown-item">Leaderboard </a>
+            <a href= "../leaderboard.php"class="dropdown-item">Topplista</a>
             <a href="../pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
             <a href="index.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå tillbaka till startforumet?');">Forum</a>
             </div>
