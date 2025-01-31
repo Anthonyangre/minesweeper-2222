@@ -63,7 +63,7 @@ if (file_exists($profilePicturePath)) {
 <div class="back">
         <div class="choicelinks">
 
-             <a href="index.php"><p>🎮 </p> Singleplayer</a>
+             <a href="index.php"><p>🎮 </p> Minesweeper</a>
              <a href="forum/index.php"><p>🗣️ </p>  Forum</a>
              
       </div>

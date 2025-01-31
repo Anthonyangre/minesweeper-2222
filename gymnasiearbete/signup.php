@@ -71,7 +71,7 @@ require_once 'dbhs.php';
             <button type="submit" name="register" value="register" class="submit-button">Registrera</button>
         </div>
         <div class="extra-links">
-            <a href="signup.php">Har du inget konto? Registrera dig här</a>
+            <a href="login.php">Har du ett konto? Logga in här.</a>
         </div>
     </fieldset>
 </form>

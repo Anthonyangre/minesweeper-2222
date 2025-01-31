@@ -125,9 +125,9 @@ if (file_exists($profilePicturePath)) {
     </header>
     <div class="back">
 <div class="background">
-<div id="status">Game In Progress...</div>
+<div id="status">Spel pågår...</div>
     <div id="game-board"></div>
-    <button id="reset-button">Reset</button>
+    <button id="reset-button">Återställ</button>
 </div>
 
     
