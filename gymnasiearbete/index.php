@@ -89,7 +89,7 @@ Minesweeper är ett utmanande pusselspel och Muranskis  rekord på 31 sekunder �
  En vanlig strategi för att starta är att slumpmässigt klicka tills du får en stor öppning med många siffror.
      </li>
      <li>
-   I vårat spel finns endast en svårighets nivå med en tio gånger tio ruta som spelplan. Dock kommer det finnas många monor så var försiktiga!
+   I vårat spel finns endast en svårighets nivå med en tio gånger tio ruta som spelplan. Dock kommer det finnas många minor så var försiktiga!
  </li>
 
  </ul>
