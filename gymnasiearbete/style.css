@@ -845,6 +845,7 @@ tr {
   margin-top:10%;
   margin-left:70%;
   width:fit-content;
+  text-align: center;
 }
 .back{
   display:flex;
