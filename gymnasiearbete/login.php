@@ -34,11 +34,11 @@ require_once 'dbhs.php';
 </div>
         </div>
 
-        <h3 class="rainbow-text">Login</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 class="rainbow-text">Inloggning</h3> <!-- Välkomsttext med regnbågsfärg -->
 
 <!-- Länkar för inloggning och registrering -->
 <div class="header-links">
-  <a href="signup.php">Signup</a>
+  <a href="signup.php">Registrera</a>
    
     </div>
 

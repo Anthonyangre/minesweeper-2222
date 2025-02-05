@@ -1,15 +1,20 @@
 html {
   overflow-x: hidden; /* Förhindra horisontell scroll */
   scroll-behavior: smooth;
+  height: 100%;   /*  gör att scroll bahovor smooth inte fungerar */
 }
 
 body{
   background: linear-gradient(45deg, #5e4ef1b4, #ff2e5b);
   animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
+  background-repeat: no-repeat; /* Hindrar upprepning */
+  background-size: cover;       /* Gör att gradienten täcker hela bakgrunden */
   z-index: -1; /* Ensure the background stays behind the content */
   overflow-x: hidden; /* Förhindrar horisontell scrollning */
   margin: 0; /* Ta bort marginaler */
   padding: 0; /* Ta bort padding */
+  height: 100%;
+ 
 }
 
 
@@ -150,23 +155,6 @@ ol{
   margin-bottom: 20px;
   color: #444;
   position: relative;
-  overflow: hidden;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.form-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 0%;
-  background: #5b9bd5;
-  transition: width 0.3s ease;
-}
-
-.form-title:hover::after {
-  width: 100%;
 }
 
 /* Form Group */
@@ -298,6 +286,7 @@ ol{
 }
 
 header {
+  position: relative;
   align-items: center;
   background-color: rgb(0, 0, 0); /* Bakgrundsfärg för header */
   display: flex;
@@ -333,31 +322,12 @@ background:
 
 background-position: center center;
 
-/* Animation */
-animation: bg-spin 3s linear infinite;
+/* border animation för */
+animation: bg-spin 25s linear infinite;
 }
 legend {
-  --main-bg: conic-gradient(
-    from var(--border-angle),
-    rgb(255, 255, 255),
-    rgb(255, 255, 255) 5%,
-    rgb(255, 255, 255) 60%,
-    rgb(255, 255, 255) 95%
-  );
-text-align: center;
-border: solid 5px transparent;
-border-radius:5px;
---gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #08f, #f03 99%, transparent);
-  
-background: 
-  var(--main-bg) padding-box,
-  var(--gradient-border) border-box,
-  var(--main-bg) border-box;
-
-background-position: center center;
-
-/* Animation */
-animation: bg-spin 3s linear infinite;
+  background-color: white;
+ 
 }
 /* Container för meny och rubrik */
 .menu-container {
@@ -424,67 +394,49 @@ animation: bg-spin 3s linear infinite;
 }
 
 .header-links {
-  display: flex; /* Använd flexbox för layout */
-  margin-left: auto; /* Flytta länkarna längst till höger */
-  margin-bottom: auto;
-  text-decoration: none;
-  align-items: center; /* Vertikal centrering av länkarna */
-  justify-content: center; /* Horisontell centrering av länkarna om föräldern är bredare */
-  padding-right: 10px;
+  position: absolute;  /* Tar ut länkarna ur flödet */
+  right: 10px;         /* Placera dem 10px från högerkanten */
+  top: 15%;            /* Placera dem vertikalt i mitten av headern */
+  display: flex;   
 }
-
 .header-links a {
- 
-  margin-top:23px;
-  color:black;
-
-  
-  background: #ffffff; /* Bakgrundsfärg */
-  width: 90px; /* Bredd */
-  height: 50px; /* Höjd */
-  font-size: 20px; /* Textstorlek */
-  margin-left: 10px; /* Utrymme mellan länkarna */
-  justify-content: center; /* Centrera texten horisontellt */
-  align-items: center; /* Centrera texten vertikalt */
+  padding: 2px;
+  margin-top: 10px;
+  margin-right: 10px; /* Adjust as needed */
+  color: black;
+  background: #ffffff;
+  width: 90px;
+  height: 50px;
+  font-size: 20px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   box-shadow: 3px 3px 5px rgb(113, 117, 113);
-  text-shadow: 
-        2px 2px 5px rgb(121, 105, 105);
-        --border-angle: 0turn;
-  
-  /* Main background gradient */
+  text-shadow: 2px 2px 5px rgb(121, 105, 105);
   --main-bg: conic-gradient(
-      from var(--border-angle),
-      rgb(255, 255, 255),
-      rgb(255, 255, 255) 5%,
-      rgb(255, 255, 255) 60%,
-      rgb(255, 255, 255) 95%
-    );
-  
+    from var(--border-angle),
+    rgb(255, 255, 255),
+    rgb(255, 255, 255) 5%,
+    rgb(255, 255, 255) 60%,
+    rgb(255, 255, 255) 95%
+  );
   border: solid 3px transparent;
-  border-radius: 200px;
-  
-  /* Gradient border */
+  border-radius: 20px;
   --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, rgb(98, 0, 255), rgb(234, 0, 255) 99%, transparent);
-  
-  background: 
+  background:
     var(--main-bg) padding-box,
     var(--gradient-border) border-box,
     var(--main-bg) border-box;
-  
   background-position: center center;
-  
-  /* Animation */
   animation: bg-spin 5s linear infinite;
   transition: transform 0.3s ease;
 }
 .header-links a:hover {
-
   transform: translateY(-3px);
 }
 
-/* Rubriken som glider in från vänster */
+
 /* Rubriken som glider in från vänster */
 .menu-title {
   background-color: #ffffff;
@@ -744,7 +696,6 @@ textarea {
   display: none; /* Dölj från början */
   position: absolute;
   top: 70px; /* Placera dropdown precis under .konto */
-  right: 13px;
   
   background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -849,11 +800,14 @@ tr {
 }
 .back{
   display:flex;
-}.choicelinks {
-  margin-left:45%;
-  margin-top: 1%;
-  padding-top:3%;
-}.choicelinks a {
+}
+.choicelinks {
+  margin: 1% auto 0 auto; /* Toppen 1%, resten auto för att centrera horisontellt */
+  padding-top: 3%;
+  text-align: center;  /* Se till att innehållet också centrerats */
+}
+
+.choicelinks a {
   margin: auto;
   margin-top: 10%;
   color: rgb(255, 255, 255);

@@ -119,13 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateStatus() {
         if (currentGameState === 'won') {
-            statusDiv.textContent = 'Congratulations! You won!';
+            statusDiv.textContent = 'Grattis! Du vann!';
             document.body.classList.add('game-over');
         } else if (currentGameState === 'lost') {
-            statusDiv.textContent = 'You hit a mine! Game Over!';
+            statusDiv.textContent = 'Du träffade en mina! Spelet avslutades!';
             document.body.classList.add('game-over');
         } else {
-            statusDiv.textContent = 'Game in progress...';
+            statusDiv.textContent = 'Spel pågår';
             document.body.classList.remove('game-over');
         }
     }

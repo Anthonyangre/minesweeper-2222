@@ -38,7 +38,7 @@ require_once 'dbhs.php';
 
 <!-- Länkar för inloggning och registrering -->
 <div class="header-links">
-    <a href="login.php">Login</a> 
+    <a href="login.php">Logga in</a> 
    
     </div>
 
