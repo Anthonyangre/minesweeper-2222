@@ -57,7 +57,7 @@ Spelet visade svarta rutor som representerade minor och vita rutor som var säkr
 </li>
 <li>
  Spelet var förbjudet i vissa länder, inklusive Kina, eftersom det ansågs vara ett symbol för Vietnamkriget.
-Minesweeper förbjöds i vissa länder på grund av dess kopplingar till Vietnamkriget, men trots detta förblev spelet älskat över hela världen.  <br> <br> 
+ Men trots detta förblev spelet älskat över hela världen.  <br> <br> 
 </li>
 <li>
 Världsrekordet för det snabbaste Minesweeper-spelet hålls av Kamil Muranski, som löste Expert-nivån på 31 sekunder.
