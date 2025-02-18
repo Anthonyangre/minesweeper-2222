@@ -183,7 +183,7 @@ if (isset($_POST["Ändra"])) {
 
                 if ($stmt->execute()) {
                     // om det fungerar
-                    $errors[] =  "Dina uppgifter har uppdaterats.";
+            
                 } else {
                     // om det inte fungerar
                     $errors[] = "Ett fel uppstod när uppgifterna skulle uppdateras.";
