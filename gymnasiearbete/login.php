@@ -29,9 +29,7 @@ require_once 'dbhs.php';
   <a href="index.php" class="dropdown-item">Hem</a> 
   <a href="index.php#regler" class="dropdown-item">Regler</a>  <!-- Länk till regler-sektionen på index.php -->
   <a href="index.php#info" class="dropdown-item">Info</a> <!-- Länk till info-sektionen på index.php -->
-  
-  <!-- Leaderboard kanske inte finns på index.php, så ingen ankarlänk här -->
-</div>
+  </div>
         </div>
 
         <h3 class="rainbow-text">Inloggning</h3> <!-- Välkomsttext med regnbågsfärg -->
@@ -44,7 +42,7 @@ require_once 'dbhs.php';
 
         
     </header>
-
+<!-- formen för inloggning, username och password. -->
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="login-form">
     <fieldset>
         <legend class="form-title">Logga in</legend>

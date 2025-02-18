@@ -47,7 +47,7 @@ require_once 'dbhs.php';
     <div id="wrapper">
     
     
-
+<!-- formen för registrering, name, password, username, email -->
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="login-form">
     <fieldset>
         <legend class="form-title">Registrera Konto</legend>

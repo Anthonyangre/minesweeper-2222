@@ -3,19 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetButton = document.getElementById('reset-button');
     const statusDiv = document.getElementById('status');
 
-    // Initialize the grid and game state
+    // sätter vad griden innehåller
     let currentGrid = JSON.parse(JSON.stringify(grid));
     let currentRevealed = JSON.parse(JSON.stringify(revealed));
     let currentFlags = JSON.parse(JSON.stringify(flags));
     let currentGameState = gameState;
 
-    // Update status message based on game state
+    // updaterar stausen
     updateStatus();
 
-    // Render the grid
+    // rendererar griden
     renderGrid();
 
-    // Add reset functionality
+    // reset funktionen av spelet
     resetButton.addEventListener('click', () => {
         window.location.href = 'index.php?reset=true';
     });
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cell.textContent = '🚩';
             }
 
-            // Disable interactions if game is over
+            // gör så att man inte han ändra i spelet om spelet har slutat
             if (currentGameState === 'ongoing') {
                 cell.addEventListener('click', () => revealCell(row, col));
                 cell.addEventListener('contextmenu', (e) => {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 }
-
+// funktionen för att visa cellen 
     function revealCell(row, col) {
         if (currentGameState !== 'ongoing') return;
 
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderGrid();
         });
     }
-
+// funktionen för att visa en flagga om man höger klickar
     function toggleFlag(row, col) {
         if (currentGameState !== 'ongoing') return;
         
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderGrid();
         });
     }
-
+// om man har vunnit ska det visa att man har vunnit genom denna funktion.
     function updateStatus() {
         if (currentGameState === 'won') {
             statusDiv.textContent = 'Grattis! Du vann!';

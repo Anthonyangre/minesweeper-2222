@@ -15,7 +15,7 @@ if (!isset($_SESSION['userid'])) {
 }
 
 
-
+// får records från parent forum eller huvudforumet i stället för forumet.
 $records2 = getporumPosts();
 
 ?>
@@ -38,10 +38,9 @@ $records2 = getporumPosts();
                 <div class="bar3"></div>
             </div>
 
-            <!-- Rubrik som glider in från vänster när knappen klickas -->
             <div class="menu-title">Navigation</div>
 
-            <!-- Dropdown-menyn som visas vid klick -->
+
             <div class="dropdown-menu">
             <a href="../pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
             <a href= "../leaderboard.php"class="dropdown-item">Topplista</a>
@@ -52,12 +51,12 @@ $records2 = getporumPosts();
             </div>
         </div>
 
-        <h3 class="rainbow-text">Forum</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 class="rainbow-text">Forum</h3>
         <div class="konto" onclick="togglekonto(this)"><?php
-// Define the path to the profile picture
+
 $profilePicturePath = '../uploads/' . $_SESSION["userid"] . '_picture.jpg';
 
-// Check if the profile picture exists
+
 if (file_exists($profilePicturePath)) {
     echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
 }
@@ -100,16 +99,17 @@ if (file_exists($profilePicturePath)) {
               <tr>
                   <td>
                   <?php
-// Define the path to the profile picture
+
 $profilePicturePath = '../uploads/' . htmlspecialchars($row_Recordset1['username']) . '_picture.jpg';
 
-// Check if the profile picture exists
+
 if (file_exists($profilePicturePath)) {
     echo "<div class='textdiv'>" . "<strong>" . "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>" . htmlspecialchars($row_Recordset1['username']) . "</strong>" . "</div>";
 } else { echo "<strong>" . htmlspecialchars($row_Recordset1['username']) . "</strong>";}
  ?>
-                      <!-- Link to search page for user's posts -->
+
                       <a href="forum.php?id=<?php echo htmlspecialchars($row_Recordset1['id']); ?>">
+                        <!-- visar titelarna för de olika forumen som man kan gå in på -->
                       <div id="title"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['title'])); ?></div>
                       </a>
                 </td>

@@ -1,4 +1,6 @@
 <?php
+//sql connection till våran sql server genom minesweeper usern
+
 $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
 // Start the session if not already started
@@ -28,13 +30,13 @@ if (isset($_SESSION['userid'])) {
 } else {
     $errors[] = "Du måste vara inloggad för att ändra dina uppgifter";
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $uploadDir = 'uploads/'; // Directory to save uploaded files
 
     // Check if the uploads directory exists, if not create it
     if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0755, true); // Create the directory with proper permissions
+        mkdir($uploadDir, 0777, true); // Create the directory with proper permissions
     }
 
     // Check if a file was uploaded
