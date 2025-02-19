@@ -60,10 +60,7 @@ require_once 'dbhs.php';
         <div class="extra-links">
             <a href="signup.php">Har du inget konto? Registrera dig här</a>
         </div>
-    </fieldset>
-</form>
-
-    <?php
+        <?php
     //kontrollerar om det finns felmeddelanden
     if (count($errors) > 0) {
         
@@ -72,6 +69,10 @@ require_once 'dbhs.php';
         </ul>';
         }
     ?>
+    </fieldset>
+</form>
+
+
     </div>
     
 </body>

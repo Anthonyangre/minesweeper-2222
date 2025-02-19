@@ -73,11 +73,7 @@ require_once 'dbhs.php';
         <div class="extra-links">
             <a href="login.php">Har du ett konto? Logga in här.</a>
         </div>
-    </fieldset>
-</form>
-  
-    <?php
-
+        <?php
     //kontrollerar om det finns felmeddelanden
     if (count($errors) > 0) {
         
@@ -85,9 +81,8 @@ require_once 'dbhs.php';
             <li>'.implode('</li><li>', $errors).'</li>
         </ul>';
         }
-        
     ?>
-    </div>
-    <br>
+    </fieldset>
+</form>
 </body>
 </html>
