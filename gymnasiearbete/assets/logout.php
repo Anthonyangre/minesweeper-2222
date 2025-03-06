@@ -1,10 +1,10 @@
 <?php
-session_start();
+session_start(); // Startar sessionen om den inte redan är startad
 
-session_unset();
+session_unset(); // Tar bort alla sessionvariabler
 
-session_destroy();
+session_destroy(); // Förstör sessionen helt
 
-header('Location: ../index.php'); 
-exit;
+header('Location: ../index.php'); // Omdirigerar användaren till startsidan
+exit; // Säkerställer att inga ytterligare skript körs efter omdirigeringen
 ?>

@@ -1,69 +1,50 @@
 <?php
 function getDatabaseConnection() {
-    // Create and return a new database connection
+    // Skapar och returnerar en ny databasanslutning
     return new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 }
 
 function getScore() {
-    $conn = getDatabaseConnection(); // Get connection
+    $conn = getDatabaseConnection(); // Hämtar databasanslutningen
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        die("Anslutning misslyckades: " . $conn->connect_error);
     }
 
+    // Förbereder SQL-frågan för att hämta poäng i fallande ordning
     $stmt = $conn->prepare("SELECT * FROM score ORDER BY points DESC");
     if (!$stmt) {
-        die("Statement preparation failed: " . $conn->error);
+        die("Misslyckades att förbereda frågan: " . $conn->error);
     }
 
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt->close(); // Close the statement
-    $conn->close(); // Close the connection
-    return $result;
+    $stmt->execute(); // Kör SQL-frågan
+    $result = $stmt->get_result(); // Hämtar resultatet
+    $stmt->close(); // Stänger SQL-förfrågan
+    $conn->close(); // Stänger databasanslutningen
+    return $result; // Returnerar resultatet
 }
 
-function getDatabasePoints() {
-    $conn = getDatabaseConnection(); // Get connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
-    session_start(); // Ensure session is started
-    $username = $_SESSION['userid'];
-
-    $stmt = $conn->prepare("SELECT points FROM score WHERE username = ?");
-    if (!$stmt) {
-        die("Statement preparation failed: " . $conn->error);
-    }
-
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $score = $result->fetch_assoc();
-    $stmt->close(); // Close the statement
-    $conn->close(); // Close the connection
-    return $score['points'];
-}
 function getUserPoints() {
-    $conn = getDatabaseConnection(); // Get connection
+    $conn = getDatabaseConnection(); // Hämtar databasanslutningen
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        die("Anslutning misslyckades: " . $conn->connect_error);
     }
 
-    session_start(); // Ensure session is started
-    $username = $_SESSION['userid'];
+    session_start(); // Säkerställer att sessionen är startad
+    $username = $_SESSION['userid']; // Hämtar användarnamnet från sessionen
 
+    // Förbereder SQL-frågan för att hämta användarens poäng, vinster och förluster
     $stmt = $conn->prepare("SELECT points, wins, lose FROM score WHERE username = ?");
     if (!$stmt) {
-        die("Statement preparation failed: " . $conn->error);
+        die("Misslyckades att förbereda frågan: " . $conn->error);
     }
 
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stats = $result->fetch_assoc();
-    $stmt->close(); // Close the statement
-    $conn->close(); // Close the connection
-    return $stats;
+    $stmt->bind_param("s", $username); // Binder parametern till användarnamnet
+    $stmt->execute(); // Kör SQL-frågan
+    $result = $stmt->get_result(); // Hämtar resultatet
+    $stats = $result->fetch_assoc(); // Lagrar resultatet i en associerad array
+    $stmt->close(); // Stänger SQL-förfrågan
+    $conn->close(); // Stänger databasanslutningen
+    return $stats; // Returnerar användarens statistik
 }
 ?>

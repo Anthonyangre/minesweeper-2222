@@ -1,205 +1,162 @@
 <?php
+// Startar session för att hålla koll på användaren
 session_start();
-require_once '../assets/functions.php';
-if (!isset($_SESSION['userid'])) {
+require_once '../assets/functions.php'; // Laddar in funktioner
+if (!isset($_SESSION['userid'])) { // Kollar om användaren är inloggad
     echo "du är inte välkommen";
-    header('Location: ../index.php');
+    header('Location: ../index.php'); // Skickar till startsidan om ej inloggad
 }
-// Initialize the game state if it doesn't exist
+// Sätter upp spelet om det inte finns
 if (!isset($_SESSION['game_state'])) {
-    $_SESSION['game_state'] = 'ongoing';
-    $rows = 10;
-    $cols = 10;
-    $mines = 20;  // Change this to your desired mine count
-    $_SESSION['grid'] = generateGrid($rows, $cols, $mines);
-    $_SESSION['revealed'] = array_fill(0, $rows, array_fill(0, $cols, false));
-    $_SESSION['flags'] = array_fill(0, $rows, array_fill(0, $cols, false));
-    $_SESSION['points'] = 0;
-    $stats = getUserPoints();
-    $_SESSION['pre_game_points'] = $stats['points']; 
-    $_SESSION['wins'] = 0;
-    $_SESSION['lose'] = 0;
-    $_SESSION['currentpoints'] = 0;
+    $_SESSION['game_state'] = 'ongoing'; // Spelet är igång
+    $rows = 10; // Antal rader
+    $cols = 10; // Antal kolumner
+    $mines = 20; // Antal minor
+    $_SESSION['grid'] = generateGrid($rows, $cols, $mines); // Skapar spelplan
+    $_SESSION['revealed'] = array_fill(0, $rows, array_fill(0, $cols, false)); // Håller koll på visade rutor
+    $_SESSION['flags'] = array_fill(0, $rows, array_fill(0, $cols, false)); // Håller koll på flaggor
+    $_SESSION['points'] = 0; // Startpoäng
+    $stats = getUserPoints(); // Hämtar användarstatistik
+    $_SESSION['pre_game_points'] = $stats['points']; // Sparar poäng före spelet
+    $_SESSION['wins'] = 0; // Antal vinster
+    $_SESSION['lose'] = 0; // Antal förluster
+    $_SESSION['currentpoints'] = 0; // Nuvarande poäng
 }
 
-
+// Hanterar POST från frontend
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
- 
-    if ($_SESSION['game_state'] != 'ongoing') {
-        $_SESSION['currentpoints'] = 0;
-        
+    if ($_SESSION['game_state'] != 'ongoing') { // Om spelet är slut
+        $_SESSION['currentpoints'] = 0; // Nollställer poäng
     }
-    if ($_SESSION['game_state'] === 'ongoing') {
-        $action = $_POST['action'];
-        $row = (int)$_POST['row'];
-        $col = (int)$_POST['col'];
-       
-       
+    if ($_SESSION['game_state'] === 'ongoing') { // Om spelet är igång
+        $action = $_POST['action']; // Hämtar handling
+        $row = (int)$_POST['row']; // Radnummer
+        $col = (int)$_POST['col']; // Kolumnnummer
 
-        if ($action === 'reveal') {
-            // Check if it's the first click
-            if (isFirstClick()) {
-                ensureFirstClickIsZero($row, $col);  // Ensure first click is on a '0' cell
-                revealCluster($row, $col);           // Reveal a cluster of safe cells
+        if ($action === 'reveal') { // Om användaren visar ruta
+            if (isFirstClick()) { // Första klicket?
+                ensureFirstClickIsZero($row, $col); // Gör första rutan till 0
+                revealCluster($row, $col); // Visar kluster
             } else {
-                revealCell($row, $col);              // Reveal the clicked cell (and potentially its surroundings if it's 0)
+                revealCell($row, $col); // Visar vald ruta
             }
-        } elseif ($action === 'flag') {
-            $_SESSION['flags'][$row][$col] = !$_SESSION['flags'][$row][$col];
+        } elseif ($action === 'flag') { // Om användaren flaggar
+            $_SESSION['flags'][$row][$col] = !$_SESSION['flags'][$row][$col]; // Växlar flagga
         }
 
-        // After action, check for win or lose
-        checkGameState();
+        checkGameState(); // Kollar spelets status
     }
 
-    // Return the updated game state
+    // Skickar speldata som JSON till frontend
     echo json_encode([
         'grid' => $_SESSION['grid'],
         'revealed' => $_SESSION['revealed'],
         'flags' => $_SESSION['flags'],
         'game_state' => $_SESSION['game_state'],
-        'points' => $_SESSION['points']  // Include points in the response for the frontend
+        'points' => $_SESSION['points']
     ]);
 }
 
+// Kollar om det är första klicket
 function isFirstClick() {
     foreach ($_SESSION['revealed'] as $row) {
         if (in_array(true, $row)) {
-            return false;
+            return false; // Inte första om något är visat
         }
     }
-    return true;
+    return true; // Första klicket
 }
 
+// Gör så första klicket blir en 0:a
 function ensureFirstClickIsZero($row, $col) {
-    // If the first clicked cell is not a '0', regenerate the grid to ensure the clicked cell is a '0'
-    if ($_SESSION['grid'][$row][$col] != 0) {
-        regenerateGridWithZeroAt($row, $col);
+    if ($_SESSION['grid'][$row][$col] != 0) { // Om inte 0
+        regenerateGridWithZeroAt($row, $col); // Skapar ny spelplan
     }
 }
+
+// Skapar ny spelplan med 0 på vald plats
 function regenerateGridWithZeroAt($safeRow, $safeCol) {
-    $rows = count($_SESSION['grid']);
-    $cols = count($_SESSION['grid'][0]);
-    $mines = 20;  // Adjust this to match your desired mine count
-
+    $rows = count($_SESSION['grid']); // Antal rader
+    $cols = count($_SESSION['grid'][0]); // Antal kolumner
+    $mines = 20; // Antal minor
     do {
-        $_SESSION['grid'] = generateGrid($rows, $cols, $mines);
-    } while ($_SESSION['grid'][$safeRow][$safeCol] != 0);
+        $_SESSION['grid'] = generateGrid($rows, $cols, $mines); // Ny spelplan
+    } while ($_SESSION['grid'][$safeRow][$safeCol] != 0); // Tills vald ruta är 0
 }
 
-
+// Skapar spelplan med minor och siffror
 function generateGrid($rows, $cols, $mines) {
-    // Ensure the number of mines is less than or equal to the total cells
-    $totalCells = $rows * $cols;
+    $totalCells = $rows * $cols; // Totala rutor
     if ($mines > $totalCells) {
-        $mines = $totalCells; // Cap the number of mines to the number of available cells
+        $mines = $totalCells; // Begränsar minor
     }
-
-    // Create a flat list of all cell positions
-    $allCells = []; 
+    $allCells = []; // Lista med rutor
     for ($r = 0; $r < $rows; $r++) {
         for ($c = 0; $c < $cols; $c++) {
-            $allCells[] = [$r, $c];
+            $allCells[] = [$r, $c]; // Lägger till ruta
         }
     }
-
-    // Shuffle the cell positions and pick the first $mines as mine locations
-    shuffle($allCells);
-    $minePositions = array_slice($allCells, 0, $mines);
-
-    // Initialize grid with zeros
-    $grid = array_fill(0, $rows, array_fill(0, $cols, 0));
-
-    // Place mines and update surrounding counts
-    foreach ($minePositions as [$r, $c]) {
-        $grid[$r][$c] = 'M';
-
-        // Update neighboring cells
-        for ($i = max(0, $r - 1); $i <= min($rows - 1, $r + 1); $i++) {
+    shuffle($allCells); // Blandar rutor
+    $minePositions = array_slice($allCells, 0, $mines); // Väljer minor
+    $grid = array_fill(0, $rows, array_fill(0, $cols, 0)); // Tom spelplan
+    foreach ($minePositions as [$r, $c]) { // Placerar minor
+        $grid[$r][$c] = 'M'; // Markerar mina
+        for ($i = max(0, $r - 1); $i <= min($rows - 1, $r + 1); $i++) { // Uppdaterar runt mina
             for ($j = max(0, $c - 1); $j <= min($cols - 1, $c + 1); $j++) {
                 if ($grid[$i][$j] !== 'M') {
-                    $grid[$i][$j]++;
+                    $grid[$i][$j]++; // Ökar siffra
                 }
             }
         }
     }
-
-    return $grid;
+    return $grid; // Returnerar spelplan
 }
 
-
+// Visar en ruta
 function revealCell($row, $col) {
-    // If already revealed or flagged, do nothing
-    if ($_SESSION['revealed'][$row][$col] || $_SESSION['flags'][$row][$col]) {
+    if ($_SESSION['revealed'][$row][$col] || $_SESSION['flags'][$row][$col]) { // Om redan visad eller flaggad
         return;
     }
-
-    // Reveal the clicked cell
-    $_SESSION['revealed'][$row][$col] = true;
- // Increment points when a cell is revealed
-    if ($_SESSION['grid'][$row][$col] != 'M') {
-        $_SESSION['currentpoints']++;
+    $_SESSION['revealed'][$row][$col] = true; // Visar ruta
+    if ($_SESSION['grid'][$row][$col] != 'M') { // Om inte mina
+        $_SESSION['currentpoints']++; // Ökar poäng
     }
-    // If it's a mine, the game is lost
-    if ($_SESSION['grid'][$row][$col] == 'M') {
-        $_SESSION['game_state'] = 'lost';
-        $_SESSION['lose']++;  // Increment the loss count
-    
-        // Apply a penalty of -10 points for the loss
-        $totalPointsLost = 5;  // Define the penalty explicitly
-        $cPoints =  $_SESSION['currentpoints'] - $totalPointsLost;
-        
-        if ($cPoints > 0) {
-            $pointsloss = $cPoints;
-            $_SESSION['points'] = ($pointsloss); 
+    if ($_SESSION['grid'][$row][$col] == 'M') { // Om mina
+        $_SESSION['game_state'] = 'lost'; // Spelet förlorat
+        $_SESSION['lose']++; // Ökar förluster
+        $totalPointsLost = 5; // Straffpoäng
+        $cPoints = $_SESSION['currentpoints'] - $totalPointsLost; // Räknar poäng
+        if ($cPoints > 0) { // Om poäng kvar
+            $_SESSION['points'] = $cPoints;
             $cPoints = 0;
-        } elseif ($cPoints < 0 ) {
+        } elseif ($cPoints < 0) { // Om negativt
             $_SESSION['points'] = 0;
             $cPoints = 0;
-         } else {
-            $_SESSION['points'] = 0; 
-
-         }
-        
-        
-          // Apply penalty but ensure points don't go negative
-    
-        // Update the database with the loss
-        updateDatabaseLoss();
-    
-        revealAllMines();
-
+        } else { // Om noll
+            $_SESSION['points'] = 0;
+        }
+        updateDatabaseLoss(); // Uppdaterar databas med förlust
+        revealAllMines(); // Visar alla minor
         return;
     }
-    
-
-    // If it's a zero, reveal surrounding cells
-    if ($_SESSION['grid'][$row][$col] == 0) {
-        revealCluster($row, $col);  // Only reveal surrounding cells if it's 0
-        
+    if ($_SESSION['grid'][$row][$col] == 0) { // Om 0
+        revealCluster($row, $col); // Visar kluster
     }
 }
 
+// Visar kluster runt en 0:a
 function revealCluster($row, $col) {
-    $rows = count($_SESSION['grid']);
-    $cols = count($_SESSION['grid'][0]);
-
-    // Use a queue for breadth-first search (BFS) to reveal all connected zero cells and their neighbors
-    $queue = [[$row, $col]];
+    $rows = count($_SESSION['grid']); // Antal rader
+    $cols = count($_SESSION['grid'][0]); // Antal kolumner
+    $queue = [[$row, $col]]; // Startar kö
     while (!empty($queue)) {
-        list($r, $c) = array_shift($queue);
-
-        // If the cell is already revealed, continue
-        if ($_SESSION['revealed'][$r][$c]) {
+        list($r, $c) = array_shift($queue); // Tar nästa ruta
+        if ($_SESSION['revealed'][$r][$c]) { // Om redan visad
             continue;
         }
-
-        // Reveal this cell
-        $_SESSION['revealed'][$r][$c] = true;
-
-        // If the cell is a zero, add its neighbors to the queue
-        if ($_SESSION['grid'][$r][$c] == 0) {
-            for ($i = max(0, $r - 1); $i <= min($r + 1, $rows - 1); $i++) {
+        $_SESSION['revealed'][$r][$c] = true; // Visar ruta
+        if ($_SESSION['grid'][$r][$c] == 0) { // Om 0
+            for ($i = max(0, $r - 1); $i <= min($r + 1, $rows - 1); $i++) { // Lägger till närliggande rutor
                 for ($j = max(0, $c - 1); $j <= min($c + 1, $cols - 1); $j++) {
                     if (!$_SESSION['revealed'][$i][$j]) {
                         $queue[] = [$i, $j];
@@ -210,17 +167,15 @@ function revealCluster($row, $col) {
     }
 }
 
+// Kollar om spelet är vunnet eller förlorat
 function checkGameState() {
-    if ($_SESSION['game_state'] === 'lost') {
+    if ($_SESSION['game_state'] === 'lost') { // Om redan förlorat
         return;
     }
-
-    $rows = count($_SESSION['grid']);
-    $cols = count($_SESSION['grid'][0]);
-    $totalCells = $rows * $cols;
-    $mines = 0;
-
-    // Count mines
+    $rows = count($_SESSION['grid']); // Antal rader
+    $cols = count($_SESSION['grid'][0]); // Antal kolumner
+    $totalCells = $rows * $cols; // Totala rutor
+    $mines = 0; // Räknar minor
     foreach ($_SESSION['grid'] as $row) {
         foreach ($row as $cell) {
             if ($cell == 'M') {
@@ -228,9 +183,7 @@ function checkGameState() {
             }
         }
     }
-
-    // Count revealed cells
-    $revealedCount = 0;
+    $revealedCount = 0; // Räknar visade rutor
     foreach ($_SESSION['revealed'] as $row) {
         foreach ($row as $revealed) {
             if ($revealed) {
@@ -238,95 +191,84 @@ function checkGameState() {
             }
         }
     }
-
-    // Check if all non-mine cells have been revealed (player wins)
-    if ($revealedCount === ($totalCells - $mines)) {
-        $_SESSION['game_state'] = 'won';
-        $_SESSION['wins']++;  // Increment the win count
-
-        // Update database with win and points
-        updateDatabaseWin();
-
-        revealAllMines(); // Optionally reveal all mines on win
+    if ($revealedCount === ($totalCells - $mines)) { // Om alla säkra rutor visade
+        $_SESSION['game_state'] = 'won'; // Spelet vunnet
+        $_SESSION['wins']++; // Ökar vinster
+        updateDatabaseWin(); // Uppdaterar databas med vinst
+        revealAllMines(); // Visar alla minor
     }
 }
 
+// Visar alla minor
 function revealAllMines() {
     for ($r = 0; $r < count($_SESSION['grid']); $r++) {
         for ($c = 0; $c < count($_SESSION['grid'][0]); $c++) {
             if ($_SESSION['grid'][$r][$c] == 'M') {
-                $_SESSION['revealed'][$r][$c] = true;
+                $_SESSION['revealed'][$r][$c] = true; // Visar mina
             }
         }
     }
 }
 
+// Uppdaterar databasen vid vinst
 function updateDatabaseWin() {
-    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
-
+    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper"); // Kopplar till databas
     if ($conn->connect_error) {
-        error_log("Database connection failed: " . $conn->connect_error);
+        error_log("Database connection failed: " . $conn->connect_error); // Loggar fel
         return;
     }
-
-    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  
-    $wins = $_SESSION['wins'];
-    $username = $_SESSION['userid'] ?? '';
-
+    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']); // Totala poäng
+    $wins = $_SESSION['wins']; // Antal vinster
+    $username = $_SESSION['userid'] ?? ''; // Användarnamn
     if (!empty($username)) {
-        $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?");
+        $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?"); // Förbereder uppdatering
         if ($stmt) {
-            $stmt->bind_param("iis", $points, $wins, $username);
+            $stmt->bind_param("iis", $points, $wins, $username); // Binder värden
             if (!$stmt->execute()) {
-                error_log("Failed to execute statement in updateDatabaseWin: " . $stmt->error);
+                error_log("Failed to execute statement in updateDatabaseWin: " . $stmt->error); // Loggar fel
             } else {
-                error_log("Successfully updated points and wins for user: $username");
+                error_log("Successfully updated points and wins for user: $username"); // Loggar lyckat
             }
-            $stmt->close();
+            $stmt->close(); // Stänger fråga
         } else {
-            error_log("Failed to prepare statement in updateDatabaseWin: " . $conn->error);
+            error_log("Failed to prepare statement in updateDatabaseWin: " . $conn->error); // Loggar fel
         }
     } else {
-        error_log("Username is empty in updateDatabaseWin.");
+        error_log("Username is empty in updateDatabaseWin."); // Loggar om användarnamn saknas
     }
-
-    $conn->close();
+    $conn->close(); // Stänger databas
 }
 
+// Uppdaterar databasen vid förlust
 function updateDatabaseLoss() {
-    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
-
+    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper"); // Kopplar till databas
     if ($conn->connect_error) {
-        error_log("Database connection failed: " . $conn->connect_error);
+        error_log("Database connection failed: " . $conn->connect_error); // Loggar fel
         return;
     }
-    $stats = getUserPoints();
-    $_SESSION['pre_game_points'] = $stats['points'];
-
-    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  
-    error_log($_SESSION['points']);
-    $_SESSION['points'] = 0;
-    $_SESSION['currentpoints'] = 0;
- 
-    $lose = $_SESSION['lose'];
-    $username = $_SESSION['userid'] ?? '';
-
+    $stats = getUserPoints(); // Hämtar statistik
+    $_SESSION['pre_game_points'] = $stats['points']; // Sparar poäng före spelet
+    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']); // Totala poäng
+    error_log($_SESSION['points']); // Loggar poäng
+    $_SESSION['points'] = 0; // Nollställer poäng
+    $_SESSION['currentpoints'] = 0; // Nollställer nuvarande poäng
+    $lose = $_SESSION['lose']; // Antal förluster
+    $username = $_SESSION['userid'] ?? ''; // Användarnamn
     if (!empty($username)) {
-        $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `lose` = ? WHERE `username` = ?");
+        $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `lose` = ? WHERE `username` = ?"); // Förbereder uppdatering
         if ($stmt) {
-            $stmt->bind_param("iis", $points, $lose, $username);
+            $stmt->bind_param("iis", $points, $lose, $username); // Binder värden
             if (!$stmt->execute()) {
-                error_log("Failed to execute statement in updateDatabaseLoss: " . $stmt->error);
+                error_log("Failed to execute statement in updateDatabaseLoss: " . $stmt->error); // Loggar fel
             } else {
-                error_log("Successfully updated points and losses for user: $username");
+                error_log("Successfully updated points and losses for user: $username"); // Loggar lyckat
             }
-            $stmt->close();
+            $stmt->close(); // Stänger fråga
         } else {
-            error_log("Failed to prepare statement in updateDatabaseLoss: " . $conn->error);
+            error_log("Failed to prepare statement in updateDatabaseLoss: " . $conn->error); // Loggar fel
         }
     } else {
-        error_log("Username is empty in updateDatabaseLoss.");
+        error_log("Username is empty in updateDatabaseLoss."); // Loggar om användarnamn saknas
     }
-
-    $conn->close();
+    $conn->close(); // Stänger databas
 }

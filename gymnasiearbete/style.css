@@ -1,18 +1,18 @@
 html {
-  overflow-x: hidden; /* Förhindra horisontell scroll */
+  overflow-x: hidden; /* Förhindrar horisontell scrollning */
   scroll-behavior: smooth;
-  height: 100%;   /*  gör att scroll bahovor smooth inte fungerar */
+  height: 100%;   /* Gör att scroll-behavior smooth inte fungerar */
 }
 
 body{
   background: linear-gradient(45deg, #5e4ef1b4, #ff2e5b);
   animation: gradientAnimation 15s ease infinite, waveEffect 25s linear infinite;
-  background-repeat: no-repeat; /* Hindrar upprepning */
+  background-repeat: no-repeat; /* Förhindrar upprepning av bakgrunden */
   background-size: cover;       /* Gör att gradienten täcker hela bakgrunden */
-  z-index: -1; /* Ensure the background stays behind the content */
+  z-index: -1; /* Säkerställer att bakgrunden ligger bakom innehållet */
   overflow-x: hidden; /* Förhindrar horisontell scrollning */
-  margin: 0; /* Ta bort marginaler */
-  padding: 0; /* Ta bort padding */
+  margin: 0; /* Tar bort marginaler */
+  padding: 0; /* Tar bort padding */
   height: 100%;
  
 }
@@ -27,11 +27,11 @@ h1{
 /* Centrera texten i headern */
 header h3 {
   margin: 0;
-  flex-grow: 1; /* Låt rubriken växa och ta upp tillgängligt utrymme */
-  text-align: center; /* Centrera rubriken */
+  flex-grow: 1; /* Låter rubriken växa och ta upp tillgängligt utrymme */
+  text-align: center; /* Centrerar rubriken */
 }
 
-/*rubrikerna på första sidan */
+/* Rubriker på första sidan */
 h4{
   text-align: center;
   margin-bottom: 0%;  
@@ -116,25 +116,7 @@ ol{
   animation: slideIn 0.8s ease-out;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* General Form Styles */
+/* Allmänna stilar för formulär */
 .login-form {
   width: 100%;
   max-width: 400px;
@@ -148,7 +130,7 @@ ol{
   animation: slideIn 0.8s ease-out;
 }
 
-/* Form Title */
+/* Titel för formulär */
 .form-title {
   font-size: 26px;
   font-weight: bold;
@@ -157,7 +139,7 @@ ol{
   position: relative;
 }
 
-/* Form Group */
+/* Formulärgrupp */
 .form-group {
   margin-bottom: 20px;
   text-align: left;
@@ -196,7 +178,7 @@ ol{
   transform: scale(1.1);
 }
 
-/* Form Actions */
+/* Åtgärder i formuläret */
 .form-actions {
   margin-top: 20px;
 }
@@ -219,7 +201,7 @@ ol{
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15), -5px -5px 15px rgba(255, 255, 255, 0.9);
 }
 
-/* Extra Links */
+/* Extra länkar */
 .extra-links {
   margin-top: 15px;
   font-size: 14px;
@@ -237,7 +219,7 @@ ol{
   text-shadow: 0px 2px 4px rgba(91, 155, 213, 0.5);
 }
 
-/* Responsive Design */
+/* Responsiv design */
 @media (max-width: 480px) {
   .login-form {
       padding: 15px;
@@ -253,7 +235,7 @@ ol{
   }
 }
 
-/* Animations */
+/* Animationer */
 @keyframes slideIn {
   from {
       transform: translateY(-50px);
@@ -288,17 +270,17 @@ ol{
 header {
   position: relative;
   align-items: center;
-  background-color: rgb(0, 0, 0); /* Bakgrundsfärg för header */
+  background-color: rgb(0, 0, 0); /* Bakgrundsfärg för headern */
   display: flex;
-  justify-content: space-between; /* För att hantera innehållets position horisontellt */
-  height: 100px; /* Specificera höjden */
-  width: 100%; /* Se till att headern tar upp hela skärmbredden */
-  margin: 0; /* Ta bort eventuella marginaler */
-  padding: 0; /* Ta bort eventuella padding */
-  box-sizing: border-box; /* Inkludera padding i total bredd och höjd */
+  justify-content: space-between; /* Hanterar innehållets position horisontellt */
+  height: 100px; /* Specificerar höjden */
+  width: 100%; /* Säkerställer att headern tar upp hela skärmbredden */
+  margin: 0; /* Tar bort eventuella marginaler */
+  padding: 0; /* Tar bort eventuell padding */
+  box-sizing: border-box; /* Inkluderar padding i total bredd och höjd */
   
-  top: 0; /* Placera headern längst upp */
-  left: 0; /* Justera så att den börjar från vänster */
+  top: 0; /* Placerar headern längst upp */
+  left: 0; /* Justerar så att den börjar från vänster */
 }
 
 fieldset {
@@ -322,20 +304,20 @@ background:
 
 background-position: center center;
 
-/* border animation för */
+/* Animation för kant */
 animation: bg-spin 25s linear infinite;
 }
 legend {
   background-color: white;
  
 }
-/* Container för meny och rubrik */
+/* Behållare för meny och rubrik */
 .menu-container {
   position: absolute; /* Gör menyn absolut positionerad */
   top: 28px; /* Avstånd från toppen */
   left: 10px; /* Avstånd från vänster */
-  display: flex; /* Låt menyn använda flexbox */
-  align-items: center; /* Centrera innehållet vertikalt */
+  display: flex; /* Använder flexbox för layout */
+  align-items: center; /* Centrerar innehållet vertikalt */
 }
 
 /* Stil för hamburgerknappen */
@@ -369,7 +351,7 @@ legend {
 
 
 .rainbow-text {
-  font-size: 500%; /* fontstorlek */
+  font-size: 500%; /* Textstorlek */
   text-align: center;
   align-items: center;
 }
@@ -382,27 +364,27 @@ legend {
   -webkit-background-clip: text;
   color: transparent;
   animation: wave 2.5s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.1s); /* Delay för varje bokstav */
+  animation-delay: calc(var(--i) * 0.1s); /* Fördröjning för varje bokstav */
 }
 
 /* Våganimation för regnbågseffekten */
 @keyframes wave {
   0%, 100% { transform: translateY(300); }
-  80% { transform: translateY(-8px); } /* Minska höjden på wave-effekten */
+  80% { transform: translateY(-8px); } /* Minskar höjden på vågeffekten */
   0%, 100% { transform: translateX(60); }
-  35% { transform: translateX(-15px); } /* Minska höjden på wave-effekten */
+  35% { transform: translateX(-15px); } /* Minskar höjden på vågeffekten */
 }
 
 .header-links {
   position: absolute;  /* Tar ut länkarna ur flödet */
-  right: 10px;         /* Placera dem 10px från högerkanten */
-  top: 15%;            /* Placera dem vertikalt i mitten av headern */
+  right: 10px;         /* Placerar dem 10px från högerkanten */
+  top: 15%;            /* Placerar dem vertikalt i mitten av headern */
   display: flex;   
 }
 .header-links a {
   padding: 2px;
   margin-top: 10px;
-  margin-right: 10px; /* Adjust as needed */
+  margin-right: 10px; /* Justeras vid behov */
   color: black;
   background: #ffffff;
   width: 90px;
@@ -441,13 +423,13 @@ legend {
 .menu-title {
   background-color: #ffffff;
   padding: 15px;
-  display: none; /* Initially hidden */
+  display: none; /* Döljs initialt */
   position: absolute;
-  left: 60px; /* Justera avståndet till hamburgarmenyn */
+  left: 60px; /* Justerar avståndet till hamburgarmenyn */
   top: 0;
   transform: translateX(-100%) scaleX(1); /* Initialt utanför skärmen, normal bredd */
-  transform-origin: left; /* Animera från vänster */
-  transition: transform 0.5s ease; /* Animera både translation och scale */
+  transform-origin: left; /* Animerar från vänster */
+  transition: transform 0.5s ease; /* Animerar både translation och skalning */
   border-radius: 10px;
   font-family:Arial, Helvetica, sans-serif;
   color: rgb(0, 0, 0);
@@ -456,24 +438,24 @@ legend {
   
 }
 
-/* Dropdown-menyn */
+/* Dropdown-meny */
 .dropdown-menu {
-  display: none; /* Initially hidden */
-  position: absolute; /* Håll den absolut så den kan positioneras i förhållande till parent */
-  left: 53px; /* Justera så den ligger direkt under rubriken */
-  top: 45px; /* Flytta ner till 60px för att matcha rubrikens höjd */
+  display: none; /* Döljs initialt */
+  position: absolute; /* Håller den absolut så den kan positioneras relativt till föräldern */
+  left: 53px; /* Justerar så den ligger direkt under rubriken */
+  top: 45px; /* Flyttar ner till 60px för att matcha rubrikens höjd */
   padding: 5px;
-  transform: scale(0); /* Starta med en mindre skala */
-  opacity: 0; /* Starta med osynlig dropdown */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Justera transitionens tid för mer responsivitet */
-  display: flex; /* Använd flexbox för bättre layout */
-  flex-direction: column; /* Placera länkarna vertikalt */
-  min-width: 115px; /* Ställ in en minsta bredd */
+  transform: scale(0); /* Startar med en mindre skala */
+  opacity: 0; /* Startar med osynlig dropdown */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Justerar transitionens tid för mer responsivitet */
+  display: flex; /* Använder flexbox för bättre layout */
+  flex-direction: column; /* Placerar länkarna vertikalt */
+  min-width: 115px; /* Ställer in en minsta bredd */
 
 }
 
 
-/* Varje menyitem */
+/* Varje menyobjekt */
 .dropdown-item {
   background: rgb(255, 255, 255);
   opacity: 0;
@@ -481,26 +463,26 @@ legend {
   transform-origin: top center;
   padding: 10px;
   margin: 5px 0;
-  transition: transform 0.3s, opacity 0.3s; /* Transition för animation */
+  transition: transform 0.3s, opacity 0.3s; /* Övergång för animation */
   text-align: center;
   display: block; /* Säkerställer att alla objekt får sin egen rad */
-  text-decoration: none; /* Ta bort understrykning på länkar */
+  text-decoration: none; /* Tar bort understrykning på länkar */
   border-radius: 10px;
   width: 100%; /* Gör varje länk lika bred som dropdown-menyn */
-  box-sizing: border-box; /* Inkludera padding och border i bredd */
+  box-sizing: border-box; /* Inkluderar padding och kant i bredd */
   font-weight: 600;
   box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.1);
   color:rgb(0, 0, 0);
 
 }
 
-/* Hover effect for dropdown items */
+/* Hover-effekt för dropdown-objekt */
 .dropdown-item:hover {
   background: rgb(216, 202, 202);
 }
 
 
-/* Animation för dropdown-items */
+/* Animation för dropdown-objekt */
 @keyframes scaleZ {
   0% {
     opacity: 0;
@@ -514,16 +496,7 @@ legend {
   }
 }
 
-
-
-
-
-
-
-
-
-
- /* knapp i profil som ändrar profilen */
+/* Knapp i profil som ändrar profilen */
 .button1 {
     background: linear-gradient(145deg, #5b9bd5, #4177b0);
     color: white;
@@ -564,10 +537,10 @@ legend {
     5px 5px 15px rgba(8, 8, 68, 0.708), /* Mörkare skugga åt nedre högra hörnet */
     -5px -5px 15px rgba(64, 242, 233, 0.7); /* Ljusa högdagrar åt övre vänstra hörnet */
 
-  /* Lägg till en subtil gradient  */
+  /* Lägger till en subtil gradient */
   background: linear-gradient(145deg, #e4e4e4, #bda0ff);
 
-  /* Skapa känsla av djup */
+  /* Skapar känsla av djup */
   border: 1px solid rgba(0, 0, 0, 0.1); /* Svag kant */
 }
 
@@ -583,15 +556,10 @@ li {
 
 textarea {
   width: 100% ;                /* Gör textrutorna 80% breda */
-  margin-bottom: 10px;        /* Ge textrutorna lite mellanrum */
+  margin-bottom: 10px;        /* Ger textrutorna lite mellanrum */
 }
 
-
-
-
-
-
-/* upp kanppen på hemsidan */
+/* Upp-knapp på hemsidan */
 #upp-knapp {
   position: fixed;
   bottom: 20px;
@@ -601,12 +569,12 @@ textarea {
   color:#00ffee;
   height: 150px;
   width:150px;
-  z-index: 100; /* Överst i lager */
+  z-index: 100; /* Överst i lagerordningen */
   cursor: pointer;
   transition: transform 0.3s;
   opacity: 0; /* Gör knappen osynlig */
   visibility: hidden; /* Döljer knappen från layouten */
-  transition: opacity 0.3s ease, visibility 0.3s ease; /* Lägg till en mjuk övergång */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Lägger till en mjuk övergång */
   border-radius: 50%; /* Gör knappen rund */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   align-items: center;
@@ -628,18 +596,8 @@ textarea {
 
 
 #upp-knapp:hover {
-  transform: scale(1.1); /* Förstorad vid hover */
+  transform: scale(1.1); /* Förstoras vid hover */
 }
-
-
-
-
-
-
-
-
-
-
 
 @keyframes bg-spin {
   to {
@@ -647,25 +605,17 @@ textarea {
   }
 }
 
-/* Pause animation on hover */
+/* Pausar animation vid hover */
 .box:hover {
   animation-play-state: paused;
 }
 
-/* Property for border angle */
+/* Egenskap för kantvinkel */
 @property --border-angle {
   syntax: "<angle>";
   inherits: true;
   initial-value: 0turn;
 }
-
-
-
-
-
-
-
-
 
 .konto {
   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
@@ -693,16 +643,16 @@ textarea {
 
 
 .konto-dropdown {
-  display: none; /* Dölj från början */
+  display: none; /* Döljs från början */
   position: absolute;
-  top: 70px; /* Placera dropdown precis under .konto */
+  top: 70px; /* Placerar dropdown precis under .konto */
   
   background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   z-index: 10;
-  opacity: 0; /* Starta osynligt */
-  transform: scale(0.9); /* Starta mindre storlek */
+  opacity: 0; /* Startar osynligt */
+  transform: scale(0.9); /* Startar med mindre storlek */
   transition: opacity 0.3s ease, transform 0.3s ease;
 
 }
@@ -717,8 +667,8 @@ textarea {
   padding: 10px 20px;
   color: #333;
   cursor: pointer;
-  opacity: 0; /* Start osynligt */
-  transform: translateY(-10px); /* Starta uppflyttat */
+  opacity: 0; /* Startar osynligt */
+  transform: translateY(-10px); /* Startar uppflyttat */
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -757,7 +707,7 @@ table {
 
 
 
-/* Ställer in kolumn- och cellformat:*/
+/* Ställer in kolumn- och cellformat */
  td {
   background-color:rgba(17, 17, 17, 0.829);
   color: white;
@@ -775,7 +725,7 @@ th{
     font-weight: 900;
 }
 
-/* Justerar varje rad i tabellen: */
+/* Justerar varje rad i tabellen */
 tr {
 	 vertical-align: top;
     align-items: center;
@@ -804,7 +754,7 @@ tr {
 .choicelinks {
   margin: 1% auto 0 auto; /* Toppen 1%, resten auto för att centrera horisontellt */
   padding-top: 3%;
-  text-align: center;  /* Se till att innehållet också centrerats */
+  text-align: center;  /* Säkerställer att innehållet också är centrerat */
 }
 
 .choicelinks a {
@@ -812,15 +762,14 @@ tr {
   margin-top: 10%;
   color: rgb(255, 255, 255);
   font-weight: bold;
-  background: #ffffff; /* Background color */
+  background: #ffffff; /* Bakgrundsfärg */
   padding-bottom:2%;
   padding-top:2%;
   padding-left:10%;
-  width:110%; /* Width */
-
-  height: 100px; /* Height */
-  font-size: 30px; /* Text size */
-  margin-left: 10px; /* Spacing between links */
+  width:110%; /* Bredd */
+  height: 100px; /* Höjd */
+  font-size: 30px; /* Textstorlek */
+  margin-left: 10px; /* Avstånd mellan länkar */
   text-align: center;
   align-items: center;
   align-self: center;
@@ -830,7 +779,7 @@ tr {
   text-shadow: 2px 2px 5px rgb(121, 105, 105);
   --border-angle: 0turn;
   
-  /* Main background gradient */
+  /* Huvudsaklig bakgrundsgradient */
   --main-bg: conic-gradient(
     from var(--border-angle),
     rgb(73, 73, 73),
@@ -842,7 +791,7 @@ tr {
   border: solid 3px transparent;
   border-radius: 2px;
   
-  /* Gradient border */
+  /* Gradientkant */
   --gradient-border: conic-gradient(
     from var(--border-angle),
     transparent 25%,
@@ -861,7 +810,7 @@ tr {
 }
 
 .choicelinks a:hover {
-  transform: scale(1.1); /* Slight zoom effect on hover */
+  transform: scale(1.1); /* Liten zoom-effekt vid hover */
 }
 .choicelinks p {
   filter: invert(100%) brightness(1000%) contrast(100%) grayscale(100%);
@@ -872,27 +821,27 @@ tr {
 
     @media (max-width: 868px) {
       .rainbow-text {
-        font-size: 3rem; /* Smaller for tablets and larger phones */
+        font-size: 3rem; /* Mindre för surfplattor och större telefoner */
       }
     }
 
     @media (max-width: 700px) {
       .rainbow-text {
-        font-size: 2.5rem; /* Smaller font size for larger phones */
+        font-size: 2.5rem; /* Mindre textstorlek för större telefoner */
       }
       
     }
 
     @media (max-width: 650px) {
       .rainbow-text {
-        font-size: 2rem; /* Smallest font size for small phones */
+        font-size: 2rem; /* Minsta textstorlek för små telefoner */
       }
     }
 
-    /* Media query to hide the text on very small screens */
+    /* Media query för att dölja texten på väldigt små skärmar */
     @media (max-width: 580px) {
       .rainbow-text {
-        display: none; /* Hide text for very small screens */
+        display: none; /* Döljer texten för väldigt små skärmar */
       }
     }
     @media (max-width: 1500px) {
@@ -934,7 +883,7 @@ tr {
 border: solid 10px transparent;
 
 
-/* Gradient border */
+/* Gradientkant */
 --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, rgb(98, 0, 255), rgb(234, 0, 255) 99%, transparent);
 
 background: 
@@ -948,8 +897,8 @@ background-position: center center;
 animation: bg-spin 5s linear infinite;
   font-family: fantasy;
 
-  /* Lägg till suddig kant */
-  box-shadow: 4px 4px 10px rgba(3, 192, 255, 0.6); /* Blurred kant */
+  /* Lägger till suddig kant */
+  box-shadow: 4px 4px 10px rgba(3, 192, 255, 0.6); /* Suddig kant */
   }
   .form-group3 {
     margin-bottom: 20px;
@@ -1010,15 +959,15 @@ animation: bg-spin 5s linear infinite;
   }
   .textdiv {
     margin-left:0px;
-    align-items: center; /* Vertically center the image and text */
+    align-items: center; /* Centrerar bilden och texten vertikalt */
 }
 
 .forum_bild {
-    width: 30px; /* Set a fixed width for the image */
-    height: 30px; /* Set a fixed height for the image */
-    border-radius: 50%; /* Make the image circular */
+    width: 30px; /* Sätter en fast bredd för bilden */
+    height: 30px; /* Sätter en fast höjd för bilden */
+    border-radius: 50%; /* Gör bilden cirkulär */
     border:3px solid black;
-    vertical-align: middle; /* Ensure image aligns properly with text */
+    vertical-align: middle; /* Säkerställer att bilden alignas korrekt med texten */
 }
 #username_txt_pic {
   text-align: start;
