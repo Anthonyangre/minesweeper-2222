@@ -1,26 +1,29 @@
 <?php
+//sql connection till våran sql server genom minesweeper usern
 $sql = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
-
+// de funktionerna som krävs för att forumet ska fungera och databasen.
 require_once 'assets/functions.php';
 require_once '../../dbhs.php';
 
-
+//session start
 session_start(); 
-
+//om det finns ingen userid, och därför ingen user ska man bli utloggad och tagen till startsidan
 if (!isset($_SESSION['userid'])) {
     echo "Du måste vara inloggad för att komma åt den här sidan.";
     header('Location: ../../index.php');
 } else {
+    // annars sätter vi variabeln username till userid
     $username = $_SESSION['userid'];
 }
 
 
 $username = $_SESSION['userid'];
-// Retrieve the 'id' from the GET parameters
+// ta idet från urlen genom get
 $id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-
+// genom funktionen får vi posterna på forumet vars id är iden i urlen
 $records = getForumPosts($id);
+//kod för att få titlen av huvudforumet
 function getForumTitle($id) {
     $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
@@ -28,7 +31,7 @@ function getForumTitle($id) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $title = "Okänt Forum"; // Default title in case of failure
+    $title = "Okänt Forum"; // om det finns inget huvudforum är det okänt.
 
     try {
         $sql = "SELECT title FROM pforum WHERE id = ?";
@@ -49,6 +52,7 @@ function getForumTitle($id) {
 
     return $title;
 }
+//variabel som innehållet titeln av forumet
 $forumTitle = getForumTitle($id);
 ?>
 
@@ -63,6 +67,7 @@ $forumTitle = getForumTitle($id);
 </head>
 <body>
 <header> 
+    <!-- menyn på vänstra sida av hemsidan -->
         <div class="menu-container" onclick="toggleMenu(this)">
             <div class="hamburger-menu">
                 <div class="bar1"></div>
@@ -83,14 +88,14 @@ $forumTitle = getForumTitle($id);
 
         <h3 class="rainbow-text">Meddelanden</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto" onclick="togglekonto(this)"><?php
-// Define the path to the profile picture
+// variabel för var profilbilden lagras.
 $profilePicturePath = '../uploads/' . $_SESSION["userid"] . '_picture.jpg';
 
-// Check if the profile picture exists
+// kollar om den finns, om den gör det visar den bilden.
 if (file_exists($profilePicturePath)) {
     echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
 }
-?>
+?> <!-- user menyn visas vid klick av usernamet -->
         <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>   <!-- skriver ut användarnamnet i konto delen samt pilen som kan ändra riktning när man trycker på kanppen -->
     <div class="konto-dropdown">
         <ul>
@@ -105,7 +110,7 @@ if (file_exists($profilePicturePath)) {
     
     </header>
 
-
+<!-- formen för att skriva meddelanden genom forumet -->
   <form name="nypost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . '?id=' . urlencode($id); ?>">
       <table class="yes">
       
@@ -133,16 +138,15 @@ if (file_exists($profilePicturePath)) {
                   <td>
                     
                   <?php
-// Define the path to the profile picture
+
 $profilePicturePath = '../uploads/' . htmlspecialchars($row_Recordset1['username']) . '_picture.jpg';
 
-// Check if the profile picture exists
+
 if (file_exists($profilePicturePath)) {
     echo "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
 }
 ?><?php echo "<strong class='user'>" . htmlspecialchars($row_Recordset1['username']) . "</strong>"; ?> <?php echo "<small>" . htmlspecialchars($row_Recordset1['tid']) . "</small>"; ?>
-                      <!-- Link to search page for user's posts -->
-                      
+                      <!-- visar meddelanden genom  records -->
                       <div id="message"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['msg'])); ?></div>
                     
                 </td>

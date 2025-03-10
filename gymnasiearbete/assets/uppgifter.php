@@ -85,8 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Försöker flytta den uppladdade filen till rätt plats på servern
             if (move_uploaded_file($file['tmp_name'], $profilePicturePath)) {
-
+                // Om flytten lyckas görs inget mer här (kan t.ex. lägga till framgångsmeddelande)
             } else {
+                // Lägger till ett felmeddelande om filen inte kunde flyttas
                 $errors[] = "Kunde inte flytta den uppladdade filen.";
             }
         }

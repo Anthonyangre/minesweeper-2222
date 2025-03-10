@@ -1,4 +1,6 @@
 <?php
+//sql connection till våran sql server genom minesweeper usern
+
 function getDatabaseConnection() {
     // Skapar och returnerar en ny databasanslutning
     return new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");

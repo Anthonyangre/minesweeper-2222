@@ -32,15 +32,18 @@ $records2 = getporumPosts();
 </head>
 <body>
 <header> 
-    <!-- Hamburgermeny med dropdown för navigering -->
-    <div class="menu-container" onclick="toggleMenu(this)">
-        <div class="hamburger-menu">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-        </div>
-        <div class="menu-title">Navigation</div>
-        <div class="dropdown-menu">
+        <div class="menu-container" onclick="toggleMenu(this)">
+            <div class="hamburger-menu">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+
+            <!-- Rubrik som glider in från vänster när knappen klickas -->
+            <div class="menu-title">Navigation</div>
+
+            <!-- Dropdown-menyn som visas vid klick -->
+            <div class="dropdown-menu">
             <a href="../pre_game_choice.php" class="dropdown-item" onclick="return confirm('Är du säker att du vill gå till spelmenyn?');">Spelmeny</a>
             <a href="../leaderboard.php" class="dropdown-item">Topplista</a>
             <a href="../../assets/logout.php#regler" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');" class="dropdown-item">Regler</a>
@@ -48,29 +51,29 @@ $records2 = getporumPosts();
         </div>
     </div>
 
-    <!-- Sidans titel med regnbågseffekt -->
-    <h3 class="rainbow-text">Forum</h3>
+        <h3 class="rainbow-text">Forum</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <div class="konto" onclick="togglekonto(this)"><?php
+// Define the path to the profile picture
+$profilePicturePath = '../uploads/' . $_SESSION["userid"] . '_picture.jpg';
 
-    <!-- Kontosektion som visar användarnamn och profilbild -->
-    <div class="konto" onclick="togglekonto(this)">
-        <?php
-        // Sätter sökväg till användarens profilbild
-        $profilePicturePath = '../uploads/' . $_SESSION["userid"] . '_picture.jpg';
-        // Kollar om profilbilden finns och visar den om den gör det
-        if (file_exists($profilePicturePath)) {
-            echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
-        }
-        ?>
-        <!-- Skriver ut användarnamnet och en pil för dropdown -->
-        <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>
-        <div class="konto-dropdown">
-            <ul>
-                <li class="konto-item"><a href="../../assets/logout.php" onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');">Logga ut</a></li>
-                <li class="konto-item"><a href="../profil.php">Profil</a></li>
-            </ul>
-        </div>
+// Check if the profile picture exists
+if (file_exists($profilePicturePath)) {
+    echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
+}
+?>
+        <?php echo htmlspecialchars($username) . "<p id='arrow'>🢓</p>"; ?>   <!-- skriver ut användarnamnet i konto delen samt pilen som kan ändra riktning när man trycker på kanppen -->
+    <div class="konto-dropdown">
+        <ul>
+            <li class="konto-item"><a href="../../assets/logout.php"onclick="return confirm('Är du säker på att du vill logga ut och gå till förtsa sidan?');" >Logga ut</a></li>
+            <li class="konto-item"><a href="../profil.php">Profil</a></li>
+            
+        </ul>
     </div>
-</header>
+</div>
+
+
+    
+    </header>
 
 <!-- Formulär för att skapa ett nytt foruminlägg -->
 <form name="nyppost" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
@@ -91,26 +94,24 @@ $records2 = getporumPosts();
     <input type="hidden" name="MM_insert" value="nypost"> <!-- Dold input för att markera ny post -->
 </form>
 
-<!-- Tabell som visar befintliga foruminlägg -->
-<table id="dbres" class="yes">
-    <?php if (!empty($records2)): ?> <!-- Kollar om det finns inlägg -->
-        <?php foreach ($records2 as $row_Recordset1): ?> <!-- Loopar igenom alla inlägg -->
-            <tr>
-                <td>
-                    <?php
-                    // Sätter sökväg till användarens profilbild för varje inlägg
-                    $profilePicturePath = '../uploads/' . htmlspecialchars($row_Recordset1['username']) . '_picture.jpg';
-                    // Visar profilbild och användarnamn om bilden finns, annars bara användarnamn
-                    if (file_exists($profilePicturePath)) {
-                        echo "<div class='textdiv'>" . "<strong>" . "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>" . htmlspecialchars($row_Recordset1['username']) . "</strong>" . "</div>";
-                    } else {
-                        echo "<strong>" . htmlspecialchars($row_Recordset1['username']) . "</strong>";
-                    }
-                    ?>
-                    <!-- Länk till enskilt inlägg baserat på ID -->
-                    <a href="forum.php?id=<?php echo htmlspecialchars($row_Recordset1['id']); ?>">
-                        <div id="title"><?php echo nl2br(htmlspecialchars_decode($row_Recordset1['title'])); ?></div>
-                    </a>
+  <table id="dbres" class="yes">
+      <?php if (!empty($records2)): ?>
+          <?php foreach ($records2 as $row_Recordset1): ?>
+              <tr>
+                  <td>
+                  <?php
+// Define the path to the profile picture
+$profilePicturePath = '../uploads/' . htmlspecialchars($row_Recordset1['username']) . '_picture.jpg';
+
+// Check if the profile picture exists
+if (file_exists($profilePicturePath)) {
+    echo "<div class='textdiv'>" . "<strong>" . "<img class='forum_bild' src='" . $profilePicturePath . "' alt='Profile Picture'>" . htmlspecialchars($row_Recordset1['username']) . "</strong>" . "</div>";
+} else { echo "<strong>" . htmlspecialchars($row_Recordset1['username']) . "</strong>";}
+ ?>
+                      <!-- Link to search page for user's posts -->
+                      <a href="forum.php?id=<?php echo htmlspecialchars($row_Recordset1['id']); ?>">
+                      <div id="title"> <?php echo nl2br(htmlspecialchars_decode($row_Recordset1['title'])); ?></div>
+                      </a>
                 </td>
             </tr>
         <?php endforeach; ?>

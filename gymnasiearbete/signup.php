@@ -47,7 +47,7 @@ require_once 'dbhs.php';
     <div id="wrapper">
     
     
-
+<!-- formen för registrering, name, password, username, email -->
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="login-form">
     <fieldset>
         <legend class="form-title">Registrera Konto</legend>
@@ -73,11 +73,7 @@ require_once 'dbhs.php';
         <div class="extra-links">
             <a href="login.php">Har du ett konto? Logga in här.</a>
         </div>
-    </fieldset>
-</form>
-  
-    <?php
-
+        <?php
     //kontrollerar om det finns felmeddelanden
     if (count($errors) > 0) {
         
@@ -85,9 +81,8 @@ require_once 'dbhs.php';
             <li>'.implode('</li><li>', $errors).'</li>
         </ul>';
         }
-        
     ?>
-    </div>
-    <br>
+    </fieldset>
+</form>
 </body>
 </html>

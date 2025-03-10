@@ -1,13 +1,16 @@
 <?php
+//sql connection till våran sql server genom minesweeper usern
+
 $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
 
 // Kontrollera anslutningen
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+//starta en session 
 session_start();
 $errors = array();
+//koden för när man registrerar,
 if (isset($_POST["register"])) {
     if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email']) || empty($_POST['name'])) {
         $errors[] = 'Fyll i fälten för användarnamn och lösenord';
@@ -33,20 +36,22 @@ if (isset($_POST["register"])) {
         if (preg_match('/[^a-zA-Z0-9]/', $password)) {
             $errors[] = 'Lösenordet får inte innehålla specialtecken.';
         }
+        // söker databasen för username
         $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
+        // söker databasen för en email adress
         $stmt = $conn->prepare("SELECT email FROM users WHERE username = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $mailres = $stmt->get_result();
-        
+        // om det finns en username eller email i databasen ger den en error
         if ($result ->num_rows > 0)  {
             $errors[] = "Denna användare finns redan";
         } elseif ($mailres ->num_rows > 0) {
             $errors[] = "Detta mejl finns redan";
-
+        // om det inte finns några errors sätter den in username name, email, password( hashat ) i databasen
         } elseif (empty($errors)) { $zero = 0;
             $passwordh = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("INSERT INTO `users`(`username`,`email`,`name`, `password`) VALUES (?,?,?,?)");
@@ -75,28 +80,28 @@ if (isset($_POST["register"])) {
         }
             
     }
-    
+    //databas hanteraren till login.
 if (isset($_POST['submit'])) {
 
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $errors[] = 'Fyll i fälten för användarnamn och lösenord';
     } 
-
+// sätter 2 variabler till username och passworden från formen på login sidan
     $username = $_POST['username'];
     $password = $_POST['password'];
-
+// tar reda på på om det finns en username, password med samma
     $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-
+//om det finns en användare tar den resultatet och verifierar om lösenordet i korrekt jämnfört med den hashade på databasen
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
         if (password_verify($password, $user['password'])) {
             echo "Password is correct.<br>";
             $_SESSION['userid'] = $user['username'];
-
+// tar poängen från databasen för att sätta sessionens poäng och vinster osv.
             $stmt = $conn->prepare("SELECT points, wins, lose FROM score WHERE username = ?");
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -121,31 +126,33 @@ if (isset($_POST['submit'])) {
 
     $stmt->close();
 }
+// koden för formen på profiländringssidan.
 if (isset($_POST["Ändra"])) {
-    // Check if the user is logged in
+    // kollar om man är inloggad först
     if (!isset($_SESSION['userid'])) {
         $errors[] = "Du måste vara inloggad för att ändra dina uppgifter.";
     } else {
-        // Retrieve current logged-in user's username (from the session)
+        // tar användarnamnet från sessionen
         $userid = $_SESSION['userid'];
 
-        // Fetch the data from the form
+        // tar datat som ska ändras från formen
         $password = $_POST['password3'];
         $name = $_POST['name3'];
         $email = $_POST['email3'];
 
-        // Validate email
+        // validerar om det är en korrekt email
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Ogiltig e-postadress';
         }
 
-        // Validate name
+        // validerar om namnet är korrekt gjord
         if (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
             $errors[] = 'Namn får bara innehålla bokstäver och mellanslag.';
         }
 
-        // Validate password if provided
-        $passwordhash = null; // Default to null
+        // validerar om lösenordet får användas
+        $passwordhash = null; 
+        // om lösenord är tomt ska man kunna ändra utan att ändra lösenord
         if (!empty($password)) {
             if (preg_match('/[^a-zA-Z0-9]/', $password)) {
                 $errors[] = 'Lösenordet får inte innehålla specialtecken.';
@@ -153,8 +160,7 @@ if (isset($_POST["Ändra"])) {
                 $passwordhash = password_hash($password, PASSWORD_DEFAULT);
             }
         }
-
-        // Check if the new email already exists (exclude the current user)
+// om det finns redan mail som används an en annan ska man inte kunna ändra till det mailet
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND username != ?");
         $stmt->bind_param("ss", $email, $userid);
         $stmt->execute();
@@ -163,21 +169,23 @@ if (isset($_POST["Ändra"])) {
         if ($result->num_rows > 0) {
             $errors[] = "Email används redan av en annan användare.";
         } else {
-            // Update the user details
+            // updatering av användaruppgifter
             if (empty($errors)) {
                 if ($passwordhash) {
-                    // Update all fields including password
+                    // uppdatera allt inkluderat lösenord
                     $stmt = $conn->prepare("UPDATE `users` SET `name` = ?, `email` = ?, `password` = ? WHERE `username` = ?");
                     $stmt->bind_param("ssss", $name, $email, $passwordhash, $userid);
                 } else {
-                    // Update fields excluding password
+                    // updatering av allt utom lösenord
                     $stmt = $conn->prepare("UPDATE `users` SET `name` = ?, `email` = ? WHERE `username` = ?");
                     $stmt->bind_param("sss", $name, $email, $userid);
                 }
 
                 if ($stmt->execute()) {
-                    $errors[] =  "Dina uppgifter har uppdaterats.";
+                    // om det fungerar
+            
                 } else {
+                    // om det inte fungerar
                     $errors[] = "Ett fel uppstod när uppgifterna skulle uppdateras.";
                 }
 
