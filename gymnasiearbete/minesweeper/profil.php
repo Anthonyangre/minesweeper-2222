@@ -101,7 +101,13 @@ require_once '../assets/uppgifter.php'; // Laddar fil för användaruppgifter
         </div>
     </form>
     </div>
-
-
+    <!-- refreshar sidan så att profilbilden inte blir cachad. -->
+    <script>
+document.querySelector(".profil-form").addEventListener("submit", function() {
+    setTimeout(function() {
+        location.reload();
+    }, 500);
+});
+</script>
 </body>
 </html>
