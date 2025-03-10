@@ -6,10 +6,10 @@ $database_forumtest = "Minesweeper";
 $username_forumtest = "Minesweeper";
 $password_forumtest = "Minesweeper";
 
-
+// skapar en connection
 try {
   $forum = new PDO("mysql:host=$hostname_forumtest;dbname=$database_forumtest", $username_forumtest, $password_forumtest);
-  // set the PDO error mode to exception
+
   $forum->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
 } catch(PDOException $e) {
@@ -21,7 +21,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 if (!isset($_SESSION['userid'])) {
-    echo "You must be logged in to post a message.";
+
     header('Location: index.php'); 
 } else {
     $username = $_SESSION['userid'];
@@ -30,7 +30,7 @@ if (!isset($_SESSION['userid'])) {
 
 
 
-
+// om man skapar ett forum kollar den om titeln existerar
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['title'])) {
     $title = trim($_POST['title']); 
     $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS) ;
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['title'])) {
     }
 }
 
-
+//funktionen för att skapa ett huvudforum, likadan som vanliga funktionen bara variablerna är annorlunda
 function insertporumpost($username, $title) {
     global $forum;
 
@@ -67,7 +67,7 @@ function insertporumpost($username, $title) {
     }
 }
 
-
+// funktionen för att hämta huvudforum
 function getporumPosts() {
     global $forum;
 

@@ -121,5 +121,13 @@ if (file_exists($profilePicturePath)) {
     </div>
     </form>
     </div>
+    <!-- refreshar sidan så att profilbilden inte blir cachad. -->
+    <script>
+document.querySelector(".profil-form").addEventListener("submit", function() {
+    setTimeout(function() {
+        location.reload();
+    }, 500);
+});
+</script>
 </body>
 </html>
