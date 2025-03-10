@@ -128,7 +128,7 @@ function togglekonto(button) {
 
 document.addEventListener("scroll", function() {
   const uppKnapp = document.getElementById("upp-knapp");
-  if (window.scrollY > 100) { // Justera 100 till önskad gräns
+  if (window.scrollY > 100) {
     uppKnapp.classList.add("show");
   } else {
     uppKnapp.classList.remove("show");
