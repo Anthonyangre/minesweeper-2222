@@ -60,7 +60,7 @@ require_once 'dbhs.php';
     <input type="email" id="email" name="email" placeholder="Ange din email" required>
 </div>
 <div class="form-group">
-             <label for="name">name</label>
+             <label for="name">namn</label>
              <input type="text" id="name" name="name"placeholder="Ange ditt namn" maxlength="16" required>
 </div>
         <div class="form-group">

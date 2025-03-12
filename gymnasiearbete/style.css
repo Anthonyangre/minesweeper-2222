@@ -1,6 +1,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden; /* Förhindrar horisontell scrollning */
+  font-size: 16px;
 }
 
 body {
@@ -559,29 +560,26 @@ textarea {
 
 #upp-knapp {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 2%; /* Ersätter 20px */
+  right: 2%;  /* Ersätter 20px */
   font-size: 100px;
   font-weight: 900;
   color: #00ffee;
-  height: 150px;
   width: 150px;
-  z-index: 100; /* Överst i lagerordningen */
+  height: 150px;
+  z-index: 100;
   cursor: pointer;
-  transition: transform 0.3s;
-  opacity: 0; /* Gör knappen osynlig */
-  visibility: hidden; /* Döljer knappen från layouten */
-  transition: opacity 0.3s ease, visibility 0.3s ease; /* Lägger till en mjuk övergång */
-  border-radius: 50%; /* Gör knappen rund */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  text-decoration: none;
-}
-
-#upp-knapp {
-  line-height: 0px; /* Samma som höjden */
+  background: transparent;
 }
 
 #upp-knapp.show {
@@ -589,9 +587,8 @@ textarea {
   visibility: visible;
 }
 
-#upp-knapp:hover {
-  transform: scale(1.1); /* Förstoras vid hover */
-}
+
+
 
 @keyframes bg-spin {
   to {

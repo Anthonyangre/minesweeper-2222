@@ -36,7 +36,7 @@ require_once '../assets/uppgifter.php'; // Laddar fil för användaruppgifter
         </div>
     </div>
 
-    <h3 class="rainbow-text">Minesweeper</h3> <!-- Sidtitel med regnbågseffekt -->
+    <h3 class="rainbow-text">Profil</h3> <!-- Sidtitel med regnbågseffekt -->
     <!-- Kontosektion med användarnamn och profilbild -->
     <div class="konto" onclick="togglekonto(this)">
         <?php

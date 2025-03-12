@@ -125,17 +125,42 @@ function togglekonto(button) {
   }
 }
 
-
-document.addEventListener("scroll", function() {
+document.addEventListener("DOMContentLoaded", function() {
   const uppKnapp = document.getElementById("upp-knapp");
-  if (window.scrollY > 100) { // Justera 100 till önskad gräns
-    uppKnapp.classList.add("show");
-  } else {
-    uppKnapp.classList.remove("show");
+  if (!uppKnapp) {
+    console.error("Kunde inte hitta #upp-knapp");
+    return;
   }
+
+  // Funktion för att hålla storlek konstant vid zoom
+  function adjustButtonSize() {
+    const baseSize = 150; // Basstorlek för knappens bredd och höjd i px
+    const baseFontSize = 100; // Basstorlek för pilen i px
+    const zoomLevel = window.devicePixelRatio || 1;
+    const scaleFactor = 1 / zoomLevel;
+
+    uppKnapp.style.width = `${baseSize}px`;
+    uppKnapp.style.height = `${baseSize}px`;
+    uppKnapp.style.fontSize = `${baseFontSize}px`;
+    uppKnapp.style.transform = `scale(${scaleFactor})`;
+    uppKnapp.style.transformOrigin = "bottom right";
+    uppKnapp.style.background = "transparent";
+  }
+
+  // Kör vid laddning och vid resize/zoom
+  adjustButtonSize();
+  window.addEventListener("resize", adjustButtonSize);
+
+  // Scroll-event
+  document.addEventListener("scroll", function() {
+    const scrollY = window.scrollY;
+    if (scrollY > 100) {
+      uppKnapp.classList.add("show");
+    } else {
+      uppKnapp.classList.remove("show");
+    }
+  });
 });
-
-
 
 
 

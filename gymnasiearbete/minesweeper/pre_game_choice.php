@@ -41,7 +41,7 @@ $stats = getUserPoints();
             </div>
         </div>
 
-        <h3 class="rainbow-text">Minesweeper</h3> <!-- Välkomsttext med regnbågsfärg -->
+        <h3 class="rainbow-text">Spelmeny</h3> <!-- Välkomsttext med regnbågsfärg -->
         <div class="konto" onclick="togglekonto(this)"><?php
 // Define the path to the profile picture
 $profilePicturePath = 'uploads/' . $_SESSION["userid"] . '_picture.jpg';
