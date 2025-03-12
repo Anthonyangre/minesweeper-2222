@@ -217,21 +217,10 @@ function updateDatabaseWin() {
         return;
     }
 
-    $points = $_SESSION['pre_game_points'] + $_SESSION['points']; // Adderar tidigare poäng med nya poäng från vinsten
+    // Beräkna totala poäng en gång, baserat på tidigare poäng och nya poäng från vinsten
+    $points = $_SESSION['pre_game_points'] + $_SESSION['points'];
     $wins = $_SESSION['wins'];
     $username = $_SESSION['userid'] ?? '';
-
-
-    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']); // Totala poäng
-    $wins = $_SESSION['wins']; // Antal vinster
-    $username = $_SESSION['userid'] ?? ''; // Användarnamn
-
-    $_SESSION['pre_game_points'] = $stats['points'];
-
-    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  
-    $wins = $_SESSION['wins'];
-    $username = $_SESSION['userid'] ?? '';
-
 
     if (!empty($username)) {
         $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?");
