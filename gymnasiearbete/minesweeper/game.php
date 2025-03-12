@@ -167,15 +167,14 @@ function revealCluster($row, $col) {
     }
 }
 
-// Kollar om spelet är vunnet eller förlorat
 function checkGameState() {
-    if ($_SESSION['game_state'] === 'lost') { // Om redan förlorat
+    if ($_SESSION['game_state'] === 'lost') {
         return;
     }
-    $rows = count($_SESSION['grid']); // Antal rader
-    $cols = count($_SESSION['grid'][0]); // Antal kolumner
-    $totalCells = $rows * $cols; // Totala rutor
-    $mines = 0; // Räknar minor
+    $rows = count($_SESSION['grid']);
+    $cols = count($_SESSION['grid'][0]);
+    $totalCells = $rows * $cols;
+    $mines = 0;
     foreach ($_SESSION['grid'] as $row) {
         foreach ($row as $cell) {
             if ($cell == 'M') {
@@ -183,7 +182,7 @@ function checkGameState() {
             }
         }
     }
-    $revealedCount = 0; // Räknar visade rutor
+    $revealedCount = 0;
     foreach ($_SESSION['revealed'] as $row) {
         foreach ($row as $revealed) {
             if ($revealed) {
@@ -191,11 +190,12 @@ function checkGameState() {
             }
         }
     }
-    if ($revealedCount === ($totalCells - $mines)) { // Om alla säkra rutor visade
-        $_SESSION['game_state'] = 'won'; // Spelet vunnet
-        $_SESSION['wins']++; // Ökar vinster
-        updateDatabaseWin(); // Uppdaterar databas med vinst
-        revealAllMines(); // Visar alla minor
+    if ($revealedCount === ($totalCells - $mines)) {
+        $_SESSION['game_state'] = 'won';
+        $_SESSION['wins']++;
+        $_SESSION['points'] = $_SESSION['currentpoints']; // Överför aktuella poäng till totala poäng vid vinst
+        updateDatabaseWin();
+        revealAllMines();
     }
 }
 
@@ -210,33 +210,32 @@ function revealAllMines() {
     }
 }
 
-// Uppdaterar databasen vid vinst
 function updateDatabaseWin() {
-    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper"); // Kopplar till databas
+    $conn = new mysqli("localhost", "Minesweeper", "Minesweeper", "Minesweeper");
     if ($conn->connect_error) {
-        error_log("Database connection failed: " . $conn->connect_error); // Loggar fel
+        error_log("Database connection failed: " . $conn->connect_error);
         return;
     }
-    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']); // Totala poäng
-    $wins = $_SESSION['wins']; // Antal vinster
-    $username = $_SESSION['userid'] ?? ''; // Användarnamn
+    $points = $_SESSION['pre_game_points'] + $_SESSION['points']; // Adderar tidigare poäng med nya poäng från vinsten
+    $wins = $_SESSION['wins'];
+    $username = $_SESSION['userid'] ?? '';
     if (!empty($username)) {
-        $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?"); // Förbereder uppdatering
+        $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?");
         if ($stmt) {
-            $stmt->bind_param("iis", $points, $wins, $username); // Binder värden
+            $stmt->bind_param("iis", $points, $wins, $username);
             if (!$stmt->execute()) {
-                error_log("Failed to execute statement in updateDatabaseWin: " . $stmt->error); // Loggar fel
+                error_log("Failed to execute statement in updateDatabaseWin: " . $stmt->error);
             } else {
-                error_log("Successfully updated points and wins for user: $username"); // Loggar lyckat
+                error_log("Successfully updated points and wins for user: $username");
             }
-            $stmt->close(); // Stänger fråga
+            $stmt->close();
         } else {
-            error_log("Failed to prepare statement in updateDatabaseWin: " . $conn->error); // Loggar fel
+            error_log("Failed to prepare statement in updateDatabaseWin: " . $conn->error);
         }
     } else {
-        error_log("Username is empty in updateDatabaseWin."); // Loggar om användarnamn saknas
+        error_log("Username is empty in updateDatabaseWin.");
     }
-    $conn->close(); // Stänger databas
+    $conn->close();
 }
 
 // Uppdaterar databasen vid förlust
