@@ -216,9 +216,24 @@ function updateDatabaseWin() {
         error_log("Database connection failed: " . $conn->connect_error);
         return;
     }
+<<<<<<< HEAD
     $points = $_SESSION['pre_game_points'] + $_SESSION['points']; // Adderar tidigare poäng med nya poäng från vinsten
     $wins = $_SESSION['wins'];
     $username = $_SESSION['userid'] ?? '';
+=======
+<<<<<<< HEAD
+    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']); // Totala poäng
+    $wins = $_SESSION['wins']; // Antal vinster
+    $username = $_SESSION['userid'] ?? ''; // Användarnamn
+=======
+    $_SESSION['pre_game_points'] = $stats['points'];
+
+    $points = ($_SESSION['pre_game_points'] + $_SESSION['points']);  
+    $wins = $_SESSION['wins'];
+    $username = $_SESSION['userid'] ?? '';
+
+>>>>>>> 616cdb1 (commit)
+>>>>>>> 03d86b1 (commit)
     if (!empty($username)) {
         $stmt = $conn->prepare("UPDATE `score` SET `points` = ?, `wins` = ? WHERE `username` = ?");
         if ($stmt) {
