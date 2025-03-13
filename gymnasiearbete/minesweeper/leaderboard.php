@@ -93,6 +93,8 @@ $records = getScore();
     </div>
 </header>
 
+<h6>🏆</h6>
+
      
     <!-- Tabell som visar topplistan med användardata -->
     <table id="dbres">

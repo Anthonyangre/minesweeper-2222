@@ -35,7 +35,6 @@ $stats = getUserPoints();
 
             <!-- Dropdown-menyn som visas vid klick -->
             <div class="dropdown-menu">
-            <a href= "leaderboard.php"class="dropdown-item">Topplista </a>
             <a href="../assets/logout.php#regler"onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');" class="dropdown-item">Regler</a>  <!-- Länk till regler-sektionen på index.php -->
             <a href="../assets/logout.php#info"onclick="return confirm('Är du säker på att du vill logga ut och gå till första sidan?');"  #regler" class="dropdown-item">Info</a>  <!-- Länk till regler-sektionen på index.php -->
             </div>
@@ -46,7 +45,8 @@ $stats = getUserPoints();
 // Define the path to the profile picture
 $profilePicturePath = 'uploads/' . $_SESSION["userid"] . '_picture.jpg';
 
-// Check if the profile picture exists
+// Check if the profile picture exists //
+
 if (file_exists($profilePicturePath)) {
     echo "<img class='bild' src='" . $profilePicturePath . "' alt='Profile Picture'>";
 }
@@ -61,10 +61,10 @@ if (file_exists($profilePicturePath)) {
 </div>
 </header>
 <div class="back">
-        <div class="choicelinks">
-
-             <a href="index.php"><p>🎮 </p> Minesweeper</a>
-             <a href="forum/index.php"><p>🗣️ </p>  Forum</a>
+        <div class="choicelinks">  
+             <a href="leaderboard.php"><h5>🏆</h5> Topplista</a>  
+             <a href="index.php"><h5>🕹️ </h5> Minesweeper</a>
+             <a href="forum/index.php"><h5>📨</h5> Forum</a>
              
       </div>
 <table id="stats">

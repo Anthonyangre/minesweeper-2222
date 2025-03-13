@@ -41,6 +41,25 @@ h4{
   text-shadow:1px 2px 2px white;
 }
 
+/* samma som choicelinks fast har färg */
+h5{
+  font-size: 80px;
+ 
+}
+
+a h5{
+  padding-top: 3%;
+  
+  text-align: center;  /* Säkerställer att innehållet också är centrerat */
+
+}
+
+h6{
+  font-size: 100px;
+  padding: 0%;
+  margin: 0%;
+}
+
 
 
 ol{
@@ -744,10 +763,15 @@ tr {
   display:flex;
 }
 .choicelinks {
-  margin: 1% auto 0 auto; /* Toppen 1%, resten auto för att centrera horisontellt */
+  position: relative;
+  left: 50%;
   padding-top: 3%;
-  text-align: center;  /* Säkerställer att innehållet också är centrerat */
+  transform: translateX(-66%);
 }
+
+
+
+
 
 .choicelinks a {
   margin: auto;
@@ -810,30 +834,30 @@ tr {
   text-shadow: 0px 0px 0px rgb(121, 105, 105);
 }
     
-
+/* ändrar storlek på rubrik beroende på skärmstolek */
     @media (max-width: 868px) {
       .rainbow-text {
-        font-size: 3rem; /* Mindre för surfplattor och större telefoner */
+        font-size: 3rem; /* Mindre för små bildskärmr */
       }
     }
 
     @media (max-width: 700px) {
       .rainbow-text {
-        font-size: 2.5rem; /* Mindre textstorlek för större telefoner */
+        font-size: 2.5rem; /* Mindre textstorlek */
       }
       
     }
 
     @media (max-width: 650px) {
       .rainbow-text {
-        font-size: 2rem; /* Minsta textstorlek för små telefoner */
+        font-size: 2rem; /* Minsta textstorlek */
       }
     }
 
-    /* Media query för att dölja texten på väldigt små skärmar */
+    /*  döljer texten för väldigt små skärmar */
     @media (max-width: 580px) {
       .rainbow-text {
-        display: none; /* Döljer texten för väldigt små skärmar */
+        display: none; 
       }
     }
     @media (max-width: 1500px) {
